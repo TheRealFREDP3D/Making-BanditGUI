@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BanditGUI - OverTheWire Bandit CTF</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='bandit-terminal.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='xterm.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='xterm-custom.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <!-- Left Panel (Chat/Help) -->
+            <div class="panel left">
+                <h3>Bandit Game Assistant</h3>
+                <div id="chat-container">
+                    <div id="chat-messages">
+                        <div class="system-message">
+                            <p><strong>Welcome to BanditGUI!</strong></p>
+                            <p>This application helps you learn about and interact with the OverTheWire Bandit CTF challenges.</p>
+                            <p>You can ask for help or use these commands in the chat:</p>
+                            <ul>
+                                <li><code>help</code> - Get general information about Bandit wargame</li>
+                                <li><code>info</code> - Check connection status and current level</li>
+                                <li><code>level</code> - Get instructions for the current level</li>
+                                <li><code>quit</code> - Disconnect and exit the game</li>
+                            </ul>
+                            <p>Use the terminal on the right to execute commands on the Bandit server (bandit.labs.overthewire.org).</p>
+                            <p>This is a real SSH connection - all commands are sent directly to the server.</p>
+                            <p>Type <code>help</code>, <code>info</code>, or <code>level</code> in the chat for assistance.</p>
+                        </div>
+                    </div>
+                    <div id="chat-input-container">
+                        <input type="text" id="chat-input" placeholder="Chat with the assistant...">
+                        <button id="chat-submit"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel (Terminal) -->
+            <div class="panel right">
+                <div class="terminal-header">
+                    <h3>Bandit Terminal</h3>
+                    <div class="connection-status">
+                        <span id="status-indicator" class="disconnected"></span>
+                        <span id="status-text">Disconnected</span>
+                    </div>
+                </div>
+                <div id="terminal-container"></div>
+                <!-- Terminal footer removed -->
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='js/xterm.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/xterm-addon-fit.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/xterm-addon-web-links.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bandit-app.js') }}"></script>
+    </body>
+</html>

@@ -1,0 +1,322 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, .left, #chat-messages, #chat-input, .assistant-message, .user-message, .system-message {
+    font-family: 'Roboto', 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Panel Styles */
+.panel {
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.left {
+    flex: 1;
+    background: #2d2d2d;
+    border-right: 1px solid #444;
+}
+
+.right {
+    flex: 2;
+    background: #1e1e1e;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Left Panel - Chat */
+.left h3, .terminal-header h3 {
+    padding: 15px;
+    background-color: #333;
+    color: #fff;
+    margin: 0;
+    border-bottom: 1px solid #444;
+}
+
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+
+#chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    padding-bottom: 80px; /* Add padding to ensure messages don't hide behind input */
+    max-height: calc(100vh - 180px); /* Ensure it doesn't overflow */
+}
+
+.system-message {
+    background-color: #2d2d2d;
+    border-left: 4px solid #61afef;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 0 4px 4px 0;
+}
+
+.user-message {
+    background-color: #3a3a3a;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.user-message .user-label {
+    color: #98c379;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.assistant-message {
+    background-color: #2d2d2d;
+    border-left: 4px solid #c678dd;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 0 4px 4px 0;
+}
+
+.assistant-message .assistant-label {
+    color: #c678dd;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#chat-input-container {
+    display: flex;
+    padding: 15px;
+    background-color: #333;
+    border-top: 1px solid #444;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+#chat-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    background-color: #444;
+    color: #fff;
+    outline: none;
+}
+
+#chat-input::placeholder {
+    color: #aaa;
+}
+
+#chat-submit {
+    padding: 10px 15px;
+    background-color: #61afef;
+    color: #fff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#chat-submit:hover {
+    background-color: #528bff;
+}
+
+/* Right Panel - Terminal */
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    border-bottom: 1px solid #444;
+}
+
+.connection-status {
+    display: flex;
+    align-items: center;
+    padding-right: 15px;
+}
+
+#status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.connected {
+    background-color: #98c379;
+    box-shadow: 0 0 5px #98c379;
+}
+
+.disconnected {
+    background-color: #e06c75;
+    box-shadow: 0 0 5px #e06c75;
+}
+
+#status-text {
+    font-size: 14px;
+}
+
+#terminal-container {
+    flex: 1;
+    padding: 0;
+    background: #282c34;
+    overflow: hidden;
+}
+
+.terminal-footer {
+    padding: 10px;
+    background-color: #333;
+    border-top: 1px solid #444;
+    display: flex;
+    justify-content: center;
+}
+
+#connect-button {
+    padding: 8px 16px;
+    background-color: #98c379;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#connect-button:hover {
+    background-color: #7cb36a;
+}
+
+#connect-button.disconnect {
+    background-color: #e06c75;
+}
+
+#connect-button.disconnect:hover {
+    background-color: #d05a65;
+}
+
+/* Code formatting */
+code, pre {
+    background-color: #3a3a3a;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: "Fira Code", "Cascadia Code", "Source Code Pro", Consolas, "DejaVu Sans Mono", monospace;
+    font-size: 0.9em;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2d2d2d;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+/* Lists in chat */
+#chat-messages ul {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+#chat-messages li {
+    margin-bottom: 5px;
+}
+
+/* Paragraphs in chat */
+#chat-messages p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+/* Level information formatting */
+.level-info {
+    border-left: 4px solid #e5c07b;
+    padding-left: 10px;
+    margin: 10px 0;
+    background-color: #2a2a2a;
+    border-radius: 0 4px 4px 0;
+    padding: 15px;
+}
+
+.level-info h4 {
+    color: #e5c07b;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+}
+
+.level-info strong {
+    color: #61afef;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.level-info p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.level-info a {
+    color: #c678dd;
+    text-decoration: none;
+    border-bottom: 1px dotted #c678dd;
+}
+
+.level-info a:hover {
+    color: #d787ff;
+    border-bottom: 1px solid #d787ff;
+}
+
+.level-info pre {
+    background-color: #3a3a3a;
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 10px 0;
+    font-family: "Fira Code", "Cascadia Code", "Source Code Pro", Consolas, "DejaVu Sans Mono", monospace;
+    border-left: 3px solid #98c379;
+}
+
+/* Error messages */
+.error-message {
+    color: #e06c75;
+    font-style: italic;
+}
+
+/* Success messages */
+.success-message {
+    color: #98c379;
+    font-style: italic;
+}

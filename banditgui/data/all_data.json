@@ -1,0 +1,568 @@
+{
+  "general_info": {
+    "general": "Bandit\nThe Bandit wargame is aimed at absolute beginners. It will teach the\nbasics needed to be able to play other wargames.\nIf you notice\nsomething essential is missing or have ideas for new levels, please let\nus know!\nNote for beginners\nThis game, like most other games, is organised in levels. You start at\nLevel 0 and try to \u201cbeat\u201d or \u201cfinish\u201d it. Finishing a level results in\ninformation on how to start the next level. The pages on this website\nfor \u201cLevel <X>\u201d contain information on how to start level X from the\nprevious level. E.g. The page for\nLevel 1\nhas information on how to\ngain access from\nLevel 0\nto\nLevel 1\n. All levels in this game\nhave a page on this website, and they are all linked to from the\nsidemenu on the left of this page.\nYou will encounter many situations in which you have no idea what you\nare supposed to do.\nDon\u2019t panic! Don\u2019t give up!\nThe purpose of this\ngame is for you to learn the basics. Part of learning the basics, is\nreading a lot of new information. If you\u2019ve never used the command line\nbefore, a good first read is this\nintroduction to user commands\n.\nThere are several things you can try when you are unsure how to\ncontinue:\nFirst, if you know a command, but don\u2019t know how to use it, try the\nmanual\n(\nman page\n) by entering\nman <command>\n.\nFor example,\nman ls\nto learn about the \u201cls\u201d command.\nThe \u201cman\u201d command also has a manual, try it!\nWhen using\nman\n, press\nq\nto quit\n(you can also use\n/\nand\nn\nand\nN\nto search).\nSecond, if there is no man page, the command might be a\nshell\nbuilt-in\n. In that case use the \u201c\nhelp <X>\n\u201d command. E.g. help\ncd\nAlso, your favorite\nsearch-engine\nis your friend. Learn how to\nuse it! I recommend\nGoogle\n.\nLastly, if you are still stuck, you can\njoin us via chat\nYou\u2019re ready to start! Begin with\nLevel 0\n, linked at the left of\nthis page. Good luck!\nNote for VMs:\nYou may fail to connect to overthewire.org via SSH with a \u201c\nbroken pipe error\n\u201d when the network adapter for the VM is configured to use NAT mode. Adding the setting\nIPQoS throughput\nto\n/etc/ssh/ssh_config\nshould resolve the issue. If this does not solve your issue, the only option then is to change the adapter to Bridged mode."
+  },
+  "levels_info": [
+    {
+      "level": 0,
+      "goal": "The goal of this level is for you to log into the game using SSH.\nThe host to which you need to connect isbandit.labs.overthewire.org, on port 2220.\nThe username isbandit0and the password isbandit0. Once\nlogged in, go to theLevel 1page to find out how to beat Level\n1.",
+      "commands": "ssh",
+      "commands_links": [
+        {
+          "text": "ssh",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/ssh.1.html"
+        }
+      ],
+      "reading": "Secure Shell (SSH) on WikipediaHow to use SSH on wikiHow",
+      "reading_links": [
+        {
+          "text": "Secure Shell (SSH) on Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Secure_Shell"
+        },
+        {
+          "text": "How to use SSH on wikiHow",
+          "url": "https://www.wikihow.com/Use-SSH"
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "goal": "The password for the next level is stored in a file calledreadmelocated in the home directory. Use this password to log\ninto bandit1 using SSH. Whenever you find a password for a level,\nuse SSH (on port 2220) to log into that level and continue the game.",
+      "commands": "ls,cd,cat,file,du,find\nTIP:Create a file for notes and passwords on your local machine!\nPasswords for levels arenotsaved automatically.\nIf you do not save them yourself, you will need to start over from bandit0.\nPasswords also occasionally change. It is recommended to take notes on how to solve each challenge.\nAs levels get more challenging, detailed notes are useful to return to where you left off, reference for later problems, or help others after you\u2019ve completed the challenge.",
+      "commands_links": [
+        {
+          "text": "ls",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/ls.1.html"
+        },
+        {
+          "text": "cd",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/cd.1posix.html"
+        },
+        {
+          "text": "cat",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/cat.1.html"
+        },
+        {
+          "text": "file",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/file.1.html"
+        },
+        {
+          "text": "du",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/du.1.html"
+        },
+        {
+          "text": "find",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/find.1.html"
+        }
+      ],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 2,
+      "goal": "The password for the next level is stored in a file called-located in the home directory",
+      "commands": "ls,cd,cat,file,du,find",
+      "commands_links": [
+        {
+          "text": "ls",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/ls.1.html"
+        },
+        {
+          "text": "cd",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/cd.1posix.html"
+        },
+        {
+          "text": "cat",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/cat.1.html"
+        },
+        {
+          "text": "file",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/file.1.html"
+        },
+        {
+          "text": "du",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/du.1.html"
+        },
+        {
+          "text": "find",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/find.1.html"
+        }
+      ],
+      "reading": "Google Search for \u201cdashed filename\u201dAdvanced Bash-scripting Guide - Chapter 3 - Special Characters",
+      "reading_links": [
+        {
+          "text": "Google Search for \u201cdashed filename\u201d",
+          "url": "https://www.google.com/search?q=dashed+filename"
+        },
+        {
+          "text": "Advanced Bash-scripting Guide - Chapter 3 - Special Characters",
+          "url": "https://linux.die.net/abs-guide/special-chars.html"
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "goal": "The password for the next level is stored in a file calledspaces\nin this filenamelocated in the home directory",
+      "commands": "ls,cd,cat,file,du,find",
+      "commands_links": [
+        {
+          "text": "ls",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/ls.1.html"
+        },
+        {
+          "text": "cd",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/cd.1posix.html"
+        },
+        {
+          "text": "cat",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/cat.1.html"
+        },
+        {
+          "text": "file",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/file.1.html"
+        },
+        {
+          "text": "du",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/du.1.html"
+        },
+        {
+          "text": "find",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/find.1.html"
+        }
+      ],
+      "reading": "Google Search for \u201cspaces in filename\u201d",
+      "reading_links": [
+        {
+          "text": "Google Search for \u201cspaces in filename\u201d",
+          "url": "https://www.google.com/search?q=spaces+in+filename"
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "goal": "The password for the next level is stored in a hidden file in theinheredirectory.",
+      "commands": "ls,cd,cat,file,du,find",
+      "commands_links": [
+        {
+          "text": "ls",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/ls.1.html"
+        },
+        {
+          "text": "cd",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/cd.1posix.html"
+        },
+        {
+          "text": "cat",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/cat.1.html"
+        },
+        {
+          "text": "file",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/file.1.html"
+        },
+        {
+          "text": "du",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/du.1.html"
+        },
+        {
+          "text": "find",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/find.1.html"
+        }
+      ],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 5,
+      "goal": "The password for the next level is stored in the only human-readable\nfile in theinheredirectory. Tip: if your terminal is messed\nup, try the \u201creset\u201d command.",
+      "commands": "ls,cd,cat,file,du,find",
+      "commands_links": [
+        {
+          "text": "ls",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/ls.1.html"
+        },
+        {
+          "text": "cd",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/cd.1posix.html"
+        },
+        {
+          "text": "cat",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/cat.1.html"
+        },
+        {
+          "text": "file",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/file.1.html"
+        },
+        {
+          "text": "du",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/du.1.html"
+        },
+        {
+          "text": "find",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/find.1.html"
+        }
+      ],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 6,
+      "goal": "The password for the next level is stored in a file somewhere under\ntheinheredirectory and has all of the following properties:\n\nhuman-readable1033 bytes in sizenot executable",
+      "commands": "ls,cd,cat,file,du,find",
+      "commands_links": [
+        {
+          "text": "ls",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/ls.1.html"
+        },
+        {
+          "text": "cd",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/cd.1posix.html"
+        },
+        {
+          "text": "cat",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/cat.1.html"
+        },
+        {
+          "text": "file",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/file.1.html"
+        },
+        {
+          "text": "du",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/du.1.html"
+        },
+        {
+          "text": "find",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/find.1.html"
+        }
+      ],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 7,
+      "goal": "The password for the next level is storedsomewhere on the\nserverand has all of the following properties:\n\nowned by user bandit7owned by group bandit633 bytes in size",
+      "commands": "ls,cd,cat,file,du,find,grep",
+      "commands_links": [
+        {
+          "text": "ls",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/ls.1.html"
+        },
+        {
+          "text": "cd",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/cd.1posix.html"
+        },
+        {
+          "text": "cat",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/cat.1.html"
+        },
+        {
+          "text": "file",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/file.1.html"
+        },
+        {
+          "text": "du",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/du.1.html"
+        },
+        {
+          "text": "find",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/find.1.html"
+        },
+        {
+          "text": "grep",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/grep.1.html"
+        }
+      ],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 8,
+      "goal": "The password for the next level is stored in the filedata.txtnext to the wordmillionth",
+      "commands": "man,\ngrep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd",
+      "commands_links": [
+        {
+          "text": "man",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man1/man.1.html"
+        }
+      ],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 9,
+      "goal": "The password for the next level is stored in the filedata.txtand is the only line of text that occurs only once",
+      "commands": "grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd",
+      "commands_links": [],
+      "reading": "Piping and Redirection",
+      "reading_links": [
+        {
+          "text": "Piping and Redirection",
+          "url": "https://ryanstutorials.net/linuxtutorial/piping.php"
+        }
+      ]
+    },
+    {
+      "level": 10,
+      "goal": "The password for the next level is stored in the filedata.txtin one of the few human-readable strings, preceded by several \u2018=\u2019\ncharacters.",
+      "commands": "grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd",
+      "commands_links": [],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 11,
+      "goal": "The password for the next level is stored in the filedata.txt,\nwhich contains base64 encoded data",
+      "commands": "grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd",
+      "commands_links": [],
+      "reading": "Base64 on Wikipedia",
+      "reading_links": [
+        {
+          "text": "Base64 on Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Base64"
+        }
+      ]
+    },
+    {
+      "level": 12,
+      "goal": "The password for the next level is stored in the filedata.txt,\nwhere all lowercase (a-z) and uppercase (A-Z) letters have been\nrotated by 13 positions",
+      "commands": "grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd",
+      "commands_links": [],
+      "reading": "Rot13 on Wikipedia",
+      "reading_links": [
+        {
+          "text": "Rot13 on Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/ROT13"
+        }
+      ]
+    },
+    {
+      "level": 13,
+      "goal": "The password for the next level is stored in the filedata.txt,\nwhich is a hexdump of a file that has been repeatedly compressed.\nFor this level it may be useful to create a directory under /tmp in\nwhich you can work. Use mkdir with a hard to guess directory name.\nOr better, use the command \u201cmktemp -d\u201d.\nThen copy the datafile using cp, and rename it using mv (read the\nmanpages!)",
+      "commands": "grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd, mkdir,\ncp, mv, file",
+      "commands_links": [],
+      "reading": "Hex dump on Wikipedia",
+      "reading_links": [
+        {
+          "text": "Hex dump on Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Hex_dump"
+        }
+      ]
+    },
+    {
+      "level": 14,
+      "goal": "The password for the next level is stored in/etc/bandit_pass/bandit14 and can only be read by user\nbandit14. For this level, you don\u2019t get the next password, but you\nget a private SSH key that can be used to log into the next level.Note:localhostis a hostname that refers to the machine\nyou are working on",
+      "commands": "ssh, telnet, nc, openssl, s_client, nmap",
+      "commands_links": [],
+      "reading": "SSH/OpenSSH/Keys",
+      "reading_links": [
+        {
+          "text": "SSH/OpenSSH/Keys",
+          "url": "https://help.ubuntu.com/community/SSH/OpenSSH/Keys"
+        }
+      ]
+    },
+    {
+      "level": 15,
+      "goal": "The password for the next level can be retrieved by submitting the\npassword of the current level toport 30000 on localhost.",
+      "commands": "ssh, telnet, nc, openssl, s_client, nmap",
+      "commands_links": [],
+      "reading": "How the Internet works in 5 minutes (YouTube)(Not completely\naccurate, but good enough for beginners)IP AddressesIP Address on WikipediaLocalhost on WikipediaPortsPort (computer networking) on Wikipedia",
+      "reading_links": [
+        {
+          "text": "How the Internet works in 5 minutes (YouTube)",
+          "url": "https://www.youtube.com/watch?v=7_LPdttKXPc"
+        },
+        {
+          "text": "IP Addresses",
+          "url": "https://computer.howstuffworks.com/web-server5.htm"
+        },
+        {
+          "text": "IP Address on Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/IP_address"
+        },
+        {
+          "text": "Localhost on Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Localhost"
+        },
+        {
+          "text": "Ports",
+          "url": "https://computer.howstuffworks.com/web-server8.htm"
+        },
+        {
+          "text": "Port (computer networking) on Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Port_(computer_networking)"
+        }
+      ]
+    },
+    {
+      "level": 16,
+      "goal": "The password for the next level can be retrieved by submitting the\npassword of the current level toport 30001 on localhostusing\nSSL/TLS encryption.\n\nHelpful note: Getting \u201cDONE\u201d, \u201cRENEGOTIATING\u201d or \u201cKEYUPDATE\u201d? Read the\n\u201cCONNECTED COMMANDS\u201d section in the manpage.",
+      "commands": "ssh, telnet, nc, ncat, socat, openssl, s_client, nmap, netstat, ss",
+      "commands_links": [],
+      "reading": "Secure Socket Layer/Transport Layer Security on WikipediaOpenSSL Cookbook - Testing with OpenSSL",
+      "reading_links": [
+        {
+          "text": "Secure Socket Layer/Transport Layer Security on Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Transport_Layer_Security"
+        },
+        {
+          "text": "OpenSSL Cookbook - Testing with OpenSSL",
+          "url": "https://www.feistyduck.com/library/openssl-cookbook/online/testing-with-openssl/index.html"
+        }
+      ]
+    },
+    {
+      "level": 17,
+      "goal": "The credentials for the next level can be retrieved by submitting the\npassword of the current level toa port on localhost in the range\n31000 to 32000. First find out which of these ports have a server\nlistening on them. Then find out which of those speak SSL/TLS and which\ndon\u2019t. There is only 1 server that will give the next credentials, the\nothers will simply send back to you whatever you send to it.\n\nHelpful note: Getting \u201cDONE\u201d, \u201cRENEGOTIATING\u201d or \u201cKEYUPDATE\u201d? Read the\n\u201cCONNECTED COMMANDS\u201d section in the manpage.",
+      "commands": "ssh, telnet, nc, ncat, socat, openssl, s_client, nmap, netstat, ss",
+      "commands_links": [],
+      "reading": "Port scanner on Wikipedia",
+      "reading_links": [
+        {
+          "text": "Port scanner on Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Port_scanner"
+        }
+      ]
+    },
+    {
+      "level": 18,
+      "goal": "There are 2 files in the homedirectory:passwords.old and\npasswords.new. The password for the next level is inpasswords.newand is the only line that has been changed betweenpasswords.old and passwords.new\n\nNOTE: if you have solved this level and see \u2018Byebye!\u2019 when trying\nto log into bandit18, this is related to the next level, bandit19",
+      "commands": "cat, grep, ls, diff",
+      "commands_links": [],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 19,
+      "goal": "The password for the next level is stored in a filereadmein\nthe homedirectory. Unfortunately, someone has modified.bashrcto log you out when you log in with SSH.",
+      "commands": "ssh, ls, cat",
+      "commands_links": [],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 20,
+      "goal": "To gain access to the next level, you should use the setuid binary\nin the homedirectory. Execute it without arguments to find out how\nto use it. The password for this level can be found in the usual\nplace (/etc/bandit_pass), after you have used the setuid binary.",
+      "commands": "",
+      "commands_links": [],
+      "reading": "setuid on Wikipedia",
+      "reading_links": [
+        {
+          "text": "setuid on Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Setuid"
+        }
+      ]
+    },
+    {
+      "level": 21,
+      "goal": "There is a setuid binary in the homedirectory that does the\nfollowing: it makes a connection to localhost on the port you\nspecify as a commandline argument. It then reads a line of text from\nthe connection and compares it to the password in the previous level\n(bandit20). If the password is correct, it will transmit the\npassword for the next level (bandit21).\n\nNOTE:Try connecting to your own network daemon to see if it\nworks as you think",
+      "commands": "ssh, nc, cat, bash, screen, tmux, Unix \u2018job control\u2019 (bg, fg, jobs, &, CTRL-Z, \u2026)",
+      "commands_links": [],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 22,
+      "goal": "A program is running automatically at regular intervals fromcron, the time-based job scheduler. Look in/etc/cron.d/for\nthe configuration and see what command is being executed.",
+      "commands": "cron, crontab, crontab(5) (use \u201cman 5 crontab\u201d to access this)",
+      "commands_links": [],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 23,
+      "goal": "A program is running automatically at regular intervals fromcron, the time-based job scheduler. Look in/etc/cron.d/for\nthe configuration and see what command is being executed.\n\nNOTE:Looking at shell scripts written by other people is a\nvery useful skill. The script for this level is intentionally made\neasy to read. If you are having problems understanding what it does,\ntry executing it to see the debug information it prints.",
+      "commands": "cron, crontab, crontab(5) (use \u201cman 5 crontab\u201d to access this)",
+      "commands_links": [],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 24,
+      "goal": "A program is running automatically at regular intervals fromcron, the time-based job scheduler. Look in/etc/cron.d/for\nthe configuration and see what command is being executed.\n\nNOTE:This level requires you to create your own first\nshell-script. This is a very big step and you should be proud of\nyourself when you beat this level!\n\nNOTE 2:Keep in mind that your shell script is removed once\nexecuted, so you may want to keep a copy around\u2026",
+      "commands": "chmod, cron, crontab, crontab(5) (use \u201cman 5 crontab\u201d to access this)",
+      "commands_links": [],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 25,
+      "goal": "A daemon is listening on port 30002 and will give you the password for\nbandit25 if given the password for bandit24 and a secret numeric 4-digit pincode.\nThere is no way to retrieve the pincode except by going through all of the 10000\ncombinations, called brute-forcing.You do not need to create new connections each time",
+      "commands": "",
+      "commands_links": [],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 26,
+      "goal": "Logging in to bandit26 from bandit25 should be fairly easy\u2026\nThe shell for user bandit26 is not/bin/bash, but something else.\nFind out what it is, how it works and how to break out of it.\n\nNOTE: if you\u2019re a Windows user and typically use Powershell tosshinto bandit: Powershell is known to cause issues with the\nintended solution to this level. You should use command prompt\ninstead.",
+      "commands": "ssh, cat, more, vi, ls, id, pwd",
+      "commands_links": [],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 27,
+      "goal": "Good job getting a shell! Now hurry and grab the password for bandit27!",
+      "commands": "ls",
+      "commands_links": [],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 28,
+      "goal": "There is a git repository atssh://bandit27-git@localhost/home/bandit27-git/repovia the port2220. The password for the userbandit27-gitis the same as for the userbandit27.\n\nClone the repository and find the password for the next level.",
+      "commands": "git",
+      "commands_links": [],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 29,
+      "goal": "There is a git repository atssh://bandit28-git@localhost/home/bandit28-git/repovia the port2220. The password for the userbandit28-gitis the same as for the userbandit28.\n\nClone the repository and find the password for the next level.",
+      "commands": "git",
+      "commands_links": [],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 30,
+      "goal": "There is a git repository atssh://bandit29-git@localhost/home/bandit29-git/repovia the port2220. The password for the userbandit29-gitis the same as for the userbandit29.\n\nClone the repository and find the password for the next level.",
+      "commands": "git",
+      "commands_links": [],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 31,
+      "goal": "There is a git repository atssh://bandit30-git@localhost/home/bandit30-git/repovia the port2220. The password for the userbandit30-gitis the same as for the userbandit30.\n\nClone the repository and find the password for the next level.",
+      "commands": "git",
+      "commands_links": [],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 32,
+      "goal": "There is a git repository atssh://bandit31-git@localhost/home/bandit31-git/repovia the port2220. The password for the userbandit31-gitis the same as for the userbandit31.\n\nClone the repository and find the password for the next level.",
+      "commands": "git",
+      "commands_links": [],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 33,
+      "goal": "After all thisgitstuff, it\u2019s time for another escape. Good luck!",
+      "commands": "sh, man",
+      "commands_links": [],
+      "reading": "",
+      "reading_links": []
+    },
+    {
+      "level": 34,
+      "goal": "",
+      "commands": "",
+      "commands_links": [],
+      "reading": "",
+      "reading_links": []
+    }
+  ]
+}

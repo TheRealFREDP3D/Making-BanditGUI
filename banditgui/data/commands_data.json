@@ -1,0 +1,242 @@
+[
+  {
+    "name": "As",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "base64",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "bash",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "bzip2",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "cat",
+    "url": "https://manpages.ubuntu.com/manpages/noble/man1/cat.1.html",
+    "used": false
+  },
+  {
+    "name": "cd",
+    "url": "https://manpages.ubuntu.com/manpages/noble/man1/cd.1posix.html",
+    "used": false
+  },
+  {
+    "name": "chmod",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "cp",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "cron",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "crontab",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "diff",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "du",
+    "url": "https://manpages.ubuntu.com/manpages/noble/man1/du.1.html",
+    "used": false
+  },
+  {
+    "name": "fg",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "file",
+    "url": "https://manpages.ubuntu.com/manpages/noble/man1/file.1.html",
+    "used": false
+  },
+  {
+    "name": "find",
+    "url": "https://manpages.ubuntu.com/manpages/noble/man1/find.1.html",
+    "used": false
+  },
+  {
+    "name": "git",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "grep",
+    "url": "https://manpages.ubuntu.com/manpages/noble/man1/grep.1.html",
+    "used": false
+  },
+  {
+    "name": "gzip",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "help",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "id",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "jobs",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "local",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "ls",
+    "url": "https://manpages.ubuntu.com/manpages/noble/man1/ls.1.html",
+    "used": false
+  },
+  {
+    "name": "man",
+    "url": "https://manpages.ubuntu.com/manpages/noble/man1/man.1.html",
+    "used": false
+  },
+  {
+    "name": "mkdir",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "more",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "mv",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "nc",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "ncat",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "netstat",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "nmap",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "openssl",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "pwd",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "s_client",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "screen",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "sh",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "socat",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "sort",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "ss",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "ssh",
+    "url": "https://manpages.ubuntu.com/manpages/noble/man1/ssh.1.html",
+    "used": false
+  },
+  {
+    "name": "strings",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "tar",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "telnet",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "tmux",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "tr",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "uniq",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "vi",
+    "url": "",
+    "used": false
+  },
+  {
+    "name": "xxd",
+    "url": "",
+    "used": false
+  }
+]
