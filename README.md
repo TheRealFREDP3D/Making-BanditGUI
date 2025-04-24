@@ -20,7 +20,7 @@ BanditGUI is a web-based tool designed to help users learn and practice security
 
 ---
 
-* []**Chapter 3**: Implement a Simulated Terminal (#Chapter-3-implement-a-simulated-terminal)
+* [X]**Chapter 3**: Implement a Simulated Terminal (#Chapter-3-implement-a-simulated-terminal)
 
 [X]Guide
 []Video
@@ -28,7 +28,7 @@ BanditGUI is a web-based tool designed to help users learn and practice security
 
 ---
 
-* []**Chapter 4**: Add Basic SSH Connection (Using Paramiko) (#Chapter-4-add-basic-ssh-connection-using-paramiko)
+* [X]**Chapter 4**: Add Basic SSH Connection (Using Paramiko) (#Chapter-4-add-basic-ssh-connection-using-paramiko)
 
 [X]Guide
 []Video
@@ -115,47 +115,48 @@ The application includes a tool to fetch level information from the OverTheWire 
 
 ### Level Data Structure
 
-The level data is stored in JSON format in the `levels_data` directory:
+The level data is stored in JSON format in the `banditgui/data` directory:
 
-- `general_info.json`: Contains general information about the Bandit wargame
-- `levels_info.json`: Contains information for all levels (bandit0 to bandit34)
-- `all_data.json`: Contains both general and level-specific information
+* `general_info.json`: Contains general information about the Bandit wargame
+* `levels_info.json`: Contains information for all levels (bandit0 to bandit34)
+* `all_data.json`: Contains both general and level-specific information
 
 ### Fetching Level Data
 
 To fetch the latest level information from the OverTheWire website, run:
 
 ```bash
-python levels_data/get_data.py
+python -m banditgui.utils.get_data
 ```
 
 This will:
+
 1. Fetch the main Bandit page to get general information
 2. Fetch each level page (bandit0 to bandit34)
 3. Extract relevant information (level goal, commands, helpful reading material)
-4. Save the data in JSON format in the `levels_data` directory
+4. Save the data in JSON format in the `banditgui/data` directory
 
 ### Accessing Level Data
 
 You can use the `level_info.py` module to access the level information in your application:
 
 ```python
-import level_info
+from banditgui.utils.level_info import get_general_info, get_available_levels, get_level_info, get_all_levels_info
 
 # Get general information
-general_info = level_info.get_general_info()
+general_info = get_general_info()
 
 # Get a list of available levels
-available_levels = level_info.get_available_levels()
+available_levels = get_available_levels()
 
 # Get information for a specific level
-level_0_info = level_info.get_level_info(0)
+level_0_info = get_level_info(0)
 
 # Get information for all levels
-all_levels_info = level_info.get_all_levels_info()
+all_levels_info = get_all_levels_info()
 ```
 
-For more details, see the [levels_data/README.md](levels_data/README.md) file.
+For more details, see the [banditgui/data/README.md](banditgui/data/README.md) file.
 
 ## Conclusion
 

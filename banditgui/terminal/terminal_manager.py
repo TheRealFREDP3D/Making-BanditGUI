@@ -9,7 +9,7 @@ from typing import List
 from banditgui.config.logging import get_logger
 from banditgui.config.settings import config
 
-logger = get_logger('terminal.manager')
+logger = get_logger('terminal.terminal_manager')
 
 
 class TerminalManager:
