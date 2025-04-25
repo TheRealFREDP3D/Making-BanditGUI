@@ -14,7 +14,7 @@ build/
 develop-eggs/
 dist/
 downloads/
-eggs/
+eggs/docs
 .eggs/
 lib/
 lib64/

@@ -158,6 +158,38 @@ all_levels_info = get_all_levels_info()
 
 For more details, see the [banditgui/data/README.md](banditgui/data/README.md) file.
 
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/banditgui.git
+cd banditgui
+```
+
+2. Install Node.js dependencies:
+```bash
+npm install
+```
+
+This will install the required dependencies:
+- xterm (v5.3.0)
+- xterm-addon-fit (v0.8.0)
+- xterm-addon-web-links (v0.9.0)
+
+3. Install Python dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+4. Start the application:
+```bash
+npm start
+```
+or
+```bash
+python banditgui/app.py
+```
+
 ## Conclusion
 
 This TOC and Chapter-by-Chapter summary provide a clear roadmap for developing BanditGUI, making it accessible for developers to follow and build the application. Each Chapter builds on the previous one, creating a fully functional and engaging tool.
