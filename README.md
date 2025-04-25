@@ -2,76 +2,7 @@
 
 BanditGUI is a web-based tool designed to help users learn and practice security concepts, particularly those found in challenges like the OverTheWire Bandit wargame.
 
-## Table of Contents (TOC)
-
-* [X]**Chapter 1**: Set Up the Basic Flask App (#Chapter-1-set-up-the-basic-flask-app)
-
-[X]Guide
-[X]Video
-[X]Code
-
----
-
-* [X]**Chapter 2**: Add the Two-Panel Layout (#Chapter-2-add-the-two-panel-layout)
-
-[X]Guide
-[X]Video
-[X]Code
-
----
-
-* [X]**Chapter 3**: Implement a Simulated Terminal (#Chapter-3-implement-a-simulated-terminal)
-
-[X]Guide
-[]Video
-[X]Code
-
----
-
-* [X]**Chapter 4**: Add Basic SSH Connection (Using Paramiko) (#Chapter-4-add-basic-ssh-connection-using-paramiko)
-
-[X]Guide
-[]Video
-[X]Code
-
----
-
-* []**Chapter 5**: Add a Simple AI Chat Assistant (#Chapter-5-add-a-simple-ai-chat-assistant)
-
-[X]Guide
-[]Video
-[X]Code
-
----
-
-* []**Chapter 6**: Add Password Management with Encryption (#Chapter-6-add-password-management-with-encryption)
-
-[X]Guide
-[]Video
-[X]Code
-
----
-
-* []**Chapter 7**: Add Progress Tracking (#Chapter-7-add-progress-tracking)
-
-[X]Guide
-[]Video
-[X]Code
-
----
-
-* []**Chapter 8**: Add Gamification (Badges/Streaks) (#Chapter-8-add-gamification-badgesstreaks)
-
-[X]Guide
-[]Video
-[X]Code
-
----
-
-* [X]**Level Data**: Fetching and Managing Level Information (#level-data)
-
-[X]Tool
-[X]Documentation
+![Screenshot](docs/assets/v0.2-screenshot.jpg)
 
 ---
 
@@ -161,31 +92,38 @@ For more details, see the [banditgui/data/README.md](banditgui/data/README.md) f
 ## Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/banditgui.git
 cd banditgui
 ```
 
 2. Install Node.js dependencies:
+
 ```bash
 npm install
 ```
 
 This will install the required dependencies:
-- xterm (v5.3.0)
-- xterm-addon-fit (v0.8.0)
-- xterm-addon-web-links (v0.9.0)
+
+* xterm (v5.3.0)
+* xterm-addon-fit (v0.8.0)
+* xterm-addon-web-links (v0.9.0)
 
 3. Install Python dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
 4. Start the application:
+
 ```bash
 npm start
 ```
+
 or
+
 ```bash
 python banditgui/app.py
 ```
