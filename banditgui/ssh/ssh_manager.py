@@ -12,7 +12,7 @@ import paramiko
 from banditgui.config.logging import get_logger
 from banditgui.config.settings import config
 
-logger = get_logger('ssh.manager')
+logger = get_logger('ssh.ssh_manager')
 
 
 class SSHManager:

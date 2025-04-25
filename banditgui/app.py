@@ -8,12 +8,13 @@ import sys
 
 from flask import Flask, jsonify, render_template, request, send_from_directory
 
+from banditgui.chat.chat_manager import ChatManager
 from banditgui.config.logging import get_logger, setup_logging
 
 # Initialize configuration and logging
 from banditgui.config.settings import config
-from banditgui.ssh.manager import SSHManager
-from banditgui.terminal.manager import TerminalManager
+from banditgui.ssh.ssh_manager import SSHManager
+from banditgui.terminal.terminal_manager import TerminalManager
 
 # Set up logging
 setup_logging(log_level=os.getenv('LOG_LEVEL', 'INFO'))
@@ -25,6 +26,7 @@ app = Flask(__name__)
 # Initialize managers
 ssh_manager = SSHManager()
 terminal_manager = TerminalManager(ssh_manager=ssh_manager)
+chat_manager = ChatManager()
 
 logger.info("BanditGUI application initialized")
 
@@ -166,6 +168,70 @@ def level_info():
             'status': 'error',
             'message': error_msg
         })
+
+
+@app.route('/chat/message', methods=['POST'])
+def chat_message():
+    """Add a message to the chat."""
+    message = request.json.get('message')
+    level = request.json.get('level')
+    try:
+        level = int(level)
+    except (ValueError, TypeError):
+        logger.warning("Invalid level value provided in chat message")
+        return jsonify({'status': 'error', 'message': 'Invalid level value'})
+    is_system = request.json.get('isSystem', False)
+
+    if not message:
+        logger.warning("Chat message request with no message")
+        return jsonify({'status': 'error', 'message': 'No message provided'})
+
+    logger.info(f"Adding chat message for level {level}")
+    chat_manager.add_message(message, level, is_system)
+
+    return jsonify({
+        'status': 'success',
+        'message': 'Message added'
+    })
+
+
+@app.route('/chat/messages', methods=['GET'])
+def get_chat_messages():
+    """Get chat messages."""
+    level = request.args.get('level')
+    count = request.args.get('count', 50, type=int)
+
+    level = int(level) if level and level.isdigit() else None
+    logger.info(f"Getting chat messages for level {level}")
+    messages = chat_manager.get_messages(level, count)
+
+    return jsonify({
+        'status': 'success',
+        'messages': messages
+    })
+
+
+@app.route('/chat/hint', methods=['POST'])
+def get_hint():
+    """Get a hint for the current level."""
+    level = request.json.get('level')
+
+    if not isinstance(level, int):
+        logger.warning("Hint request with invalid level")
+        return jsonify({'status': 'error', 'message': 'Invalid level provided'})
+        logger.warning("Hint request with no level")
+        return jsonify({'status': 'error', 'message': 'No level provided'})
+
+    logger.info(f"Getting hint for level {level}")
+    hint = chat_manager.get_hint(level)
+
+    # Add the hint as a system message
+    chat_manager.add_message(hint, level, is_system=True)
+
+    return jsonify({
+        'status': 'success',
+        'hint': hint
+    })
 
 
 def main():
