@@ -175,6 +175,11 @@ def chat_message():
     """Add a message to the chat."""
     message = request.json.get('message')
     level = request.json.get('level')
+    try:
+        level = int(level)
+    except (ValueError, TypeError):
+        logger.warning("Invalid level value provided in chat message")
+        return jsonify({'status': 'error', 'message': 'Invalid level value'})
     is_system = request.json.get('isSystem', False)
 
     if not message:
