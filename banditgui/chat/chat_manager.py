@@ -70,13 +70,7 @@ class ChatManager:
         Returns:
             List[Dict]: List of message objects
         """
-        if level is not None:
-            # Return level-specific messages
-            messages = self.chat_history.get(level, [])
-        else:
-            # Return all messages
-            messages = self.messages
-
+        messages = self.messages if level is None else self.chat_history.get(level, [])
         # Return the most recent messages up to count
         return messages[-count:] if messages else []
 
