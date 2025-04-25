@@ -134,7 +134,8 @@ class ChatManager:
             5: "Check file permissions with 'ls -l'. You might need to use 'chmod' to change them.",
         }
         
-        hint = hints.get(level, "No specific hint available for this level.")
+        hint = hints.get(level, "No hint available for this level.")
+        logger.info(f"Provided hint for level {level}")
         logger.info(f"Provided hint for level {level}")
         return hint
 
