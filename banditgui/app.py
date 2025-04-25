@@ -215,7 +215,9 @@ def get_hint():
     """Get a hint for the current level."""
     level = request.json.get('level')
 
-    if not level and level != 0:
+    if not isinstance(level, int):
+        logger.warning("Hint request with invalid level")
+        return jsonify({'status': 'error', 'message': 'Invalid level provided'})
         logger.warning("Hint request with no level")
         return jsonify({'status': 'error', 'message': 'No level provided'})
 
