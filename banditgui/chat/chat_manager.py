@@ -33,6 +33,7 @@ class ChatManager:
             is_system: Whether this is a system message
         """
         if not message:
+            logger.debug("Empty message provided to ChatManager.add_message; no action taken.")
             return
 
         # Use current level if none specified
@@ -69,13 +70,7 @@ class ChatManager:
         Returns:
             List[Dict]: List of message objects
         """
-        if level is not None:
-            # Return level-specific messages
-            messages = self.chat_history.get(level, [])
-        else:
-            # Return all messages
-            messages = self.messages
-
+        messages = self.messages if level is None else self.chat_history.get(level, [])
         # Return the most recent messages up to count
         return messages[-count:] if messages else []
 
@@ -134,7 +129,8 @@ class ChatManager:
             5: "Check file permissions with 'ls -l'. You might need to use 'chmod' to change them.",
         }
         
-        hint = hints.get(level, "No specific hint available for this level.")
+        hint = hints.get(level, "No hint available for this level.")
+        logger.info(f"Provided hint for level {level}")
         logger.info(f"Provided hint for level {level}")
         return hint
 

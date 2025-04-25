@@ -175,6 +175,11 @@ def chat_message():
     """Add a message to the chat."""
     message = request.json.get('message')
     level = request.json.get('level')
+    try:
+        level = int(level)
+    except (ValueError, TypeError):
+        logger.warning("Invalid level value provided in chat message")
+        return jsonify({'status': 'error', 'message': 'Invalid level value'})
     is_system = request.json.get('isSystem', False)
 
     if not message:
@@ -196,11 +201,7 @@ def get_chat_messages():
     level = request.args.get('level')
     count = request.args.get('count', 50, type=int)
 
-    if level and level.isdigit():
-        level = int(level)
-    else:
-        level = None
-
+    level = int(level) if level and level.isdigit() else None
     logger.info(f"Getting chat messages for level {level}")
     messages = chat_manager.get_messages(level, count)
 
@@ -215,7 +216,9 @@ def get_hint():
     """Get a hint for the current level."""
     level = request.json.get('level')
 
-    if not level and level != 0:
+    if not isinstance(level, int):
+        logger.warning("Hint request with invalid level")
+        return jsonify({'status': 'error', 'message': 'Invalid level provided'})
         logger.warning("Hint request with no level")
         return jsonify({'status': 'error', 'message': 'No level provided'})
 
