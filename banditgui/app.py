@@ -201,11 +201,7 @@ def get_chat_messages():
     level = request.args.get('level')
     count = request.args.get('count', 50, type=int)
 
-    if level and level.isdigit():
-        level = int(level)
-    else:
-        level = None
-
+    level = int(level) if level and level.isdigit() else None
     logger.info(f"Getting chat messages for level {level}")
     messages = chat_manager.get_messages(level, count)
 
