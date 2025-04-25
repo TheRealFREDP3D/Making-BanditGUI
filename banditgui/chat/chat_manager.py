@@ -33,6 +33,7 @@ class ChatManager:
             is_system: Whether this is a system message
         """
         if not message:
+            logger.debug("Empty message provided to ChatManager.add_message; no action taken.")
             return
 
         # Use current level if none specified
