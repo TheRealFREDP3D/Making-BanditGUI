@@ -292,10 +292,10 @@ If you have any questions or feedback, please don't hesitate to reach out.
 
 > Frederick Pellerin
 >
-><fredp3d@proton.me>
->[GitHub](https://github.com/therealfredp3D)
->[X](https://x.com/therealfredp3D)
+><fredp3d@proton.me>  
+>[GitHub](https://github.com/therealfredp3D)  
+>[X](https://x.com/therealfredp3D)  
 
 ---
 
-![v0.3-Sourcetrail Diagram](docs/assetes/v0.3-Sourcetrail.png)
+![v0.3-Sourcetrail Diagram](docs/assets/v0.3-Sourcetrail.png)
