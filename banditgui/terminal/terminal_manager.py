@@ -109,8 +109,8 @@ class TerminalManager:
             logger.debug(f"Forwarding command to SSH: {command}")
             return self.ssh_manager.execute_command(command)
         else:
-            # Not connected, show helpful message
-            return "Not connected to the SSH server. Use the SSH command to connect:\n\nssh bandit0@bandit.labs.overthewire.org -p 2220\n\nPassword: bandit0"
+            # Not connected, show helpful message with a nerdy reference
+            return "Not connected to the SSH server. As Yoda would say: 'Connect first, you must.'"
 
     def help_command(self, args: List[str]) -> str:
         """

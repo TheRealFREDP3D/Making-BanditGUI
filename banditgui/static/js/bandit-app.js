@@ -39,25 +39,25 @@ class BanditApp {
         this.term = new Terminal({
             cursorBlink: true,
             theme: {
-                background: '#1a1b26',
-                foreground: '#abb2bf',
-                cursor: '#4cc9f0',
-                selection: 'rgba(67, 97, 238, 0.3)',
-                black: '#282c34',
-                red: '#e06c75',
-                green: '#98c379',
-                yellow: '#e5c07b',
-                blue: '#61afef',
-                magenta: '#c678dd',
-                cyan: '#56b6c2',
-                white: '#abb2bf',
-                brightBlack: '#5c6370',
-                brightRed: '#e06c75',
-                brightGreen: '#98c379',
-                brightYellow: '#e5c07b',
-                brightBlue: '#61afef',
-                brightMagenta: '#c678dd',
-                brightCyan: '#56b6c2',
+                background: '#121212',
+                foreground: '#e0e0e0',
+                cursor: '#38b6ff',
+                selection: 'rgba(58, 134, 255, 0.3)',
+                black: '#2d2d2d',
+                red: '#ff5c8d',
+                green: '#38b000',
+                yellow: '#ff9f1c',
+                blue: '#3a86ff',
+                magenta: '#9d4edd',
+                cyan: '#38b6ff',
+                white: '#e0e0e0',
+                brightBlack: '#6c6c6c',
+                brightRed: '#ff5c8d',
+                brightGreen: '#38b000',
+                brightYellow: '#ff9f1c',
+                brightBlue: '#3a86ff',
+                brightMagenta: '#9d4edd',
+                brightCyan: '#38b6ff',
                 brightWhite: '#ffffff'
             },
             fontFamily: '"Fira Code", "Cascadia Code", "Source Code Pro", Consolas, "DejaVu Sans Mono", monospace',
@@ -193,7 +193,7 @@ class BanditApp {
 Bandit is a beginner-friendly wargame designed to teach the basics of Linux command line, security concepts, and common tools used in cybersecurity.
 
 <strong>How to Play:</strong>
-1. Type <code>start</code> to begin a new game
+1. Type <code>start</code> or click the <code>Start</code> button to display Level 0 instructions
 2. Connect to the Bandit server using the terminal on the right
 3. Each level requires you to find a password to access the next level
 4. Use Linux commands to navigate the system and find the password
@@ -244,13 +244,11 @@ Type <code>level</code> in this chat to see the current level instructions.
             infoMessage = `
 <strong>Connection Status:</strong> Not connected to Bandit server
 <strong>Server:</strong> bandit.labs.overthewire.org:2220
-<strong>Server Status:</strong> ${this.serverStatus === 'online' ? '<span style="color: #98c379;">Online</span>' : this.serverStatus === 'offline' ? '<span style="color: #e06c75;">Offline</span>' : '<span style="color: #e5c07b;">Unknown</span>'}
+<strong>Server Status:</strong> ${this.serverStatus === 'online' ? '<span style="color: #38b000;">Online</span>' : this.serverStatus === 'offline' ? '<span style="color: #ff5c8d;">Offline</span>' : '<span style="color: #ff9f1c;">Unknown</span>'}
 
-To connect, use the SSH command in the terminal:
-<pre>ssh bandit0@bandit.labs.overthewire.org -p 2220</pre>
-Password: <code>bandit0</code>
+<p>"The journey of a thousand miles begins with a single connection." ~Confucius (if he was a programmer)</p>
 
-Type <code>level</code> in the chat to get instructions for the current level.
+<p>Type <code>level</code> in the chat to get instructions for the current level.</p>
 `;
         }
 
@@ -341,7 +339,7 @@ Type <code>level</code> in the chat to get instructions for the current level.
      */
     async showLevelHints() {
         if (!this.currentLevel && this.currentLevel !== 0) {
-            this.addAssistantMessage("Please start a game first by typing <code>start</code> in the chat.");
+            this.addAssistantMessage("Please display Level 0 instructions first by typing <code>start</code> in the chat or clicking the <code>Start</code> button.");
             return;
         }
 
@@ -404,8 +402,7 @@ Type <code>level</code> in the chat to get instructions for the current level.
         // Add a welcome message
         const welcomeMessage = `<div class="system-message">
             <p><strong>Welcome to BanditGUI!</strong></p>
-            <p>You're about to start the Bandit wargame, a series of challenges designed to teach Linux commands and security concepts.</p>
-            <p>Let's begin with Level 0.</p>
+            <p>Here are the instructions for Level 0 of the Bandit wargame, a series of challenges designed to teach Linux commands and security concepts.</p>
         </div>`;
 
         this.chatMessages.innerHTML = welcomeMessage;
@@ -588,15 +585,23 @@ Type <code>level</code> in the chat to get instructions for the current level.
                 this.isConnected = true;
                 this.currentLevel = data.currentLevel || 0;
                 this.updateConnectionStatus();
-                this.term.write('\r\n\x1b[32mSuccessfully connected to SSH server.\x1b[0m\r\n');
+
+                // Clear the terminal
+                this.term.clear();
+
+                // Display success message
+                this.term.write('\x1b[32mGood job!\x1b[0m\r\n');
+                this.term.write('\x1b[33m - Connection Status: Connected\x1b[0m\r\n\r\n');
+                this.writePrompt();
 
                 // Update the connect button text
                 const connectButton = document.getElementById('connect-button');
                 connectButton.textContent = 'Disconnect';
                 connectButton.classList.add('disconnect');
 
-                // Show a message in the chat
-                this.addAssistantMessage(`Successfully connected to the Bandit server. You are on level ${this.currentLevel}.`);
+                // Clear chat panel and display level 1 information
+                this.chatMessages.innerHTML = '';
+                this.showLevelInfo(1);
             } else {
                 this.term.write(`\r\n\x1b[31mFailed to connect: ${data.message}\x1b[0m\r\n`);
                 this.addAssistantMessage(`Failed to connect to the server: ${data.message}`);
@@ -733,13 +738,25 @@ Type <code>level</code> in the chat to get instructions for the current level.
      * Display welcome message in the terminal
      */
     async displayTerminalWelcome() {
-        this.term.write('\x1b[34mWelcome to the Bandit Wargame Terminal!\x1b[0m\r\n\r\n');
-        this.term.write('Let\'s do some verification...\r\n\r\n');
+        // Try to get a welcome quote from the quote manager
+        let welcomeQuote = '';
+        try {
+            if (window.quoteManager) {
+                const welcomeQuotes = await window.quoteManager.loadWelcomeQuotes(1);
+                welcomeQuote = welcomeQuotes[0];
+            }
+        } catch (error) {
+            console.error('Error loading welcome quote:', error);
+            welcomeQuote = '"Welcome to the Bandit Wargame Terminal!"';
+        }
+
+        // Display welcome quote
+        this.term.write('\x1b[34m' + welcomeQuote + '\x1b[0m\r\n\r\n');
 
         // Display progress bar
         await this.displayProgressBar();
 
-        this.term.write('\r\nStatus of the Bandit game server: ');
+        this.term.write('\r\n\x1b[33mSystem Status: \x1b[0m');
 
         // Check server status
         try {
@@ -751,11 +768,9 @@ Type <code>level</code> in the chat to get instructions for the current level.
                 this.serverStatus = serverStatus.status; // 'online' or 'offline'
 
                 if (this.serverStatus === 'online') {
-                    this.term.write('\x1b[32mONLINE\x1b[0m\r\n');
-                    this.term.write('\x1b[32mGood! The server is available.\x1b[0m\r\n\r\n');
+                    this.term.write('\x1b[32mALL SYSTEMS GO!\x1b[0m\r\n\r\n');
                 } else {
                     this.term.write('\x1b[31mOFFLINE\x1b[0m\r\n');
-                    this.term.write('\x1b[31mHmm, something not right.... ');
                     if (serverStatus.error) {
                         this.term.write(serverStatus.error + '\x1b[0m\r\n\r\n');
                     } else {
@@ -764,24 +779,28 @@ Type <code>level</code> in the chat to get instructions for the current level.
                 }
             } else {
                 this.term.write('\x1b[33mUNKNOWN\x1b[0m\r\n');
-                this.term.write('\x1b[33mHmm, something not right.... ' + data.message + '\x1b[0m\r\n\r\n');
+                this.term.write(data.message + '\x1b[0m\r\n\r\n');
             }
         } catch (error) {
             this.term.write('\x1b[33mUNKNOWN\x1b[0m\r\n');
-            this.term.write('\x1b[33mHmm, something not right.... ' + error.message + '\x1b[0m\r\n\r\n');
+            this.term.write(error.message + '\x1b[0m\r\n\r\n');
         }
 
         // Update the UI with the server status
         this.updateServerStatusUI();
 
         // Display instructions
-        this.term.write('This terminal allows you to interact directly with the Bandit server.\r\n');
-        this.term.write('Server: \x1b[33mbandit.labs.overthewire.org:2220\x1b[0m\r\n\r\n');
-        this.term.write('To connect, use the SSH command:\r\n');
-        this.term.write('\x1b[32mssh bandit0@bandit.labs.overthewire.org -p 2220\x1b[0m\r\n');
-        this.term.write('Password: \x1b[32mbandit0\x1b[0m\r\n\r\n');
-        this.term.write('All commands are sent directly to the server - this is a real SSH connection.\r\n\r\n');
-        this.term.write('\x1b[33mType "start" in the chat to begin a new game!\x1b[0m\r\n\r\n');
+        this.term.write('\x1b[33mType "start" or click the "Start" button to display Level 0 instructions.\x1b[0m\r\n\r\n');
+
+        // Initialize the quote display in the UI
+        if (window.quoteManager) {
+            const quote = await window.quoteManager.getRandomQuote();
+            const quoteMessage = document.getElementById('quote-message');
+            if (quoteMessage) {
+                quoteMessage.innerHTML = window.quoteManager.formatQuote(quote);
+                quoteMessage.classList.add('quote-fade-in');
+            }
+        }
 
         // No longer automatically show level 0 information
     }

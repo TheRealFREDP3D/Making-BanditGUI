@@ -36,6 +36,69 @@ We've implemented xterm.js, a powerful terminal emulator for the web, providing:
 
 ### 2. Real SSH Connections
 
+```mermaid
+graph TD
+
+    User["User/Client"]
+    SSHClient["SSH Client"]
+    SSHServer["SSH Server"]
+    AuthService["Authentication Service"]
+    KeyManager["Key Management"]
+    SessionMgr["Session Manager"]
+    ChannelMgr["Channel Manager"]
+    Logger["Logging Service"]
+    ErrorHandler["Error Handler"]
+
+
+    subgraph "Connection Establishment"
+        KeyExchange["Key Exchange"]
+        AlgoNegotiation["Algorithm Negotiation"]
+        HostKeyVerify["Host Key Verification"]
+    end
+
+    subgraph "Authentication Methods"
+        Password["Password Auth"]
+        PublicKey["Public Key Auth"]
+        Certificate["Certificate Auth"]
+    end
+
+    subgraph "Channel Management"
+        Terminal["Terminal Channel"]
+        SFTP["SFTP Channel"]
+        PortFwd["Port Forwarding"]
+        X11["X11 Forwarding"]
+    end
+
+
+    User -->|"1. Initiates Connection"| SSHClient
+    SSHClient -->|"2. Connect Request"| SSHServer
+    SSHServer -->|"3. Start"| KeyExchange
+    KeyExchange -->|"4. Exchange"| AlgoNegotiation
+    AlgoNegotiation -->|"5. Verify"| HostKeyVerify
+    HostKeyVerify -->|"6. Validate"| KeyManager
+
+
+    KeyManager -->|"7. Auth Request"| AuthService
+    AuthService -->|"8a. Try"| Password
+    AuthService -->|"8b. Try"| PublicKey
+    AuthService -->|"8c. Try"| Certificate
+
+
+    AuthService -->|"9. Success"| SessionMgr
+    SessionMgr -->|"10. Create"| ChannelMgr
+    ChannelMgr -->|"11a. Open"| Terminal
+    ChannelMgr -->|"11b. Open"| SFTP
+    ChannelMgr -->|"11c. Open"| PortFwd
+    ChannelMgr -->|"11d. Open"| X11
+
+
+    SSHServer -->|"Log Events"| Logger
+    SSHServer -->|"Handle Errors"| ErrorHandler
+    AuthService -->|"Log Auth"| Logger
+    SessionMgr -->|"Log Sessions"| Logger
+    ErrorHandler -->|"Log Errors"| Logger
+```
+
 BanditGUI establishes actual SSH connections to the Bandit server, allowing users to:
 
 - Execute real Linux commands
@@ -92,11 +155,11 @@ The application follows good software engineering practices:
 
 We have exciting plans for future versions of BanditGUI:
 
-1. **Enhanced Chat Assistant**: Implementing a more intelligent chat assistant with AI capabilities
-2. **Password Management**: Adding secure password storage with encryption
-3. **Progress Tracking**: Implementing a system to track user progress through the challenges
-4. **Gamification**: Adding badges, streaks, and other gamification elements to increase engagement
-5. **UI Improvements**: Enhancing the user interface with more responsive design and visual feedback
+1. **Password Management**: Adding secure password storage with encryption
+2. **Progress Tracking**: Implementing a system to track user progress through the challenges
+3. **Gamification**: Adding badges, streaks, and other gamification elements to increase engagement
+4. **Advanced Terminal Features**: Adding syntax highlighting, command suggestions, and improved output formatting
+5. **Accessibility Improvements**: Ensuring proper contrast ratios, keyboard navigation, and screen reader compatibility
 
 ## Getting Started
 
@@ -198,16 +261,22 @@ The v0.3 release introduces automated installation scripts that make it easier t
 
 ### UI Improvements
 
+- Updated color palette to be more modern and readable with better contrast
 - Added a 'Start a New Game!' button instead of automatically displaying level 0 information
 - Improved chat log management with automatic clearing before showing level information
 - Better initial display showing only Level Name/Goal/Commands/Reading Material
 - Made hints available only via the 'hint' command
 - Added margin to the terminal display to prevent text from being hidden
 - Implemented fixed 50/50 split between chat and terminal panels for better usability
+- Enhanced SSH connection handling with clear success messages
+- Improved transition between levels with automatic display of next level information
+- Made all help messages and instructions consistent throughout the application
 
 ## Conclusion
 
-BanditGUI v0.3 represents a significant step forward in making cybersecurity education more accessible. By combining a powerful terminal emulator with helpful guidance, a structured learning approach, and now an improved installation process, we're removing barriers to entry and creating a more engaging learning experience.
+BanditGUI v0.3 represents a significant step forward in making cybersecurity education more accessible. By combining a powerful terminal emulator with helpful guidance, a structured learning approach, an improved installation process, and now a more modern and user-friendly interface, we're removing barriers to entry and creating a more engaging learning experience.
+
+The updated color palette, improved navigation, enhanced feedback, and consistent user experience make BanditGUI more intuitive and enjoyable to use. The smoother transitions between levels and clearer instructions help users focus on learning rather than figuring out how to use the application.
 
 Whether you're a complete beginner looking to learn Linux commands, a student studying cybersecurity, or an educator teaching security concepts, BanditGUI provides a valuable tool for your journey.
 
@@ -215,14 +284,18 @@ Try BanditGUI today and start your cybersecurity learning adventure!
 
 ---
 
-BanditGUI is an open-source project dedicated to me, learning some new things. It's just a personal pet project made by a novice hobyist developer. Don't be to hard judging the thing.I am having fun learning as I work on it.  
-  
-If you have any questions or feedback, please don't hesitate to reach out.  
-  
----  
-  
-> Frederick Pellerin  
-> 
-><fredp3d@proton.me>  
->[GitHub](https://github.com/therealfredp3D)  
->[X](https://x.com/therealfredp3D)  
+BanditGUI is an open-source project dedicated to me, learning some new things. It's just a personal pet project made by a novice hobyist developer. Don't be to hard judging the thing.I am having fun learning as I work on it.
+
+If you have any questions or feedback, please don't hesitate to reach out.
+
+---
+
+> Frederick Pellerin
+>
+><fredp3d@proton.me>
+>[GitHub](https://github.com/therealfredp3D)
+>[X](https://x.com/therealfredp3D)
+
+---
+
+![v0.3-Sourcetrail Diagram](docs/assetes/v0.3-Sourcetrail.png)

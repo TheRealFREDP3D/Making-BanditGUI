@@ -3,7 +3,7 @@
     width: 100%;
     height: 100%;
     padding: 15px;
-    background-color: #1a1b26;
+    background-color: #121212;
     border-radius: 0 0 8px 8px;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
     margin: 5px;
@@ -51,7 +51,7 @@
 }
 
 .xterm .xterm-viewport {
-    background-color: #1a1b26;
+    background-color: #121212;
     overflow-y: scroll;
     cursor: default;
     position: absolute;
@@ -77,8 +77,8 @@
 }
 
 .xterm-cursor {
-    background-color: #4cc9f0;
-    color: #1a1b26;
+    background-color: #38b6ff;
+    color: #121212;
     border-radius: 1px;
 }
 
@@ -88,8 +88,8 @@
 
 @keyframes xterm-cursor-blink {
     0% {
-        background-color: #4cc9f0;
-        color: #1a1b26;
+        background-color: #38b6ff;
+        color: #121212;
     }
     50% {
         background-color: transparent;
@@ -108,7 +108,7 @@
 
 .xterm-selection div {
     position: absolute;
-    background-color: rgba(67, 97, 238, 0.5);
+    background-color: rgba(58, 134, 255, 0.5);
 }
 
 /* Ensure the terminal container fills the panel */
@@ -129,5 +129,5 @@
     overflow: hidden;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
     margin: 0;
-    padding: 10px;
+    padding: 15px;
 }

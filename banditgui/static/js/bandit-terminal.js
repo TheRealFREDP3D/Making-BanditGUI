@@ -95,11 +95,12 @@ class BanditTerminal {
     }
 
     displayWelcomeMessage() {
-        this.displayOutput('System:', 'Welcome to BanditGUI Terminal - OverTheWire Bandit CTF', 'welcome-message');
+        this.displayOutput('System:', '"Hello, IT. Have you tried turning it off and on again?" ~Roy from The IT Crowd', 'welcome-message');
+        this.displayOutput('System:', '"The cake is a lie." ~Portal', 'welcome-message');
         this.displayOutput('System:', 'Type "help" to see available commands.', 'welcome-message');
         this.displayOutput('System:', 'Type "info" to get information about the Bandit server.', 'welcome-message');
         this.displayOutput('System:', 'Type "connect" to establish an SSH connection.', 'welcome-message');
-        this.displayOutput('System:', 'After connecting, you can run actual commands on the SSH server.', 'welcome-message');
+        this.displayOutput('System:', '"Live long and prosper" ~Spock', 'welcome-message');
     }
 
     clearTerminal() {

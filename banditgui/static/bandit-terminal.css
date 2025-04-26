@@ -6,34 +6,34 @@
 }
 
 :root {
-    /* Primary colors */
-    --primary-dark: #1a1a2e;
-    --primary-medium: #16213e;
-    --primary-light: #0f3460;
+    /* Primary colors - Modern dark theme with better contrast */
+    --primary-dark: #121212;
+    --primary-medium: #1e1e1e;
+    --primary-light: #2d2d2d;
 
-    /* Accent colors */
-    --accent-primary: #4361ee;
-    --accent-secondary: #3f37c9;
-    --accent-tertiary: #4895ef;
+    /* Accent colors - More vibrant and accessible */
+    --accent-primary: #3a86ff;
+    --accent-secondary: #4361ee;
+    --accent-tertiary: #38b6ff;
 
-    /* UI colors */
-    --success: #4cc9f0;
-    --warning: #f72585;
-    --info: #4895ef;
-    --error: #e63946;
+    /* UI colors - Brighter and more distinct */
+    --success: #38b000;
+    --warning: #ff9f1c;
+    --info: #38b6ff;
+    --error: #ff5c8d;
 
-    /* Text colors */
-    --text-primary: #f8f9fa;
-    --text-secondary: #e9ecef;
-    --text-muted: #adb5bd;
+    /* Text colors - Improved contrast */
+    --text-primary: #ffffff;
+    --text-secondary: #e0e0e0;
+    --text-muted: #b0b0b0;
 
     /* Border colors */
-    --border-color: #2a2a3c;
+    --border-color: #3d3d3d;
 
-    /* Shadow */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3);
+    /* Shadow - Slightly softer for better readability */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 body, .left, #chat-messages, #chat-input, .assistant-message, .user-message, .system-message {
@@ -217,6 +217,31 @@ body {
     background-color: var(--primary-light);
     border-bottom: 1px solid var(--border-color);
     box-shadow: var(--shadow-sm);
+}
+
+/* Quote Container */
+.quote-container {
+    padding: 10px 15px;
+    background-color: rgba(15, 52, 96, 0.3);
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+    font-style: italic;
+}
+
+.quote-text {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin: 0;
+    transition: opacity 0.5s ease;
+}
+
+.quote-fade-in {
+    animation: fadeInQuote 2s ease;
+}
+
+@keyframes fadeInQuote {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 .connection-status {

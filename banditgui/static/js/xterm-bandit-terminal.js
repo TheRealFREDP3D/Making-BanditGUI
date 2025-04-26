@@ -13,25 +13,25 @@ class XtermBanditTerminal {
         this.term = new Terminal({
             cursorBlink: true,
             theme: {
-                background: '#282c34',
-                foreground: '#abb2bf',
-                cursor: '#528bff',
-                selection: 'rgba(82, 139, 255, 0.3)',
-                black: '#282c34',
-                red: '#e06c75',
-                green: '#98c379',
-                yellow: '#e5c07b',
-                blue: '#61afef',
-                magenta: '#c678dd',
-                cyan: '#56b6c2',
-                white: '#abb2bf',
-                brightBlack: '#5c6370',
-                brightRed: '#e06c75',
-                brightGreen: '#98c379',
-                brightYellow: '#e5c07b',
-                brightBlue: '#61afef',
-                brightMagenta: '#c678dd',
-                brightCyan: '#56b6c2',
+                background: '#121212',
+                foreground: '#e0e0e0',
+                cursor: '#38b6ff',
+                selection: 'rgba(58, 134, 255, 0.3)',
+                black: '#2d2d2d',
+                red: '#ff5c8d',
+                green: '#38b000',
+                yellow: '#ff9f1c',
+                blue: '#3a86ff',
+                magenta: '#9d4edd',
+                cyan: '#38b6ff',
+                white: '#e0e0e0',
+                brightBlack: '#6c6c6c',
+                brightRed: '#ff5c8d',
+                brightGreen: '#38b000',
+                brightYellow: '#ff9f1c',
+                brightBlue: '#3a86ff',
+                brightMagenta: '#9d4edd',
+                brightCyan: '#38b6ff',
                 brightWhite: '#ffffff'
             },
             fontFamily: 'monospace',
@@ -181,11 +181,13 @@ class XtermBanditTerminal {
     }
 
     displayWelcomeMessage() {
-        this.term.write('\x1b[34mWelcome to BanditGUI Terminal - OverTheWire Bandit CTF\x1b[0m\r\n\r\n');
+        this.term.write('\x1b[34m"Welcome to BanditGUI Terminal!" \x1b[33m~Neo from The Matrix\x1b[0m\r\n\r\n');
+        this.term.write('\x1b[36m"I find your lack of terminal skills disturbing." \x1b[33m~Darth Vader\x1b[0m\r\n\r\n');
         this.term.write('Type \x1b[33mhelp\x1b[0m to see available commands.\r\n');
         this.term.write('Type \x1b[33minfo\x1b[0m to get information about the Bandit server.\r\n');
         this.term.write('Type \x1b[33mconnect\x1b[0m to establish an SSH connection.\r\n');
-        this.term.write('Type \x1b[33mlevel <number>\x1b[0m to get information about a specific level.\r\n\r\n');
+        this.term.write('Type \x1b[33mlevel <number>\x1b[0m to get information about a specific level.\r\n');
+        this.term.write('Type \x1b[33mstart\x1b[0m or click the \x1b[33mStart\x1b[0m button to display Level 0 instructions.\r\n\r\n');
     }
 
     clearTerminal() {
