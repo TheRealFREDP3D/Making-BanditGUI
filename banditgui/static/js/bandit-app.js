@@ -39,10 +39,10 @@ class BanditApp {
         this.term = new Terminal({
             cursorBlink: true,
             theme: {
-                background: '#282c34',
+                background: '#1a1b26',
                 foreground: '#abb2bf',
-                cursor: '#528bff',
-                selection: 'rgba(82, 139, 255, 0.3)',
+                cursor: '#4cc9f0',
+                selection: 'rgba(67, 97, 238, 0.3)',
                 black: '#282c34',
                 red: '#e06c75',
                 green: '#98c379',
@@ -64,7 +64,8 @@ class BanditApp {
             fontSize: 14,
             lineHeight: 1.2,
             scrollback: 1000,
-            convertEol: true
+            convertEol: true,
+            padding: 20 // Increased padding to fix text being cut off
         });
 
         // Load addons
@@ -109,11 +110,21 @@ class BanditApp {
             this.handleChatSubmit();
         });
 
-        // Handle terminal resize
+        // Start game button
+        const startGameButton = document.getElementById('start-game-button');
+        if (startGameButton) {
+            startGameButton.addEventListener('click', () => {
+                this.startNewGame();
+            });
+        }
+
+        // Handle terminal resize to ensure proper fit
         window.addEventListener('resize', () => {
             this.fitAddon.fit();
         });
     }
+
+    // Panel resizer functionality removed - fixed 50/50 split
 
     /**
      * Handle chat input submission
@@ -153,6 +164,12 @@ class BanditApp {
             } else {
                 await this.showLevelInfo();
             }
+        } else if (command === 'hint') {
+            // Show hints for the current level
+            await this.showLevelHints();
+        } else if (command === 'start') {
+            // Start a new game
+            await this.startNewGame();
         } else if (command === 'clear') {
             // Clear the chat messages
             this.chatMessages.innerHTML = '';
@@ -162,7 +179,7 @@ class BanditApp {
             this.addAssistantMessage("To exit the application, simply close the browser tab or window.");
         } else {
             // For any other message, treat as a general question
-            this.addAssistantMessage("I'm a simple assistant for the Bandit wargame. I can help with basic commands like 'help', 'info', 'level', and 'clear'. For game interaction, please use the terminal on the right.");
+            this.addAssistantMessage("I'm a simple assistant for the Bandit wargame. I can help with basic commands like 'help', 'info', 'level', 'hint', 'start', and 'clear'. For game interaction, please use the terminal on the right.");
         }
     }
 
@@ -176,16 +193,19 @@ class BanditApp {
 Bandit is a beginner-friendly wargame designed to teach the basics of Linux command line, security concepts, and common tools used in cybersecurity.
 
 <strong>How to Play:</strong>
-1. Connect to the Bandit server using the terminal on the right
-2. Each level requires you to find a password to access the next level
-3. Use Linux commands to navigate the system and find the password
-4. Use the password to log in to the next level
+1. Type <code>start</code> to begin a new game
+2. Connect to the Bandit server using the terminal on the right
+3. Each level requires you to find a password to access the next level
+4. Use Linux commands to navigate the system and find the password
+5. Use the password to log in to the next level
 
 <strong>Available Commands in Chat:</strong>
+- <code>start</code> - Start a new game
 - <code>help</code> - Display this help information
 - <code>info</code> - Show connection status and current level
 - <code>level</code> - Display instructions for the current level
 - <code>level [number]</code> - Display instructions for a specific level
+- <code>hint</code> - Get hints for the current level
 - <code>clear</code> - Clear the chat messages
 - <code>quit</code> - Exit information
 
@@ -302,6 +322,8 @@ Type <code>level</code> in the chat to get instructions for the current level.
 
 <strong>Connection Command:</strong>
 <pre>ssh bandit${levelInfo.level}@bandit.labs.overthewire.org -p 2220</pre>
+
+<p class="hint-prompt">Type <code>hint</code> in the chat if you need additional help.</p>
 </div>
 `;
                 this.addAssistantMessage(levelMessage);
@@ -312,6 +334,90 @@ Type <code>level</code> in the chat to get instructions for the current level.
             this.addAssistantMessage(`Error: Failed to get level information. ${error.message}`);
             console.error('Level info error:', error);
         }
+    }
+
+    /**
+     * Show hints for the current level
+     */
+    async showLevelHints() {
+        if (!this.currentLevel && this.currentLevel !== 0) {
+            this.addAssistantMessage("Please start a game first by typing <code>start</code> in the chat.");
+            return;
+        }
+
+        try {
+            // Get the level information from the server
+            const response = await fetch('/level-info', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ level: this.currentLevel || 0 })
+            });
+
+            const data = await response.json();
+
+            if (data.status === 'success') {
+                const levelInfo = data.levelInfo;
+
+                // Create a hint message based on the level
+                let hintMessage = `<div class="level-hint">
+<h4>Hints for Level ${levelInfo.level}</h4>
+`;
+
+                // Add level-specific hints
+                switch(parseInt(levelInfo.level)) {
+                    case 0:
+                        hintMessage += `<p>For this level, you just need to log in. Use the SSH command shown and the password 'bandit0'.</p>
+<p>Once logged in, you can use <code>ls</code> to list files and <code>cat</code> to read file contents.</p>`;
+                        break;
+                    case 1:
+                        hintMessage += `<p>The password is stored in a file called 'readme' in the home directory.</p>
+<p>Use <code>ls</code> to see the file and <code>cat readme</code> to read its contents.</p>`;
+                        break;
+                    case 2:
+                        hintMessage += `<p>The password is stored in a file called '-' which is a special character in Linux.</p>
+<p>To read files with special characters in their names, you can use <code>cat ./-</code> or <code>cat < -</code>.</p>`;
+                        break;
+                    default:
+                        hintMessage += `<p>For this level, carefully read the goal and think about which commands might help.</p>
+<p>Remember to use <code>man [command]</code> to read the manual for any command you're not familiar with.</p>`;
+                }
+
+                hintMessage += `</div>`;
+
+                this.addAssistantMessage(hintMessage);
+            } else {
+                this.addAssistantMessage(`Error getting hint information: ${data.message}`);
+            }
+        } catch (error) {
+            this.addAssistantMessage(`Error: Failed to get hint information. ${error.message}`);
+            console.error('Hint info error:', error);
+        }
+    }
+
+    /**
+     * Start a new game
+     */
+    async startNewGame() {
+        // Clear the chat messages
+        this.chatMessages.innerHTML = '';
+
+        // Add a welcome message
+        const welcomeMessage = `<div class="system-message">
+            <p><strong>Welcome to BanditGUI!</strong></p>
+            <p>You're about to start the Bandit wargame, a series of challenges designed to teach Linux commands and security concepts.</p>
+            <p>Let's begin with Level 0.</p>
+        </div>`;
+
+        this.chatMessages.innerHTML = welcomeMessage;
+
+        // Show level 0 information
+        await this.showLevelInfo(0);
+
+        // Set current level to 0
+        this.currentLevel = 0;
+
+        // Update connection status UI
+        this.updateConnectionStatus();
     }
 
     /**
@@ -675,9 +781,9 @@ Type <code>level</code> in the chat to get instructions for the current level.
         this.term.write('\x1b[32mssh bandit0@bandit.labs.overthewire.org -p 2220\x1b[0m\r\n');
         this.term.write('Password: \x1b[32mbandit0\x1b[0m\r\n\r\n');
         this.term.write('All commands are sent directly to the server - this is a real SSH connection.\r\n\r\n');
+        this.term.write('\x1b[33mType "start" in the chat to begin a new game!\x1b[0m\r\n\r\n');
 
-        // Show level 0 information in the chat
-        await this.showLevelInfo(0);
+        // No longer automatically show level 0 information
     }
 
     /**

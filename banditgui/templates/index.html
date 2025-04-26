@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>BanditGUI - OverTheWire Bandit CTF</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ url_for('static', filename='bandit-terminal.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='xterm.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='xterm-custom.css') }}">
@@ -19,14 +24,18 @@
                             <p>This application helps you learn about and interact with the OverTheWire Bandit CTF challenges.</p>
                             <p>You can ask for help or use these commands in the chat:</p>
                             <ul>
+                                <li><code>start</code> - Start a new game</li>
                                 <li><code>help</code> - Get general information about Bandit wargame</li>
                                 <li><code>info</code> - Check connection status and current level</li>
                                 <li><code>level</code> - Get instructions for the current level</li>
+                                <li><code>hint</code> - Get hints for the current level</li>
                                 <li><code>quit</code> - Disconnect and exit the game</li>
                             </ul>
                             <p>Use the terminal on the right to execute commands on the Bandit server (bandit.labs.overthewire.org).</p>
                             <p>This is a real SSH connection - all commands are sent directly to the server.</p>
-                            <p>Type <code>help</code>, <code>info</code>, or <code>level</code> in the chat for assistance.</p>
+                            <div class="start-game-container">
+                                <button id="start-game-button" class="start-game-button">Start a New Game!</button>
+                            </div>
                         </div>
                     </div>
                     <div id="chat-input-container">
