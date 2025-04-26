@@ -1,0 +1,544 @@
+{
+  "quotes": [
+    {
+      "text": "Have you tried turning it off and on again?",
+      "source": "The IT Crowd",
+      "character": "Roy"
+    },
+    {
+      "text": "I'm giving her all she's got, Captain!",
+      "source": "Star Trek",
+      "character": "Scotty"
+    },
+    {
+      "text": "These aren't the droids you're looking for.",
+      "source": "Star Wars",
+      "character": "Obi-Wan Kenobi"
+    },
+    {
+      "text": "Live long and prosper.",
+      "source": "Star Trek",
+      "character": "Spock"
+    },
+    {
+      "text": "The cake is a lie.",
+      "source": "Portal",
+      "character": "Game"
+    },
+    {
+      "text": "I am fully functional, Captain.",
+      "source": "Star Trek: The Next Generation",
+      "character": "Data"
+    },
+    {
+      "text": "Do or do not, there is no try.",
+      "source": "Star Wars",
+      "character": "Yoda"
+    },
+    {
+      "text": "I'm sorry Dave, I'm afraid I can't do that.",
+      "source": "2001: A Space Odyssey",
+      "character": "HAL 9000"
+    },
+    {
+      "text": "It's dangerous to go alone! Take this.",
+      "source": "The Legend of Zelda",
+      "character": "Old Man"
+    },
+    {
+      "text": "With great power comes great responsibility.",
+      "source": "Spider-Man",
+      "character": "Uncle Ben"
+    },
+    {
+      "text": "I know kung fu.",
+      "source": "The Matrix",
+      "character": "Neo"
+    },
+    {
+      "text": "There is no spoon.",
+      "source": "The Matrix",
+      "character": "The Boy"
+    },
+    {
+      "text": "I find your lack of faith disturbing.",
+      "source": "Star Wars",
+      "character": "Darth Vader"
+    },
+    {
+      "text": "Resistance is futile.",
+      "source": "Star Trek",
+      "character": "The Borg"
+    },
+    {
+      "text": "I'll be back.",
+      "source": "The Terminator",
+      "character": "The Terminator"
+    },
+    {
+      "text": "My precious...",
+      "source": "The Lord of the Rings",
+      "character": "Gollum"
+    },
+    {
+      "text": "You shall not pass!",
+      "source": "The Lord of the Rings",
+      "character": "Gandalf"
+    },
+    {
+      "text": "I have a bad feeling about this.",
+      "source": "Star Wars",
+      "character": "Various Characters"
+    },
+    {
+      "text": "So long, and thanks for all the fish.",
+      "source": "The Hitchhiker's Guide to the Galaxy",
+      "character": "Dolphins"
+    },
+    {
+      "text": "Don't Panic.",
+      "source": "The Hitchhiker's Guide to the Galaxy",
+      "character": "The Guide"
+    },
+    {
+      "text": "May the Force be with you.",
+      "source": "Star Wars",
+      "character": "Various Characters"
+    },
+    {
+      "text": "Elementary, my dear Watson.",
+      "source": "Sherlock Holmes",
+      "character": "Sherlock Holmes"
+    },
+    {
+      "text": "I am Groot.",
+      "source": "Guardians of the Galaxy",
+      "character": "Groot"
+    },
+    {
+      "text": "To infinity and beyond!",
+      "source": "Toy Story",
+      "character": "Buzz Lightyear"
+    },
+    {
+      "text": "Bazinga!",
+      "source": "The Big Bang Theory",
+      "character": "Sheldon Cooper"
+    },
+    {
+      "text": "Winter is coming.",
+      "source": "Game of Thrones",
+      "character": "House Stark"
+    },
+    {
+      "text": "That's what she said.",
+      "source": "The Office",
+      "character": "Michael Scott"
+    },
+    {
+      "text": "I'm not a robot, I'm a unicorn!",
+      "source": "Despicable Me",
+      "character": "Agnes"
+    },
+    {
+      "text": "One does not simply walk into Mordor.",
+      "source": "The Lord of the Rings",
+      "character": "Boromir"
+    },
+    {
+      "text": "Make it so.",
+      "source": "Star Trek: The Next Generation",
+      "character": "Captain Picard"
+    },
+    {
+      "text": "Engage.",
+      "source": "Star Trek: The Next Generation",
+      "character": "Captain Picard"
+    },
+    {
+      "text": "Wubba lubba dub dub!",
+      "source": "Rick and Morty",
+      "character": "Rick Sanchez"
+    },
+    {
+      "text": "I'm Batman.",
+      "source": "Batman",
+      "character": "Batman"
+    },
+    {
+      "text": "Why so serious?",
+      "source": "The Dark Knight",
+      "character": "The Joker"
+    },
+    {
+      "text": "Houston, we have a problem.",
+      "source": "Apollo 13",
+      "character": "Jim Lovell"
+    },
+    {
+      "text": "I volunteer as tribute!",
+      "source": "The Hunger Games",
+      "character": "Katniss Everdeen"
+    },
+    {
+      "text": "The truth is out there.",
+      "source": "The X-Files",
+      "character": "Show Tagline"
+    },
+    {
+      "text": "Hasta la vista, baby.",
+      "source": "Terminator 2",
+      "character": "The Terminator"
+    },
+    {
+      "text": "This is the way.",
+      "source": "The Mandalorian",
+      "character": "The Mandalorian"
+    },
+    {
+      "text": "I can do this all day.",
+      "source": "Captain America",
+      "character": "Steve Rogers"
+    },
+    {
+      "text": "Wibbly wobbly, timey wimey... stuff.",
+      "source": "Doctor Who",
+      "character": "The Doctor"
+    },
+    {
+      "text": "Allons-y!",
+      "source": "Doctor Who",
+      "character": "The 10th Doctor"
+    },
+    {
+      "text": "Geronimo!",
+      "source": "Doctor Who",
+      "character": "The 11th Doctor"
+    },
+    {
+      "text": "Exterminate!",
+      "source": "Doctor Who",
+      "character": "Daleks"
+    },
+    {
+      "text": "I am the one who knocks!",
+      "source": "Breaking Bad",
+      "character": "Walter White"
+    },
+    {
+      "text": "Say my name.",
+      "source": "Breaking Bad",
+      "character": "Walter White"
+    },
+    {
+      "text": "You know nothing, Jon Snow.",
+      "source": "Game of Thrones",
+      "character": "Ygritte"
+    },
+    {
+      "text": "That's what I do. I drink and I know things.",
+      "source": "Game of Thrones",
+      "character": "Tyrion Lannister"
+    },
+    {
+      "text": "A wizard is never late, nor is he early. He arrives precisely when he means to.",
+      "source": "The Lord of the Rings",
+      "character": "Gandalf"
+    },
+    {
+      "text": "My precious terminal...",
+      "source": "The Lord of the Rings (modified)",
+      "character": "Gollum as a programmer"
+    },
+    {
+      "text": "I'm not a psychopath, I'm a high-functioning sociopath. Do your research.",
+      "source": "Sherlock",
+      "character": "Sherlock Holmes"
+    },
+    {
+      "text": "The needs of the many outweigh the needs of the few.",
+      "source": "Star Trek",
+      "character": "Spock"
+    },
+    {
+      "text": "It's bigger on the inside!",
+      "source": "Doctor Who",
+      "character": "Various Characters"
+    },
+    {
+      "text": "I am inevitable.",
+      "source": "Avengers: Endgame",
+      "character": "Thanos"
+    },
+    {
+      "text": "And I... am... Iron Man.",
+      "source": "Avengers: Endgame",
+      "character": "Tony Stark"
+    },
+    {
+      "text": "I'm just a simple man trying to make my way in the universe.",
+      "source": "Star Wars",
+      "character": "Jango Fett"
+    },
+    {
+      "text": "This is the terminal. It's not a question of can or can't. There are some things you just do.",
+      "source": "Final Fantasy XIII (modified)",
+      "character": "Lightning as a programmer"
+    },
+    {
+      "text": "It's a UNIX system! I know this!",
+      "source": "Jurassic Park",
+      "character": "Lex Murphy"
+    },
+    {
+      "text": "Life, uh, finds a way.",
+      "source": "Jurassic Park",
+      "character": "Dr. Ian Malcolm"
+    },
+    {
+      "text": "I'm going to science the heck out of this.",
+      "source": "The Martian (modified)",
+      "character": "Mark Watney"
+    },
+    {
+      "text": "Hack the planet!",
+      "source": "Hackers",
+      "character": "Various Characters"
+    },
+    {
+      "text": "The code is more what you'd call guidelines than actual rules.",
+      "source": "Pirates of the Caribbean (modified)",
+      "character": "Captain Barbossa as a programmer"
+    },
+    {
+      "text": "I feel the need... the need for speed!",
+      "source": "Top Gun",
+      "character": "Maverick & Goose"
+    },
+    {
+      "text": "Roads? Where we're going, we don't need roads.",
+      "source": "Back to the Future",
+      "character": "Doc Brown"
+    },
+    {
+      "text": "Great Scott!",
+      "source": "Back to the Future",
+      "character": "Doc Brown"
+    },
+    {
+      "text": "This is heavy.",
+      "source": "Back to the Future",
+      "character": "Marty McFly"
+    },
+    {
+      "text": "I'm not bad, I'm just programmed that way.",
+      "source": "Who Framed Roger Rabbit (modified)",
+      "character": "Jessica Rabbit as code"
+    },
+    {
+      "text": "Toto, I've a feeling we're not in Kansas anymore.",
+      "source": "The Wizard of Oz",
+      "character": "Dorothy"
+    },
+    {
+      "text": "There's no place like localhost.",
+      "source": "The Wizard of Oz (modified)",
+      "character": "Dorothy as a programmer"
+    },
+    {
+      "text": "I'm the king of the world!",
+      "source": "Titanic",
+      "character": "Jack Dawson"
+    },
+    {
+      "text": "You're gonna need a bigger server.",
+      "source": "Jaws (modified)",
+      "character": "Chief Brody as a sysadmin"
+    },
+    {
+      "text": "E.T. phone home.",
+      "source": "E.T. the Extra-Terrestrial",
+      "character": "E.T."
+    },
+    {
+      "text": "They're heeeere!",
+      "source": "Poltergeist",
+      "character": "Carol Anne Freeling"
+    },
+    {
+      "text": "I see dead pixels.",
+      "source": "The Sixth Sense (modified)",
+      "character": "Cole Sear as a designer"
+    },
+    {
+      "text": "Here's Johnny!",
+      "source": "The Shining",
+      "character": "Jack Torrance"
+    },
+    {
+      "text": "All work and no play makes Jack a dull programmer.",
+      "source": "The Shining (modified)",
+      "character": "Jack Torrance as a programmer"
+    },
+    {
+      "text": "I'll solve your problem. I'm good at that.",
+      "source": "Good Will Hunting (modified)",
+      "character": "Will Hunting as tech support"
+    },
+    {
+      "text": "Clever girl.",
+      "source": "Jurassic Park",
+      "character": "Robert Muldoon"
+    },
+    {
+      "text": "Inconceivable!",
+      "source": "The Princess Bride",
+      "character": "Vizzini"
+    },
+    {
+      "text": "As you wish.",
+      "source": "The Princess Bride",
+      "character": "Westley"
+    },
+    {
+      "text": "Hello. My name is Inigo Montoya. You killed my father. Prepare to die.",
+      "source": "The Princess Bride",
+      "character": "Inigo Montoya"
+    },
+    {
+      "text": "You keep using that command. I do not think it means what you think it means.",
+      "source": "The Princess Bride (modified)",
+      "character": "Inigo Montoya as a programmer"
+    },
+    {
+      "text": "I'm just a girl, standing in front of a computer, asking it to compile.",
+      "source": "Notting Hill (modified)",
+      "character": "Anna Scott as a programmer"
+    },
+    {
+      "text": "You had me at 'Hello World'.",
+      "source": "Jerry Maguire (modified)",
+      "character": "Dorothy Boyd as a programmer"
+    },
+    {
+      "text": "Show me the code!",
+      "source": "Jerry Maguire (modified)",
+      "character": "Rod Tidwell as a programmer"
+    },
+    {
+      "text": "I'm walking here! I'm walking here!",
+      "source": "Midnight Cowboy",
+      "character": "Ratso Rizzo"
+    },
+    {
+      "text": "You talking to me?",
+      "source": "Taxi Driver",
+      "character": "Travis Bickle"
+    },
+    {
+      "text": "Say hello to my little terminal!",
+      "source": "Scarface (modified)",
+      "character": "Tony Montana as a programmer"
+    },
+    {
+      "text": "May the source be with you.",
+      "source": "Star Wars (modified)",
+      "character": "Various Characters as programmers"
+    },
+    {
+      "text": "I'm the dude, so that's what you call me.",
+      "source": "The Big Lebowski",
+      "character": "The Dude"
+    },
+    {
+      "text": "This terminal really ties the room together.",
+      "source": "The Big Lebowski (modified)",
+      "character": "The Dude as a programmer"
+    },
+    {
+      "text": "I love the smell of compilation in the morning.",
+      "source": "Apocalypse Now (modified)",
+      "character": "Lt. Col. Kilgore as a programmer"
+    },
+    {
+      "text": "You can't handle the truth!",
+      "source": "A Few Good Men",
+      "character": "Col. Nathan R. Jessup"
+    },
+    {
+      "text": "You can't handle the recursion!",
+      "source": "A Few Good Men (modified)",
+      "character": "Col. Nathan R. Jessup as a programmer"
+    },
+    {
+      "text": "I'm having an old friend for dinner.",
+      "source": "The Silence of the Lambs",
+      "character": "Hannibal Lecter"
+    },
+    {
+      "text": "I'm having a bug for dinner.",
+      "source": "The Silence of the Lambs (modified)",
+      "character": "Hannibal Lecter as a programmer"
+    },
+    {
+      "text": "I see you've played knifey-spoony before.",
+      "source": "The Simpsons",
+      "character": "Australian Bartender"
+    },
+    {
+      "text": "D'oh!",
+      "source": "The Simpsons",
+      "character": "Homer Simpson"
+    },
+    {
+      "text": "Excellent.",
+      "source": "The Simpsons",
+      "character": "Mr. Burns"
+    },
+    {
+      "text": "Eat my shorts!",
+      "source": "The Simpsons",
+      "character": "Bart Simpson"
+    },
+    {
+      "text": "Cowabunga, dude!",
+      "source": "Teenage Mutant Ninja Turtles",
+      "character": "Michelangelo"
+    },
+    {
+      "text": "Autobots, roll out!",
+      "source": "Transformers",
+      "character": "Optimus Prime"
+    },
+    {
+      "text": "More than meets the eye.",
+      "source": "Transformers",
+      "character": "Show Tagline"
+    },
+    {
+      "text": "By your command.",
+      "source": "Battlestar Galactica",
+      "character": "Cylons"
+    },
+    {
+      "text": "So say we all.",
+      "source": "Battlestar Galactica",
+      "character": "Various Characters"
+    },
+    {
+      "text": "Frak!",
+      "source": "Battlestar Galactica",
+      "character": "Various Characters"
+    },
+    {
+      "text": "Shiny!",
+      "source": "Firefly",
+      "character": "Kaylee"
+    },
+    {
+      "text": "I aim to misbehave.",
+      "source": "Serenity",
+      "character": "Malcolm Reynolds"
+    }
+  ]
+}

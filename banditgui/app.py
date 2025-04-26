@@ -15,6 +15,7 @@ from banditgui.config.logging import get_logger, setup_logging
 from banditgui.config.settings import config
 from banditgui.ssh.ssh_manager import SSHManager
 from banditgui.terminal.terminal_manager import TerminalManager
+from banditgui.utils.quotes import get_random_quote, get_terminal_welcome_quotes
 
 # Set up logging
 setup_logging(log_level=os.getenv('LOG_LEVEL', 'INFO'))
@@ -219,8 +220,6 @@ def get_hint():
     if not isinstance(level, int):
         logger.warning("Hint request with invalid level")
         return jsonify({'status': 'error', 'message': 'Invalid level provided'})
-        logger.warning("Hint request with no level")
-        return jsonify({'status': 'error', 'message': 'No level provided'})
 
     logger.info(f"Getting hint for level {level}")
     hint = chat_manager.get_hint(level)
@@ -232,6 +231,39 @@ def get_hint():
         'status': 'success',
         'hint': hint
     })
+
+
+@app.route('/quotes/random', methods=['GET'])
+def random_quote():
+    """Get a random geek quote."""
+    logger.debug("Getting random quote")
+    try:
+        quote = get_random_quote()
+        return jsonify({
+            'status': 'success',
+            'quote': quote
+        })
+    except Exception as e:
+        error_msg = f"Error getting random quote: {str(e)}"
+        logger.error(error_msg)
+        return jsonify({'status': 'error', 'message': error_msg})
+
+
+@app.route('/quotes/welcome', methods=['GET'])
+def welcome_quotes():
+    """Get quotes for terminal welcome message."""
+    count = request.args.get('count', 3, type=int)
+    logger.debug(f"Getting {count} welcome quotes")
+    try:
+        quotes = get_terminal_welcome_quotes(count)
+        return jsonify({
+            'status': 'success',
+            'quotes': quotes
+        })
+    except Exception as e:
+        error_msg = f"Error getting welcome quotes: {str(e)}"
+        logger.error(error_msg)
+        return jsonify({'status': 'error', 'message': error_msg})
 
 
 def main():

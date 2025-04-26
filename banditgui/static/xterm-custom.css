@@ -2,8 +2,11 @@
 .terminal-container {
     width: 100%;
     height: 100%;
-    padding: 10px;
-    background-color: #282c34;
+    padding: 15px;
+    background-color: #121212;
+    border-radius: 0 0 8px 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 5px;
 }
 
 .xterm {
@@ -48,7 +51,7 @@
 }
 
 .xterm .xterm-viewport {
-    background-color: #282c34;
+    background-color: #121212;
     overflow-y: scroll;
     cursor: default;
     position: absolute;
@@ -56,6 +59,7 @@
     left: 0;
     top: 0;
     bottom: 0;
+    border-radius: 0 0 8px 8px;
 }
 
 .xterm .xterm-screen {
@@ -64,8 +68,8 @@
 
 .xterm .xterm-screen canvas {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 5px;
+    top: 5px;
 }
 
 .xterm-cursor-layer {
@@ -73,8 +77,9 @@
 }
 
 .xterm-cursor {
-    background-color: #528bff;
-    color: #282c34;
+    background-color: #38b6ff;
+    color: #121212;
+    border-radius: 1px;
 }
 
 .xterm-cursor.xterm-cursor-blink {
@@ -83,8 +88,8 @@
 
 @keyframes xterm-cursor-blink {
     0% {
-        background-color: #528bff;
-        color: #282c34;
+        background-color: #38b6ff;
+        color: #121212;
     }
     50% {
         background-color: transparent;
@@ -103,7 +108,7 @@
 
 .xterm-selection div {
     position: absolute;
-    background-color: #528bff;
+    background-color: rgba(58, 134, 255, 0.5);
 }
 
 /* Ensure the terminal container fills the panel */
@@ -120,6 +125,9 @@
 #terminal-container {
     flex: 1;
     min-height: 300px;
-    border-radius: 5px;
+    border-radius: 0 0 8px 8px;
     overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 0;
+    padding: 15px;
 }

@@ -77,7 +77,7 @@ class SSHManager:
                     logger.error(error_msg)
                     return error_msg
             elif not self.client:
-                error_msg = "Not connected to SSH server. Use 'ssh bandit0@bandit.labs.overthewire.org -p 2220' to connect."
+                error_msg = "Not connected to SSH server. As HAL 9000 would say: 'I'm sorry Dave, I'm afraid I can't do that until you connect.'"
                 logger.error(error_msg)
                 return error_msg
 
