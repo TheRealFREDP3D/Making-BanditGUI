@@ -1,6 +1,6 @@
 # v0.3 -BanditGUI : Making Cybersecurity Learning Accessible
 
-![docs/assets/v0.3-screenshot.jpg](Screenshot)
+![Screenshot](./docs/assets/v0.3-screenshot.jpg)
 
 *A web-based interface for the popular OverTheWire Bandit wargame that brings terminal access, structured learning, and helpful hints to your browser.*
 
