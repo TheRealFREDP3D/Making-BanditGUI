@@ -149,7 +149,7 @@ BanditGUI is a web-based tool designed to help users learn and practice security
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/banditgui.git
+git clone https://github.com/therealfredp3d/making-banditgui.git
 cd banditgui
 
 # Install Node.js dependencies
@@ -198,15 +198,12 @@ BanditGUI is an open-source project, and we welcome contributions from the commu
 
 ## Contact & Resources
 
-- **GitHub Repository**: [github.com/yourusername/banditgui](https://github.com/yourusername/banditgui)
-- **Documentation**: [docs.banditgui.com](https://docs.banditgui.com)
-- **Issues & Feature Requests**: [github.com/yourusername/banditgui/issues](https://github.com/yourusername/banditgui/issues)
-- **Contact**: [contact@banditgui.com](mailto:contact@banditgui.com)
-
+- **GitHub Repository**: [github.com/therealfredp3d/making-banditgui](https://github.com/therealfredp3d/making-banditgui)
+  - **Documentation**
+  - **Issues & Feature Requests**
+  - **Contact**
 ---
 
 ## Thank You!
 
 BanditGUI - Making Cybersecurity Learning Accessible
-
-[www.banditgui.com](https://www.banditgui.com)
