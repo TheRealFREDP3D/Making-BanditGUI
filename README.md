@@ -1,5 +1,7 @@
 # v0.3 -BanditGUI : Making Cybersecurity Learning Accessible
 
+![Screenshot](./docs/assets/v0.3-screenshot.jpg)
+
 *A web-based interface for the popular OverTheWire Bandit wargame that brings terminal access, structured learning, and helpful hints to your browser.*
 
 ## The Challenge of Learning Cybersecurity
@@ -35,69 +37,6 @@ We've implemented xterm.js, a powerful terminal emulator for the web, providing:
 - Clickable URLs in terminal output with the WebLinksAddon
 
 ### 2. Real SSH Connections
-
-```mermaid
-graph TD
-
-    User["User/Client"]
-    SSHClient["SSH Client"]
-    SSHServer["SSH Server"]
-    AuthService["Authentication Service"]
-    KeyManager["Key Management"]
-    SessionMgr["Session Manager"]
-    ChannelMgr["Channel Manager"]
-    Logger["Logging Service"]
-    ErrorHandler["Error Handler"]
-
-
-    subgraph "Connection Establishment"
-        KeyExchange["Key Exchange"]
-        AlgoNegotiation["Algorithm Negotiation"]
-        HostKeyVerify["Host Key Verification"]
-    end
-
-    subgraph "Authentication Methods"
-        Password["Password Auth"]
-        PublicKey["Public Key Auth"]
-        Certificate["Certificate Auth"]
-    end
-
-    subgraph "Channel Management"
-        Terminal["Terminal Channel"]
-        SFTP["SFTP Channel"]
-        PortFwd["Port Forwarding"]
-        X11["X11 Forwarding"]
-    end
-
-
-    User -->|"1. Initiates Connection"| SSHClient
-    SSHClient -->|"2. Connect Request"| SSHServer
-    SSHServer -->|"3. Start"| KeyExchange
-    KeyExchange -->|"4. Exchange"| AlgoNegotiation
-    AlgoNegotiation -->|"5. Verify"| HostKeyVerify
-    HostKeyVerify -->|"6. Validate"| KeyManager
-
-
-    KeyManager -->|"7. Auth Request"| AuthService
-    AuthService -->|"8a. Try"| Password
-    AuthService -->|"8b. Try"| PublicKey
-    AuthService -->|"8c. Try"| Certificate
-
-
-    AuthService -->|"9. Success"| SessionMgr
-    SessionMgr -->|"10. Create"| ChannelMgr
-    ChannelMgr -->|"11a. Open"| Terminal
-    ChannelMgr -->|"11b. Open"| SFTP
-    ChannelMgr -->|"11c. Open"| PortFwd
-    ChannelMgr -->|"11d. Open"| X11
-
-
-    SSHServer -->|"Log Events"| Logger
-    SSHServer -->|"Handle Errors"| ErrorHandler
-    AuthService -->|"Log Auth"| Logger
-    SessionMgr -->|"Log Sessions"| Logger
-    ErrorHandler -->|"Log Errors"| Logger
-```
 
 BanditGUI establishes actual SSH connections to the Bandit server, allowing users to:
 
@@ -237,16 +176,6 @@ If you prefer to install manually:
    ```
 
 For more detailed installation instructions, see [INSTALL.md](INSTALL.md).
-
-## Join the Community
-
-BanditGUI is an open-source project, and we welcome contributions from the community. Whether you're a developer, designer, educator, or cybersecurity enthusiast, there are many ways to get involved:
-
-- **Code contributions**: Help implement new features or fix bugs
-- **Documentation**: Improve the documentation or create tutorials
-- **Testing**: Test the application and report issues
-- **Feedback**: Share your ideas for new features or improvements
-- **Spread the word**: Tell others about BanditGUI and help grow the community
 
 ## New in v0.3
 

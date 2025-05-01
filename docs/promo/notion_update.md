@@ -155,7 +155,7 @@
 
 ## Resources
 
-- **GitHub Repository**: [github.com/yourusername/banditgui](https://github.com/yourusername/banditgui)
+- **GitHub Repository**: [github.com/yourusername/banditgui](https://github.com/therealfredp3d/making-banditgui)
 - **Documentation**: Located in the `docs/` directory
 - **Roadmap**: See `v0.2-FINAL-ROADMAP.md`
 - **Review**: See `v0.2-FINAL-review.md`

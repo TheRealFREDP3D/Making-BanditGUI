@@ -98,7 +98,7 @@ Ready to try BanditGUI? Installation is simple:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/banditgui.git
+git clone https://github.com/therealfredp3d/making-banditgui.git
 cd banditgui
 ```
 
