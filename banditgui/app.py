@@ -46,10 +46,7 @@ def server_status():
     try:
         status = ssh_manager.check_server_status()
         logger.info(f"Server status: {status['status']}")
-        return jsonify({
-            'status': 'success',
-            'serverStatus': status
-        })
+        return jsonify({'status': 'success', 'serverStatus': status})
     except Exception as e:
         error_msg = f"Error checking server status: {str(e)}"
         logger.error(error_msg)
@@ -88,7 +85,10 @@ def disconnect():
         terminal_manager.ssh_connected = False
         terminal_manager.current_level = None
         logger.info("SSH connection closed")
-        return jsonify({'status': 'success', 'message': 'Disconnected from SSH server'})
+        return jsonify({
+            'status': 'success',
+            'message': 'Disconnected from SSH server'
+        })
     except Exception as e:
         error_msg = f"Error: {str(e)}"
         logger.error(f"Exception during SSH disconnection: {error_msg}")
@@ -152,10 +152,7 @@ def level_info():
 
         if level_data:
             logger.debug(f"Found level info for level {level}")
-            return jsonify({
-                'status': 'success',
-                'levelInfo': level_data
-            })
+            return jsonify({'status': 'success', 'levelInfo': level_data})
         else:
             logger.warning(f"Level info not found for level {level}")
             return jsonify({
@@ -165,10 +162,7 @@ def level_info():
     except Exception as e:
         error_msg = f"Error retrieving level info: {str(e)}"
         logger.error(error_msg)
-        return jsonify({
-            'status': 'error',
-            'message': error_msg
-        })
+        return jsonify({'status': 'error', 'message': error_msg})
 
 
 @app.route('/chat/message', methods=['POST'])
@@ -190,10 +184,7 @@ def chat_message():
     logger.info(f"Adding chat message for level {level}")
     chat_manager.add_message(message, level, is_system)
 
-    return jsonify({
-        'status': 'success',
-        'message': 'Message added'
-    })
+    return jsonify({'status': 'success', 'message': 'Message added'})
 
 
 @app.route('/chat/messages', methods=['GET'])
@@ -206,10 +197,7 @@ def get_chat_messages():
     logger.info(f"Getting chat messages for level {level}")
     messages = chat_manager.get_messages(level, count)
 
-    return jsonify({
-        'status': 'success',
-        'messages': messages
-    })
+    return jsonify({'status': 'success', 'messages': messages})
 
 
 @app.route('/chat/hint', methods=['POST'])
@@ -219,7 +207,10 @@ def get_hint():
 
     if not isinstance(level, int):
         logger.warning("Hint request with invalid level")
-        return jsonify({'status': 'error', 'message': 'Invalid level provided'})
+        return jsonify({
+            'status': 'error',
+            'message': 'Invalid level provided'
+        })
 
     logger.info(f"Getting hint for level {level}")
     hint = chat_manager.get_hint(level)
@@ -227,10 +218,7 @@ def get_hint():
     # Add the hint as a system message
     chat_manager.add_message(hint, level, is_system=True)
 
-    return jsonify({
-        'status': 'success',
-        'hint': hint
-    })
+    return jsonify({'status': 'success', 'hint': hint})
 
 
 @app.route('/quotes/random', methods=['GET'])
@@ -239,10 +227,7 @@ def random_quote():
     logger.debug("Getting random quote")
     try:
         quote = get_random_quote()
-        return jsonify({
-            'status': 'success',
-            'quote': quote
-        })
+        return jsonify({'status': 'success', 'quote': quote})
     except Exception as e:
         error_msg = f"Error getting random quote: {str(e)}"
         logger.error(error_msg)
@@ -256,10 +241,7 @@ def welcome_quotes():
     logger.debug(f"Getting {count} welcome quotes")
     try:
         quotes = get_terminal_welcome_quotes(count)
-        return jsonify({
-            'status': 'success',
-            'quotes': quotes
-        })
+        return jsonify({'status': 'success', 'quotes': quotes})
     except Exception as e:
         error_msg = f"Error getting welcome quotes: {str(e)}"
         logger.error(error_msg)
@@ -276,11 +258,7 @@ def main():
 
     # Run the Flask app
     logger.info(f"Starting Flask app on {config.host}:{config.port}")
-    app.run(
-        debug=config.debug,
-        host=config.host,
-        port=config.port
-    )
+    app.run(debug=config.debug, host=config.host, port=config.port)
 
 
 if __name__ == "__main__":
