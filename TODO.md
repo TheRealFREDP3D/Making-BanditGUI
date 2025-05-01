@@ -30,6 +30,20 @@
 - [ ] Implement streak counting and tracking
 - [ ] Add achievement notifications
 
+## Creative Features
+- [ ] Gamified Learning Path - Create a progression system with badges and a visual skill tree
+- [ ] Challenge Mode - Implement timed challenges with competitive elements
+- [ ] Collaborative Terminal Sessions - Allow multiple users to connect to the same terminal
+- [ ] AI Command Explainer - Add AI-powered feature that explains commands in real-time
+- [ ] Visual Command Builder - Create a drag-and-drop interface for building complex commands
+- [ ] Command History Visualizer - Visualize command history as a flowchart
+- [ ] Security Concept Animations - Add brief animations explaining security concepts
+- [ ] Virtual File System Navigator - Create a visual file system explorer alongside the terminal
+- [ ] Progress Heatmap - Implement a GitHub-like heatmap showing user activity
+- [ ] Command Suggestion System - Develop smart suggestions based on context
+- [ ] Audio Feedback System - Add sound effects for command success/failure
+- [ ] Offline Mode - Create a simulated environment for offline practice
+
 ## Code Refactoring
 - [ ] Split app.py into multiple modules based on functionality
 - [ ] Reduce route handler complexity by extracting common logic
