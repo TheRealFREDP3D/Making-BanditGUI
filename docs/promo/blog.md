@@ -1,4 +1,4 @@
-# Introducing BanditGUI v0.2: Making Cybersecurity Learning Accessible
+# Introducing BanditGUI v0.3: Making Cybersecurity Learning Accessible
 
 *A web-based interface for the popular OverTheWire Bandit wargame that brings terminal access, structured learning, and helpful hints to your browser.*
 
@@ -27,6 +27,7 @@ The latest version of BanditGUI brings several significant improvements:
 ### 1. Full-Featured Terminal Experience
 
 We've implemented xterm.js, a powerful terminal emulator for the web, providing:
+
 - A responsive and interactive terminal interface
 - Support for ANSI color codes for better visual feedback
 - Command history navigation with arrow keys
@@ -36,6 +37,7 @@ We've implemented xterm.js, a powerful terminal emulator for the web, providing:
 ### 2. Real SSH Connections
 
 BanditGUI establishes actual SSH connections to the Bandit server, allowing users to:
+
 - Execute real Linux commands
 - Experience authentic terminal interactions
 - Learn in a realistic environment
@@ -44,6 +46,7 @@ BanditGUI establishes actual SSH connections to the Bandit server, allowing user
 ### 3. Modular Architecture
 
 The v0.2 release features a completely refactored codebase with:
+
 - Clear separation of concerns through dedicated manager classes
 - Improved code organization with descriptive file names
 - Well-documented code with comprehensive docstrings
@@ -52,6 +55,7 @@ The v0.2 release features a completely refactored codebase with:
 ### 4. Level Information System
 
 Users can access detailed information about each Bandit level:
+
 - Level-specific goals and objectives
 - Suggested commands with links to documentation
 - Helpful reading materials and resources
@@ -60,6 +64,7 @@ Users can access detailed information about each Bandit level:
 ### 5. Chat Interface
 
 The application includes a chat interface that:
+
 - Provides helpful hints for each level
 - Responds to basic commands like 'help', 'info', and 'level'
 - Offers a user-friendly way to access information
@@ -76,6 +81,7 @@ BanditGUI is built with modern web technologies:
 - **Data**: JSON-based storage for level information
 
 The application follows good software engineering practices:
+
 - Modular design with clear separation of concerns
 - Comprehensive error handling
 - Detailed logging
@@ -97,26 +103,32 @@ We have exciting plans for future versions of BanditGUI:
 Ready to try BanditGUI? Installation is simple:
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/therealfredp3d/making-banditgui.git
 cd banditgui
 ```
 
 2. Install Node.js dependencies:
+
 ```bash
 npm install
 ```
 
 3. Install Python dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
 4. Start the application:
+
 ```bash
 npm start
 ```
+
 or
+
 ```bash
 python banditgui/app.py
 ```

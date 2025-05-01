@@ -1,60 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-      <mxfile host="codeviz.app" modified="2025-04-26T18:51:23.555Z" agent="CodeViz Exporter" version="14.6.5" type="device">
+      <mxfile host="codeviz.app" modified="2025-05-01T03:10:37.378Z" agent="CodeViz Exporter" version="14.6.5" type="device">
         <diagram id="codeviz-diagram" name="System Diagram">
           <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
               <mxCell id="0"/>
               <mxCell id="1" parent="0"/>
-              <mxCell id="45491" value="" style="html=1;whiteSpace=wrap;container=1;fillColor=#dae8fc;strokeColor=#6c8ebf;dashed=1;fillOpacity=20;strokeWidth=2;containerType=none;recursiveResize=0;movable=1;resizable=1;autosize=0;dropTarget=0" vertex="1" parent="45490">
-                <mxGeometry x="40" y="80" width="260" height="260" as="geometry"/>
+              <mxCell id="3574" value="" style="html=1;whiteSpace=wrap;container=1;fillColor=#dae8fc;strokeColor=#6c8ebf;dashed=1;fillOpacity=20;strokeWidth=2;containerType=none;recursiveResize=0;movable=1;resizable=1;autosize=0;dropTarget=0" vertex="1" parent="1">
+                <mxGeometry x="22" y="352" width="486.3156624591476" height="244.07891561478687" as="geometry"/>
               </mxCell>
-              <mxCell id="45491_label" value="Backend Services" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=white;spacing=5" vertex="1" parent="45490">
-                <mxGeometry x="48" y="88" width="184" height="24" as="geometry"/>
+              <mxCell id="3574_label" value="External Systems" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=white;spacing=5" vertex="1" parent="1">
+                <mxGeometry x="30" y="360" width="410.3156624591476" height="24" as="geometry"/>
               </mxCell>
-<mxCell id="45490" value="" style="html=1;whiteSpace=wrap;container=1;fillColor=#dae8fc;strokeColor=#6c8ebf;dashed=1;fillOpacity=20;strokeWidth=2;containerType=none;recursiveResize=0;movable=1;resizable=1;autosize=0;dropTarget=0" vertex="1" parent="1">
-                <mxGeometry x="200.1578312295738" y="212" width="320" height="360" as="geometry"/>
+<mxCell id="3575" value="" style="html=1;whiteSpace=wrap;container=1;fillColor=#dae8fc;strokeColor=#6c8ebf;dashed=1;fillOpacity=20;strokeWidth=2;containerType=none;recursiveResize=0;movable=1;resizable=1;autosize=0;dropTarget=0" vertex="1" parent="1">
+                <mxGeometry x="235.1578312295738" y="217" width="260" height="260" as="geometry"/>
               </mxCell>
-              <mxCell id="45490_label" value="BanditGUI System" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=white;spacing=5" vertex="1" parent="1">
-                <mxGeometry x="208.1578312295738" y="220" width="244" height="24" as="geometry"/>
+              <mxCell id="3575_label" value="Remaking-BanditGUI System" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=white;spacing=5" vertex="1" parent="1">
+                <mxGeometry x="243.1578312295738" y="225" width="184" height="24" as="geometry"/>
               </mxCell>
-<mxCell id="45492" value="" style="html=1;whiteSpace=wrap;container=1;fillColor=#dae8fc;strokeColor=#6c8ebf;dashed=1;fillOpacity=20;strokeWidth=2;containerType=none;recursiveResize=0;movable=1;resizable=1;autosize=0;dropTarget=0" vertex="1" parent="1">
-                <mxGeometry x="22" y="567" width="486.3156624591476" height="244.07891561478687" as="geometry"/>
-              </mxCell>
-              <mxCell id="45492_label" value="External Systems" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=white;spacing=5" vertex="1" parent="1">
-                <mxGeometry x="30" y="575" width="410.3156624591476" height="24" as="geometry"/>
-              </mxCell>
-              <mxCell id="45493" value="User&lt;br&gt;External Actor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5" vertex="1" parent="1">
-                    <mxGeometry x="260.1578312295738" y="12" width="168.1578312295738" height="84.0789156147869" as="geometry"/>
+              <mxCell id="3577" value="User&lt;br&gt;External Actor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5" vertex="1" parent="1">
+                    <mxGeometry x="52.000000000000014" y="12" width="168.1578312295738" height="84.0789156147869" as="geometry"/>
                   </mxCell>
-<mxCell id="45494" value="Bandit Wargame Server&lt;br&gt;External SSH Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5" vertex="1" parent="45492">
+<mxCell id="3578" value="Developer/Admin&lt;br&gt;External Actor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5" vertex="1" parent="1">
+                    <mxGeometry x="250.1578312295738" y="12" width="168.1578312295738" height="84.0789156147869" as="geometry"/>
+                  </mxCell>
+<mxCell id="3589" value="Bandit Wargame Server&lt;br&gt;External SSH Server" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5" vertex="1" parent="3574">
                     <mxGeometry x="40" y="120" width="168.1578312295738" height="84.0789156147869" as="geometry"/>
                   </mxCell>
-<mxCell id="45495" value="Bandit Website&lt;br&gt;External Web Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5" vertex="1" parent="45492">
+<mxCell id="3590" value="OverTheWire Website&lt;br&gt;External Web Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5" vertex="1" parent="3574">
                     <mxGeometry x="238.1578312295738" y="120" width="168.1578312295738" height="84.0789156147869" as="geometry"/>
                   </mxCell>
-<mxCell id="45496" value="Frontend UI / Web Terminal&lt;br&gt;HTML/JS (Xterm.js)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5" vertex="1" parent="45490">
-                    <mxGeometry x="70" y="120" width="168.1578312295738" height="84.0789156147869" as="geometry"/>
-                  </mxCell>
-              <mxCell id="edge-1950" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#808080;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=white;labelBorderColor=none" edge="1" parent="1" source="45493" target="45496">
+              <mxCell id="edge-1378" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#808080;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=white;labelBorderColor=none" edge="1" parent="1" source="3577" target="3575">
                   <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-1950_label" value="Interacts with" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge-1950">
+                <mxCell id="edge-1378_label" value="Interacts with GUI" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge-1378">
                   <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
                     <mxPoint as="offset"/>
                   </mxGeometry>
                 </mxCell>
-<mxCell id="edge-1957" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#808080;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=white;labelBorderColor=none" edge="1" parent="1" source="45491" target="45494">
+<mxCell id="edge-1380" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#808080;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=white;labelBorderColor=none" edge="1" parent="1" source="3578" target="3575">
                   <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-1957_label" value="Connects via SSH to" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge-1957">
+                <mxCell id="edge-1380_label" value="Runs" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge-1380">
                   <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
                     <mxPoint as="offset"/>
                   </mxGeometry>
                 </mxCell>
-<mxCell id="edge-1963" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#808080;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=white;labelBorderColor=none" edge="1" parent="1" source="45491" target="45495">
+<mxCell id="edge-1385" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#808080;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=white;labelBorderColor=none" edge="1" parent="1" source="3575" target="3589">
                   <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-1963_label" value="Provides data originating from" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge-1963">
+                <mxCell id="edge-1385_label" value="Connects to" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge-1385">
+                  <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+                    <mxPoint as="offset"/>
+                  </mxGeometry>
+                </mxCell>
+<mxCell id="edge-1391" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#808080;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=white;labelBorderColor=none" edge="1" parent="1" source="3575" target="3590">
+                  <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-1391_label" value="Fetches data from" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge-1391">
                   <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
                     <mxPoint as="offset"/>
                   </mxGeometry>

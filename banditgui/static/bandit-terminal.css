@@ -219,30 +219,7 @@ body {
     box-shadow: var(--shadow-sm);
 }
 
-/* Quote Container */
-.quote-container {
-    padding: 10px 15px;
-    background-color: rgba(15, 52, 96, 0.3);
-    border-bottom: 1px solid var(--border-color);
-    text-align: center;
-    font-style: italic;
-}
-
-.quote-text {
-    color: var(--text-secondary);
-    font-size: 14px;
-    margin: 0;
-    transition: opacity 0.5s ease;
-}
-
-.quote-fade-in {
-    animation: fadeInQuote 2s ease;
-}
-
-@keyframes fadeInQuote {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
+/* Quote Container CSS removed - only keeping terminal welcome quote */
 
 .connection-status {
     display: flex;

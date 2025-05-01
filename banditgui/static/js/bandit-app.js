@@ -792,15 +792,7 @@ Type <code>level</code> in this chat to see the current level instructions.
         // Display instructions
         this.term.write('\x1b[33mType "start" or click the "Start" button to display Level 0 instructions.\x1b[0m\r\n\r\n');
 
-        // Initialize the quote display in the UI
-        if (window.quoteManager) {
-            const quote = await window.quoteManager.getRandomQuote();
-            const quoteMessage = document.getElementById('quote-message');
-            if (quoteMessage) {
-                quoteMessage.innerHTML = window.quoteManager.formatQuote(quote);
-                quoteMessage.classList.add('quote-fade-in');
-            }
-        }
+        // Quote display in UI removed - only keeping terminal welcome quote
 
         // No longer automatically show level 0 information
     }

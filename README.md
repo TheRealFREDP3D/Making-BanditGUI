@@ -45,6 +45,14 @@ BanditGUI establishes actual SSH connections to the Bandit server, allowing user
 - Learn in a realistic environment
 - Receive immediate feedback on their commands
 
+#### SSH Connection Flow
+
+![SSH Connection Flow](./docs/assets/v0.3-SSH-Flow.png)
+
+*The diagram shows how user commands flow through the application components to the SSH server and back.*
+
+The SSH implementation uses Paramiko to establish secure connections with password authentication. Commands entered in the terminal are sent to the SSH server via the SSHManager, with comprehensive error handling and logging throughout the process.
+
 ### 3. Modular Architecture
 
 The application features a completely refactored codebase with:
@@ -221,9 +229,9 @@ If you have any questions or feedback, please don't hesitate to reach out.
 
 > Frederick Pellerin
 >
-><fredp3d@proton.me>  
->[GitHub](https://github.com/therealfredp3D)  
->[X](https://x.com/therealfredp3D)  
+><fredp3d@proton.me>
+>[GitHub](https://github.com/therealfredp3D)
+>[X](https://x.com/therealfredp3D)
 
 ---
 
