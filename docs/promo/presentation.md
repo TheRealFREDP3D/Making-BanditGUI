@@ -19,7 +19,8 @@ BanditGUI is a web-based tool designed to help users learn and practice security
 ## Key Features
 
 ### 1. Full-Featured Terminal Experience
-![Terminal Screenshot](../assets/terminal-screenshot.jpg)
+
+![Terminal Screenshot](../assets/v0.3-screenshot.jpg)
 
 - **xterm.js integration** for authentic terminal emulation
 - **Command history** navigation with arrow keys
@@ -72,6 +73,7 @@ BanditGUI is a web-based tool designed to help users learn and practice security
 ## Technical Implementation
 
 ### Backend
+
 - **Python** with Flask web framework
 - **Paramiko** for SSH connections
 - **JSON-based storage** for level information
@@ -79,6 +81,7 @@ BanditGUI is a web-based tool designed to help users learn and practice security
 - **Comprehensive error handling and logging**
 
 ### Frontend
+
 - **HTML5, CSS3, and JavaScript**
 - **xterm.js** for terminal emulation
 - **Responsive design** for different screen sizes
@@ -90,6 +93,7 @@ BanditGUI is a web-based tool designed to help users learn and practice security
 ## Use Cases
 
 ### For Beginners
+
 - Learn Linux commands in a guided environment
 - Practice basic security concepts
 - Gain confidence with command-line interfaces
@@ -97,6 +101,7 @@ BanditGUI is a web-based tool designed to help users learn and practice security
 - Progress through challenges at your own pace
 
 ### For Educators
+
 - Demonstrate security concepts in a controlled environment
 - Provide a consistent learning platform for students
 - Track student progress through challenges
@@ -104,6 +109,7 @@ BanditGUI is a web-based tool designed to help users learn and practice security
 - Customize the application for specific educational needs
 
 ### For Security Professionals
+
 - Refresh basic security skills
 - Practice Linux command-line proficiency
 - Explore the Bandit wargame in a convenient interface
@@ -202,8 +208,9 @@ BanditGUI is an open-source project, and we welcome contributions from the commu
   - **Documentation**
   - **Issues & Feature Requests**
   - **Contact**
+
 ---
 
-## Thank You!
+## Thank You
 
 BanditGUI - Making Cybersecurity Learning Accessible

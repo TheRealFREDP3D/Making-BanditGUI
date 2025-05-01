@@ -18,9 +18,7 @@ class QuoteManager {
         try {
             // Load welcome quotes
             await this.loadWelcomeQuotes();
-
-            // Start quote rotation for status messages
-            this.startQuoteRotation();
+            // Quote rotation removed - only keeping terminal welcome quote
         } catch (error) {
             console.error('Error initializing quote manager:', error);
         }
@@ -101,25 +99,7 @@ class QuoteManager {
         return this.welcomeQuotes.length > 0 ? this.welcomeQuotes : this.getDefaultWelcomeQuotes();
     }
 
-    /**
-     * Start quote rotation for status messages
-     */
-    startQuoteRotation(intervalMs = 60000) {
-        // Update quote every minute
-        setInterval(async () => {
-            const statusMessage = document.getElementById('quote-message');
-            if (statusMessage) {
-                const quote = await this.getRandomQuote();
-                statusMessage.innerHTML = this.formatQuote(quote);
-                statusMessage.classList.add('quote-fade-in');
-
-                // Remove animation class after animation completes
-                setTimeout(() => {
-                    statusMessage.classList.remove('quote-fade-in');
-                }, 2000);
-            }
-        }, intervalMs);
-    }
+    // startQuoteRotation method removed - only keeping terminal welcome quote
 }
 
 // Initialize Quote Manager when page loads
