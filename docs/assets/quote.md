@@ -10,3 +10,13 @@ It fits the vision of the project. Here it is:
 >A GUI to prevail.  
 
 - Gemini
+
+---
+
+## Poem 2
+
+>A system's context,  
+>Diagrams draw the clear path,  
+>Code's intent shown.  
+
+- Gemini
