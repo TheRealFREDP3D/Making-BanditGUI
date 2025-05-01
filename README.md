@@ -177,16 +177,6 @@ If you prefer to install manually:
 
 For more detailed installation instructions, see [INSTALL.md](INSTALL.md).
 
-## Join the Community
-
-BanditGUI is an open-source project, and we welcome contributions from the community. Whether you're a developer, designer, educator, or cybersecurity enthusiast, there are many ways to get involved:
-
-- **Code contributions**: Help implement new features or fix bugs
-- **Documentation**: Improve the documentation or create tutorials
-- **Testing**: Test the application and report issues
-- **Feedback**: Share your ideas for new features or improvements
-- **Spread the word**: Tell others about BanditGUI and help grow the community
-
 ## New in v0.3
 
 ### Improved Installation Process
