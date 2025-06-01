@@ -152,6 +152,9 @@ class BanditApp {
 
         try {
             const response = await fetch('/list_llm_models');
+            if (!response.ok) {
+                throw new Error(`Failed to fetch LLM models: ${response.status} ${response.statusText}`);
+            }
             const data = await response.json();
 
             if (data.status === 'success' && data.models_by_provider) {
