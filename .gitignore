@@ -180,6 +180,11 @@ node_modules
 /.vscode
 /.sourcetrail
 /.mcp-servers
+<<<<<<< HEAD
+/.history
+/.snapshots
+=======
 /.snapshots
 TODO.md
 /.history
+>>>>>>> e2e09818b2519b401ca7bef44b7ae62d1889c764
