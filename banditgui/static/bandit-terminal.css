@@ -515,3 +515,59 @@ code, pre {
         max-height: calc(50vh - 120px);
     }
 }
+
+/* "Ask a Pro" Output Styling */
+#ask-a-pro-controls {
+    /* Styles for the container of the button and output, if needed */
+    /* The inline styles in HTML will take precedence unless overridden here with !important */
+}
+
+#ask-a-pro-btn {
+    /* Styles for the button are mostly inline in HTML for now */
+    /* Example:
+    background-color: var(--info) !important;
+    color: white !important;
+    */
+}
+
+#ask-a-pro-output {
+    background-color: #2a2d3b; /* A slightly different dark shade, parchment-like */
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 10px;
+    min-height: 70px;
+    max-height: 300px; /* Max height before scrolling */
+    overflow-y: auto;  /* Enable vertical scroll if content overflows */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+    color: var(--text-secondary);
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+#ask-a-pro-output strong { /* For "The Old Pro says:" or "Loading..." */
+    color: var(--accent-tertiary); /* A bright, wise color */
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+#ask-a-pro-output pre {
+    background-color: transparent; /* Inherit from #ask-a-pro-output or set a specific one */
+    border: none; /* Remove pre's default border if not desired */
+    padding: 0; /* Reset padding if container handles it */
+    margin: 0; /* Reset margin */
+    white-space: pre-wrap;   /* CSS property to wrap text in <pre> tags */
+    word-wrap: break-word;   /* Deprecated, but good fallback */
+    overflow-x: hidden;      /* Prevent horizontal scroll from long unbroken lines in pre */
+    color: var(--text-secondary); /* Ensure text color contrasts with background */
+    font-family: "Georgia", "Times New Roman", serif; /* A more "bookish" or "wise" font */
+    font-size: 1.05em; /* Slightly larger for readability */
+}
+
+/* Styling for the loading/error messages within ask-a-pro-output */
+#ask-a-pro-output .loading-message,
+#ask-a-pro-output .error-message-llm {
+    font-style: italic;
+    color: var(--warning);
+}

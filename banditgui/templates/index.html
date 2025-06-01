@@ -42,6 +42,22 @@
                         <input type="text" id="chat-input" placeholder="Chat with the assistant...">
                         <button id="chat-submit"><i class="fas fa-paper-plane"></i></button>
                     </div>
+
+                    <div id="ask-a-pro-config" style="padding: 10px 15px 5px 15px; border-top: 1px solid #444; margin-top:10px;">
+                        <div style="margin-bottom: 8px;">
+                            <label for="llm-provider-select" style="display: block; margin-bottom: 4px; font-size: 0.9em; color: var(--text-muted);">LLM Provider:</label>
+                            <select id="llm-provider-select" class="form-control custom-select" style="width: 100%; padding: 8px; border-radius: 4px; background-color: var(--primary-light); color: var(--text-primary); border: 1px solid var(--border-color);"></select>
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <label for="llm-model-select" style="display: block; margin-bottom: 4px; font-size: 0.9em; color: var(--text-muted);">LLM Model:</label>
+                            <select id="llm-model-select" class="form-control custom-select" style="width: 100%; padding: 8px; border-radius: 4px; background-color: var(--primary-light); color: var(--text-primary); border: 1px solid var(--border-color);"></select>
+                        </div>
+                    </div>
+
+                    <div id="ask-a-pro-controls" style="padding: 5px 15px 15px 15px;">
+                        <button id="ask-a-pro-btn" class="btn btn-info" style="width: 100%; padding: 10px; background-color: #17a2b8; color: white; border: none; border-radius: 4px; cursor: pointer;">Ask a Pro (Get a Hint)</button>
+                        <div id="ask-a-pro-output" style="margin-top: 10px; padding: 10px; background-color: #2a2d3b; border-radius: 4px; min-height: 50px; white-space: pre-wrap; word-wrap: break-word; border: 1px solid var(--border-color);"></div>
+                    </div>
                 </div>
             </div>
 
