@@ -148,7 +148,7 @@ class BanditApp {
     }
 
     async initializeLlmSelectors() {
-        if (!this.llmProviderSelect || !this.llmModelSelect) return;
+        if (!this.llmProviderSelect || !this.llmModelSelect) {
 
         try {
             const response = await fetch('/list_llm_models');
