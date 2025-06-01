@@ -464,10 +464,10 @@ def ask_a_pro():
         elif provider == "ollama" and any(keyword in error_detail.lower() for keyword in ["connect", "connection refused"]):
              user_friendly_error = f"Could not connect to Ollama at {config.ollama_base_url}. Please ensure Ollama is running and accessible."
 
-        # Avoid leaking raw exception details to the client unless it's a simple message
-        # For verbose errors, log them and show a generic message.
-        # For this stage, str(e) is included for easier debugging by admin if they see the JSON.
-        return jsonify({'status': 'error', 'message': f"Error communicating with LLM: {user_friendly_error} (Details: {str(e)})"}), 500
+        # Log the full exception details internally
+        app.logger.exception(f"Error communicating with LLM provider '{provider}': {error_detail}")
+        # Return only a generic error message to the client
+        return jsonify({'status': 'error', 'message': f"Error communicating with LLM: {user_friendly_error}"}), 500
 
     return jsonify({
         'status': 'success',
