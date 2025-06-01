@@ -169,11 +169,14 @@ class BanditApp {
                     this.llmProviderSelect.appendChild(option);
                 });
 
-                // TODO: Set default provider based on config if available from backend, or first one
-                // For now, just trigger model population for the first provider (if any)
-                if (Object.keys(this.predefinedModels).length > 0) {
-                    this.llmProviderSelect.value = Object.keys(this.predefinedModels)[0]; // Select first provider
-                    this.populateLlmModelDropdown(); // Populate models for the initially selected provider
+                // Set default provider to "gemini" and populate its models
+                if (this.predefinedModels["gemini"]) {
+                    this.llmProviderSelect.value = "gemini";
+                    this.populateLlmModelDropdown(); // Populate models for "gemini"
+                } else if (Object.keys(this.predefinedModels).length > 0) {
+                    // Fallback to the first provider if "gemini" is not available
+                    this.llmProviderSelect.value = Object.keys(this.predefinedModels)[0];
+                    this.populateLlmModelDropdown();
                 }
             } else {
                 console.error('Failed to fetch LLM models list:', data.message);
@@ -206,9 +209,13 @@ class BanditApp {
             option.textContent = modelName;
             this.llmModelSelect.appendChild(option);
         });
-        // TODO: Set default model if preferred_llm_model matches for this provider
+
         if (models.length > 0) {
-            this.llmModelSelect.value = models[0]; // Select first model by default
+            if (selectedProvider === "gemini" && models.includes("gemini-1.5-flash-latest")) {
+                this.llmModelSelect.value = "gemini-1.5-flash-latest";
+            } else {
+                this.llmModelSelect.value = models[0]; // Select first model by default
+            }
         }
     }
 
