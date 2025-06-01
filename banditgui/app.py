@@ -30,12 +30,6 @@ app = Flask(__name__)
 
 # --- Predefined LLM Models by Provider ---
 PREDEFINED_MODELS = {
-    "openai": [
-        "gpt-3.5-turbo",
-        "gpt-4",
-        "gpt-4-turbo-preview",
-        "gpt-4o"
-    ],
     "gemini": [ # Google AI Studio models
         "gemini-pro",
         "gemini-1.0-pro",
@@ -326,12 +320,7 @@ def ask_a_pro():
     litellm_model_string = model_name # Default to model_name
     litellm_kwargs = {}
 
-    if provider == "openai":
-        api_key = config.openai_api_key
-        if not api_key or api_key == "YOUR_OPENAI_API_KEY_HERE":
-            logger.error("OpenAI API key not configured.")
-            return jsonify({'status': 'error', 'message': 'OpenAI API key not configured by the administrator.'}), 503
-    elif provider == "gemini":
+    if provider == "gemini":
         api_key = config.gemini_api_key
         # Gemini model names via LiteLLM are often just the model name like "gemini-pro"
         # but sometimes "gemini/gemini-pro". For user input `model_name` should be direct.
@@ -410,8 +399,6 @@ def ask_a_pro():
     # Set environment variables for providers that might primarily rely on them,
     # though litellm.completion parameters usually take precedence.
     # This is more of a fallback or for complex litellm routing/proxy setups.
-    if config.openai_api_key and config.openai_api_key != "YOUR_OPENAI_API_KEY_HERE":
-        os.environ["OPENAI_API_KEY"] = config.openai_api_key
     if config.gemini_api_key and config.gemini_api_key != "YOUR_GEMINI_API_KEY_HERE":
         os.environ["GEMINI_API_KEY"] = config.gemini_api_key # Or GOOGLE_API_KEY depending on litellm version/usage
     if config.openrouter_api_key and config.openrouter_api_key != "YOUR_OPENROUTER_API_KEY_HERE":
