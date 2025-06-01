@@ -3,8 +3,9 @@
 This module initializes the Flask application and defines the API routes.
 """
 
-import os
 import sys
+import os
+import litellm
 
 from flask import Flask, jsonify, render_template, request, send_from_directory
 
@@ -21,9 +22,6 @@ from banditgui.utils.quotes import get_random_quote, get_terminal_welcome_quotes
 # Set up logging
 setup_logging(log_level=os.getenv('LOG_LEVEL', 'INFO'))
 logger = get_logger('app')
-
-import litellm
-import os
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -396,25 +394,25 @@ def ask_a_pro():
     try:
         # Ensure OPENAI_API_KEY is set if that's the intended provider and llm_api_key is for it.
         # For other providers, litellm might need different env vars or config.
-    # Set environment variables for providers that might primarily rely on them,
-    # though litellm.completion parameters usually take precedence.
-    # This is more of a fallback or for complex litellm routing/proxy setups.
-    if config.gemini_api_key and config.gemini_api_key != "YOUR_GEMINI_API_KEY_HERE":
-        os.environ["GEMINI_API_KEY"] = config.gemini_api_key # Or GOOGLE_API_KEY depending on litellm version/usage
-    if config.openrouter_api_key and config.openrouter_api_key != "YOUR_OPENROUTER_API_KEY_HERE":
-        os.environ["OPENROUTER_API_KEY"] = config.openrouter_api_key
+        # Set environment variables for providers that might primarily rely on them,
+        # though litellm.completion parameters usually take precedence.
+        # This is more of a fallback or for complex litellm routing/proxy setups.
+        if config.gemini_api_key and config.gemini_api_key != "YOUR_GEMINI_API_KEY_HERE":
+            os.environ["GEMINI_API_KEY"] = config.gemini_api_key # Or GOOGLE_API_KEY depending on litellm version/usage
+        if config.openrouter_api_key and config.openrouter_api_key != "YOUR_OPENROUTER_API_KEY_HERE":
+            os.environ["OPENROUTER_API_KEY"] = config.openrouter_api_key
 
-    litellm_kwargs["model"] = litellm_model_string
-    litellm_kwargs["messages"] = messages
-    if api_key: # Only pass api_key if it's set (Ollama doesn't need it)
-        litellm_kwargs["api_key"] = api_key
-    litellm_kwargs["temperature"] = 0.7
-    litellm_kwargs["max_tokens"] = 300
+        litellm_kwargs["model"] = litellm_model_string
+        litellm_kwargs["messages"] = messages
+        if api_key: # Only pass api_key if it's set (Ollama doesn't need it)
+            litellm_kwargs["api_key"] = api_key
+        litellm_kwargs["temperature"] = 0.7
+        litellm_kwargs["max_tokens"] = 300
 
-    response = litellm.completion(**litellm_kwargs)
+        response = litellm.completion(**litellm_kwargs)
         llm_response_content = response.choices[0].message.content
-    # model_actually_used = response.model # Contains the model string litellm resolved to
-    logger.info(f"LLM response received successfully from provider: {provider}, model: {response.model}")
+        # model_actually_used = response.model # Contains the model string litellm resolved to
+        logger.info(f"LLM response received successfully from provider: {provider}, model: {response.model}")
         logger.debug(f"LLM Response content:\n{llm_response_content}")
 
     except litellm.exceptions.AuthenticationError as e:
@@ -446,9 +444,9 @@ def ask_a_pro():
         user_friendly_error = "I seem to be having trouble reaching my sources of wisdom at the moment. Please try again shortly."
         # Check for common strings in errors that might indicate configuration issues
         if any(keyword in error_detail.lower() for keyword in ["api key", "authentication", "token", "permission"]):
-             user_friendly_error = f"There appears to be an issue with the LLM configuration for {provider}. Please notify the administrator or check your API key."
+            user_friendly_error = f"There appears to be an issue with the LLM configuration for {provider}. Please notify the administrator or check your API key."
         elif provider == "ollama" and any(keyword in error_detail.lower() for keyword in ["connect", "connection refused"]):
-             user_friendly_error = f"Could not connect to Ollama at {config.ollama_base_url}. Please ensure Ollama is running and accessible."
+            user_friendly_error = f"Could not connect to Ollama at {config.ollama_base_url}. Please ensure Ollama is running and accessible."
 
         # Log the full exception details internally
         app.logger.exception(f"Error communicating with LLM provider '{provider}': {error_detail}")
