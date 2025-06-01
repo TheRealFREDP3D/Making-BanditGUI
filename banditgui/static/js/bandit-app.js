@@ -15,15 +15,6 @@ class BanditApp {
         this.initChat();
         this.initTerminal();
 
-        // Chat panel toggle elements
-        this.leftPanel = document.querySelector('.panel.left');
-        this.toggleChatBtn = document.getElementById('toggle-chat-panel-btn');
-        if (this.toggleChatBtn && this.leftPanel && !this.leftPanel.classList.contains('chat-panel-hidden')) {
-            this.toggleChatBtn.textContent = 'Hide Chat';
-        } else if (this.toggleChatBtn) {
-            this.toggleChatBtn.textContent = 'Show Chat';
-        }
-
         // Set up event listeners
         this.setupEventListeners();
 
@@ -38,14 +29,6 @@ class BanditApp {
         this.chatInput = document.getElementById('chat-input');
         this.chatSubmit = document.getElementById('chat-submit');
         this.chatMessages = document.getElementById('chat-messages');
-
-        // LLM Selector Elements
-        this.llmProviderSelect = document.getElementById('llm-provider-select');
-        this.llmModelSelect = document.getElementById('llm-model-select');
-        this.predefinedModels = {}; // To store models fetched from backend
-
-        // Initialize LLM selectors
-        this.initializeLlmSelectors();
     }
 
     /**
@@ -139,176 +122,6 @@ class BanditApp {
         window.addEventListener('resize', () => {
             this.fitAddon.fit();
         });
-
-        // Ask a Pro button
-        const askAProButton = document.getElementById('ask-a-pro-btn');
-        if (askAProButton) {
-            askAProButton.addEventListener('click', () => {
-                this.handleAskAPro();
-            });
-        }
-
-        // LLM Provider select change listener
-        if (this.llmProviderSelect) {
-            this.llmProviderSelect.addEventListener('change', () => {
-                this.populateLlmModelDropdown();
-            });
-        }
-
-        // Chat panel toggle button
-        if (this.toggleChatBtn && this.leftPanel) {
-            this.toggleChatBtn.addEventListener('click', () => {
-                this.leftPanel.classList.toggle('chat-panel-hidden');
-
-                // Update button text
-                if (this.leftPanel.classList.contains('chat-panel-hidden')) {
-                    this.toggleChatBtn.textContent = 'Show Chat';
-                } else {
-                    this.toggleChatBtn.textContent = 'Hide Chat';
-                }
-
-                // Resize terminal after transition using transitionend event
-                const onTransitionEnd = (event) => {
-                    if (event.target === this.leftPanel) {
-                        if (this.fitAddon) { // Ensure fitAddon is initialized
-                            this.fitAddon.fit();
-                        }
-                        this.leftPanel.removeEventListener('transitionend', onTransitionEnd);
-                    }
-                };
-                this.leftPanel.addEventListener('transitionend', onTransitionEnd);
-            });
-        }
-    }
-
-    async initializeLlmSelectors() {
-        if (!this.llmProviderSelect || !this.llmModelSelect) {
-
-        try {
-            const response = await fetch('/list_llm_models');
-            if (!response.ok) {
-                throw new Error(`Failed to fetch LLM models: ${response.status} ${response.statusText}`);
-            }
-            const data = await response.json();
-
-            if (data.status === 'success' && data.models_by_provider) {
-                this.predefinedModels = data.models_by_provider;
-
-                // Populate Provider Dropdown
-                this.llmProviderSelect.innerHTML = ''; // Clear existing options
-                Object.keys(this.predefinedModels).forEach(providerKey => {
-                    const option = document.createElement('option');
-                    option.value = providerKey;
-                    option.textContent = providerKey.charAt(0).toUpperCase() + providerKey.slice(1); // Capitalize
-                    this.llmProviderSelect.appendChild(option);
-                });
-
-                // Set default provider to "gemini" and populate its models
-                if (this.predefinedModels["gemini"]) {
-                    this.llmProviderSelect.value = "gemini";
-                    this.populateLlmModelDropdown(); // Populate models for "gemini"
-                } else if (Object.keys(this.predefinedModels).length > 0) {
-                    // Fallback to the first provider if "gemini" is not available
-                    this.llmProviderSelect.value = Object.keys(this.predefinedModels)[0];
-                    this.populateLlmModelDropdown();
-                }
-            } else {
-                console.error('Failed to fetch LLM models list:', data.message);
-                this.addAssistantMessage("Could not load LLM model selection options.");
-            }
-        } catch (error) {
-            console.error('Error fetching LLM models list:', error);
-            this.addAssistantMessage("Error loading LLM model selection options.");
-        }
-    }
-
-    populateLlmModelDropdown() {
-        if (!this.llmProviderSelect || !this.llmModelSelect || Object.keys(this.predefinedModels).length === 0) {
-            this.llmModelSelect.innerHTML = '<option value="">Select a provider first</option>';
-            return;
-        }
-
-        const selectedProvider = this.llmProviderSelect.value;
-        const models = this.predefinedModels[selectedProvider] || [];
-
-        this.llmModelSelect.innerHTML = ''; // Clear existing options
-        if (models.length === 0) {
-            this.llmModelSelect.innerHTML = '<option value="">No models listed for this provider</option>';
-            return;
-        }
-
-        models.forEach(modelName => {
-            const option = document.createElement('option');
-            option.value = modelName;
-            option.textContent = modelName;
-            this.llmModelSelect.appendChild(option);
-        });
-
-        if (models.length > 0) {
-            if (selectedProvider === "gemini" && models.includes("gemini-1.5-flash-latest")) {
-                this.llmModelSelect.value = "gemini-1.5-flash-latest";
-            } else {
-                this.llmModelSelect.value = models[0]; // Select first model by default
-            }
-        }
-    }
-
-    async handleAskAPro() {
-        const statusDiv = document.getElementById('ask-a-pro-output'); // Renamed for clarity as status display area
-        statusDiv.innerHTML = `<strong class="loading-message">Contacting The Old Pro...</strong>`;
-
-        const selectedProvider = this.llmProviderSelect ? this.llmProviderSelect.value : null;
-        const selectedModel = this.llmModelSelect ? this.llmModelSelect.value : null;
-
-        if (!selectedProvider || !selectedModel) {
-            statusDiv.innerHTML = `<strong class="error-message-llm">Selection Missing!</strong><pre class="error-message-llm">Please select an LLM Provider and Model before asking the Pro.</pre>`;
-            return;
-        }
-
-        try {
-            const payload = {
-                provider: selectedProvider,
-                model: selectedModel
-            };
-            const response = await fetch('/ask_a_pro', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload)
-            });
-
-            const data = await response.json();
-
-            if (data.status === 'success' && data.llm_response) {
-                // Integrate the LLM's response into the main chat panel
-                const formattedResponse = `<pre>${data.llm_response}</pre>`;
-                this.addAssistantMessage(formattedResponse, "The Old Pro");
-
-                statusDiv.innerHTML = `<strong class="success-message">Wisdom received! Check the chat.</strong>`;
-                setTimeout(() => {
-                    // Only clear if the success message is still there
-                    if (statusDiv.innerHTML.includes("Wisdom received!")) {
-                        statusDiv.innerHTML = '';
-                    }
-                }, 5000); // Clear after 5 seconds
-
-
-                // The old messages about checking the separate section are no longer needed
-                // if (data.current_level !== null) {
-                //     this.addAssistantMessage(`A hint was provided by the Old Pro for level ${data.current_level}. See the "Ask a Pro" section for details.`);
-                // } else {
-                //     this.addAssistantMessage(`The Old Pro was consulted, but no level is currently active. Their wisdom is general for now.`);
-                // }
-            } else {
-                // Display a more user-friendly error, and keep the detailed one in console
-                statusDiv.innerHTML = `<strong class="error-message-llm">The Old Pro seems to be meditating...</strong><pre class="error-message-llm">${data.message || 'Could not get a hint at this moment. Please try again later.'}</pre>`;
-                console.error('Ask a Pro error:', data.message);
-            }
-        } catch (error) {
-            statusDiv.innerHTML = `<strong class="error-message-llm">The Old Pro is unreachable.</strong><pre class="error-message-llm">Error: Could not reach the "Ask a Pro" service. Check your connection or try again later.</pre>`;
-            console.error('Ask a Pro fetch error:', error);
-        }
     }
 
     // Panel resizer functionality removed - fixed 50/50 split
@@ -636,33 +449,19 @@ Type <code>level</code> in this chat to see the current level instructions.
 
     /**
      * Add an assistant message to the chat
-     * @param {string} message - The message content (can be HTML)
-     * @param {string} [senderName="Assistant"] - Optional sender name
      */
-    addAssistantMessage(message, senderName = "Assistant") {
+    addAssistantMessage(message) {
         const messageElement = document.createElement('div');
-        // Add a specific class if the sender is "The Old Pro" for potential distinct styling
-        if (senderName === "The Old Pro") {
-            messageElement.className = 'assistant-message old-pro-message';
-        } else {
-            messageElement.className = 'assistant-message';
-        }
+        messageElement.className = 'assistant-message';
 
-        // If the message is already wrapped in <pre>, don't add <p> tags or process newlines further.
-        // Otherwise, format it for paragraphs and line breaks.
-        let messageContentHtml;
-        if (message.trim().startsWith('<pre>')) {
-            messageContentHtml = message;
-        } else {
-            const formattedText = message
-                .replace(/\n\n/g, '</p><p>') // Double line breaks become new paragraphs
-                .replace(/\n/g, '<br>');     // Single line breaks become <br>
-            messageContentHtml = `<p>${formattedText}</p>`;
-        }
+        // Format the message with proper line breaks
+        const formattedMessage = message
+            .replace(/\n\n/g, '</p><p>') // Double line breaks become new paragraphs
+            .replace(/\n/g, '<br>'); // Single line breaks become <br>
 
         messageElement.innerHTML = `
-            <div class="assistant-label">${senderName}:</div>
-            <div class="message-content">${messageContentHtml}</div>
+            <div class="assistant-label">Assistant:</div>
+            <div class="message-content"><p>${formattedMessage}</p></div>
         `;
         this.chatMessages.appendChild(messageElement);
         this.scrollChatToBottom();

@@ -1,3 +1,3 @@
-#!/bin/bash
+!#/bin/bash
 
-.venv/Scripts/python -m banditgui.app
+python -m banditgui.app

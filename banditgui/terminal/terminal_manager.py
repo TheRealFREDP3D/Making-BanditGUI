@@ -28,7 +28,6 @@ class TerminalManager:
         self.ssh_connected = False
         self.available_levels = []
         self.current_level = None
-        self.command_history = []
 
         # Initialize commands dictionary
         self.commands = {
@@ -72,7 +71,6 @@ class TerminalManager:
         if not command:
             return ""
 
-        self.command_history.append(command)
         logger.info(f"Executing command: {command}")
         cmd_parts = command.split()
         cmd = cmd_parts[0].lower()
@@ -334,13 +332,3 @@ Example: level 0"""
         except Exception as e:
             logger.error(f"Error connecting to SSH server: {e}")
             return f"Error connecting to SSH server: {str(e)}"
-
-    def get_command_history(self) -> List[str]:
-        """
-        Return the command history.
-
-        Returns:
-            List[str]: The list of commands executed
-        """
-        logger.debug("Retrieving command history")
-        return self.command_history

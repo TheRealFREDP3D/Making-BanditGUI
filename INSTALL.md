@@ -69,11 +69,18 @@ npm install
 
 ### 5. Set Up Environment Variables
 
-Copy the `.env.example` file to a new file named `.env`.
-```bash
-cp .env.example .env
+Create a `.env` file in the project root with the following content:
+
 ```
-Then, edit the `.env` file to set your desired configurations.
+SSH_HOST=bandit.labs.overthewire.org
+SSH_PORT=2220
+SSH_USERNAME=bandit0
+SSH_PASSWORD=bandit0
+DEBUG=True
+HOST=127.0.0.1
+PORT=5000
+LOG_LEVEL=INFO
+```
 
 ### 6. Run the Application
 
@@ -111,17 +118,11 @@ If you have trouble connecting to the Bandit server, check your internet connect
 
 You can customize the application by editing the `.env` file. The following options are available:
 
-- `SSH_HOST`: The hostname of the SSH server (default: "bandit.labs.overthewire.org").
-- `SSH_PORT`: The port of the SSH server (default: "2220").
-- `SSH_USERNAME`: The initial SSH username (default: "bandit0"). This will change as you solve levels.
-- `SSH_PASSWORD`: The initial SSH password (default: "bandit0"). This will change as you solve levels.
-- `DEBUG`: Set to "True" to enable Flask debug mode, or "False" for production (default: "True").
-- `HOST`: The host address for the Flask application (default: "127.0.0.1").
-- `PORT`: The port for the Flask application (default: "5000").
-- `LOG_LEVEL`: The logging level for the application. Options: DEBUG, INFO, WARNING, ERROR, CRITICAL (default: "INFO").
-- `OPENAI_API_KEY`: Your API key for OpenAI services. (e.g., "YOUR_OPENAI_API_KEY_HERE")
-- `GEMINI_API_KEY`: Your API key for Google Gemini services. (e.g., "YOUR_GEMINI_API_KEY_HERE")
-- `OPENROUTER_API_KEY`: Your API key for OpenRouter services. (e.g., "YOUR_OPENROUTER_API_KEY_HERE")
-- `OLLAMA_BASE_URL`: The base URL for your local Ollama instance (default: "http://localhost:11434"). Uncomment and set if different from the default.
-- `PREFERRED_LLM_PROVIDER`: The default LLM provider for the "Ask a Pro" feature (default: "gemini"). Supported: "openai", "gemini", "openrouter", "ollama", etc.
-- `PREFERRED_LLM_MODEL`: The default LLM model for the chosen provider (default: "gemini-1.5-flash-latest"). Examples: "gpt-3.5-turbo", "gemini/gemini-pro", "ollama/llama2".
+- `SSH_HOST`: The hostname of the SSH server
+- `SSH_PORT`: The port of the SSH server
+- `SSH_USERNAME`: The default username for SSH connections
+- `SSH_PASSWORD`: The default password for SSH connections
+- `DEBUG`: Whether to run Flask in debug mode (True/False)
+- `HOST`: The host to bind the Flask application to
+- `PORT`: The port to bind the Flask application to
+- `LOG_LEVEL`: The logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)

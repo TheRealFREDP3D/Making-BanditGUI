@@ -13,7 +13,7 @@ import re
 # Path to the input and output files
 from pathlib import Path
 
-DATA_DIR = Path(__file__).parent.parent / "data"
+DATA_DIR = Path(__file__).parent.parent / "levels_data"
 INPUT_FILE = DATA_DIR / 'all_data.json'
 OUTPUT_FILE = DATA_DIR / 'commands_data.json'
 

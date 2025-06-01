@@ -23,14 +23,6 @@ class Config:
         self.ssh_username = os.getenv('SSH_USERNAME', 'bandit0')
         self.ssh_password = os.getenv('SSH_PASSWORD', 'bandit0')
 
-        # LLM API Keys and Settings
-        self.gemini_api_key: Optional[str] = os.getenv("GEMINI_API_KEY")
-        self.openrouter_api_key: Optional[str] = os.getenv("OPENROUTER_API_KEY")
-        self.ollama_base_url: Optional[str] = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-
-        self.preferred_llm_provider: str = os.getenv("PREFERRED_LLM_PROVIDER", "gemini")
-        self.preferred_llm_model: str = os.getenv("PREFERRED_LLM_MODEL", "gemini-1.5-flash-latest")
-
         # Flask settings
         self.debug = os.getenv('DEBUG', 'True').lower() in ('true', '1', 't')
         self.host = os.getenv('HOST', '127.0.0.1')
