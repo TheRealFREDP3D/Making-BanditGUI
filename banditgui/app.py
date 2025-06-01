@@ -314,9 +314,8 @@ def ask_a_pro():
     """
     logger.info("Received request for 'Ask a Pro'")
 
-    request_data = request.get_json()
-    if not request_data: # Ensure request_data is not None
-        request_data = {}
+    request_data = request.get_json() or {}
+
 
     provider = request_data.get("provider", config.preferred_llm_provider).lower()
     model_name = request_data.get("model", config.preferred_llm_model)
