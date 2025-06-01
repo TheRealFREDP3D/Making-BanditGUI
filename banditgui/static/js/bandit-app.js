@@ -15,6 +15,15 @@ class BanditApp {
         this.initChat();
         this.initTerminal();
 
+        // Chat panel toggle elements
+        this.leftPanel = document.querySelector('.panel.left');
+        this.toggleChatBtn = document.getElementById('toggle-chat-panel-btn');
+        if (this.toggleChatBtn && this.leftPanel && !this.leftPanel.classList.contains('chat-panel-hidden')) {
+            this.toggleChatBtn.textContent = 'Hide Chat';
+        } else if (this.toggleChatBtn) {
+            this.toggleChatBtn.textContent = 'Show Chat';
+        }
+
         // Set up event listeners
         this.setupEventListeners();
 
@@ -143,6 +152,27 @@ class BanditApp {
         if (this.llmProviderSelect) {
             this.llmProviderSelect.addEventListener('change', () => {
                 this.populateLlmModelDropdown();
+            });
+        }
+
+        // Chat panel toggle button
+        if (this.toggleChatBtn && this.leftPanel) {
+            this.toggleChatBtn.addEventListener('click', () => {
+                this.leftPanel.classList.toggle('chat-panel-hidden');
+
+                // Update button text
+                if (this.leftPanel.classList.contains('chat-panel-hidden')) {
+                    this.toggleChatBtn.textContent = 'Show Chat';
+                } else {
+                    this.toggleChatBtn.textContent = 'Hide Chat';
+                }
+
+                // Resize terminal after transition
+                setTimeout(() => {
+                    if (this.fitAddon) { // Ensure fitAddon is initialized
+                        this.fitAddon.fit();
+                    }
+                }, 350); // Slightly longer than CSS transition (0.3s)
             });
         }
     }
