@@ -60,15 +60,17 @@ body {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    transition: all 0.3s ease;
+    /* transition: all 0.3s ease; REMOVED - will be more specific */
 }
 
 .left {
     width: 50%;
     background: var(--primary-medium);
-    border-right: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color); /* Existing: will be animated via border-width */
     box-shadow: var(--shadow-md);
     z-index: 10;
+    overflow: hidden; /* Added */
+    transition: width 0.3s ease, transform 0.3s ease, padding 0.3s ease, border-width 0.3s ease; /* Added */
 }
 
 .right {
@@ -77,6 +79,41 @@ body {
     color: var(--text-primary);
     display: flex;
     flex-direction: column;
+    transition: flex 0.3s ease, width 0.3s ease; /* Added */
+}
+
+/* Styles for Toggle Button */
+#toggle-chat-panel-btn {
+    background-color: var(--accent-primary);
+    color: var(--text-primary);
+    border: none;
+    padding: 10px 15px;
+    /* margin: 10px; REMOVED */
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    /* display: block; REMOVED */
+    /* width: calc(100% - 20px); REMOVED */
+    /* text-align: center; REMOVED */
+    transition: background-color 0.3s ease;
+    position: fixed; /* ADDED */
+    top: 15px;       /* ADDED */
+    left: 15px;      /* ADDED */
+    z-index: 100;    /* ADDED */
+    margin: 0;       /* ADDED to override previous margin */
+}
+
+#toggle-chat-panel-btn:hover {
+    background-color: var(--accent-secondary);
+}
+
+/* Class to hide the chat panel */
+.panel.left.chat-panel-hidden {
+    transform: translateX(-100%);
+    width: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    border-width: 0px !important; /* This will make the border disappear */
 }
 
 /* Border between panels */
