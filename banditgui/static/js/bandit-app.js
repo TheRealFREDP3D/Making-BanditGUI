@@ -210,14 +210,14 @@ class BanditApp {
     }
 
     async handleAskAPro() {
-        const outputDiv = document.getElementById('ask-a-pro-output');
-        outputDiv.innerHTML = `<strong class="loading-message">The Old Pro is pondering your situation...</strong>`;
+        const statusDiv = document.getElementById('ask-a-pro-output'); // Renamed for clarity as status display area
+        statusDiv.innerHTML = `<strong class="loading-message">Contacting The Old Pro...</strong>`;
 
         const selectedProvider = this.llmProviderSelect ? this.llmProviderSelect.value : null;
         const selectedModel = this.llmModelSelect ? this.llmModelSelect.value : null;
 
         if (!selectedProvider || !selectedModel) {
-            outputDiv.innerHTML = `<strong class="error-message-llm">Selection Missing!</strong><pre class="error-message-llm">Please select an LLM Provider and Model before asking the Pro.</pre>`;
+            statusDiv.innerHTML = `<strong class="error-message-llm">Selection Missing!</strong><pre class="error-message-llm">Please select an LLM Provider and Model before asking the Pro.</pre>`;
             return;
         }
 
@@ -237,20 +237,32 @@ class BanditApp {
             const data = await response.json();
 
             if (data.status === 'success' && data.llm_response) {
-                // Display the LLM's response
-                outputDiv.innerHTML = `<strong>The Old Pro says:</strong><pre>${data.llm_response}</pre>`; // CSS handles pre styling
-                if (data.current_level !== null) {
-                    this.addAssistantMessage(`A hint was provided by the Old Pro for level ${data.current_level}. See the "Ask a Pro" section for details.`);
-                } else {
-                    this.addAssistantMessage(`The Old Pro was consulted, but no level is currently active. Their wisdom is general for now.`);
-                }
+                // Integrate the LLM's response into the main chat panel
+                const formattedResponse = `<pre>${data.llm_response}</pre>`;
+                this.addAssistantMessage(formattedResponse, "The Old Pro");
+
+                statusDiv.innerHTML = `<strong class="success-message">Wisdom received! Check the chat.</strong>`;
+                setTimeout(() => {
+                    // Only clear if the success message is still there
+                    if (statusDiv.innerHTML.includes("Wisdom received!")) {
+                        statusDiv.innerHTML = '';
+                    }
+                }, 5000); // Clear after 5 seconds
+
+
+                // The old messages about checking the separate section are no longer needed
+                // if (data.current_level !== null) {
+                //     this.addAssistantMessage(`A hint was provided by the Old Pro for level ${data.current_level}. See the "Ask a Pro" section for details.`);
+                // } else {
+                //     this.addAssistantMessage(`The Old Pro was consulted, but no level is currently active. Their wisdom is general for now.`);
+                // }
             } else {
                 // Display a more user-friendly error, and keep the detailed one in console
-                outputDiv.innerHTML = `<strong class="error-message-llm">The Old Pro seems to be meditating...</strong><pre class="error-message-llm">${data.message || 'Could not get a hint at this moment. Please try again later.'}</pre>`;
+                statusDiv.innerHTML = `<strong class="error-message-llm">The Old Pro seems to be meditating...</strong><pre class="error-message-llm">${data.message || 'Could not get a hint at this moment. Please try again later.'}</pre>`;
                 console.error('Ask a Pro error:', data.message);
             }
         } catch (error) {
-            outputDiv.innerHTML = `<strong class="error-message-llm">The Old Pro is unreachable.</strong><pre class="error-message-llm">Error: Could not reach the "Ask a Pro" service. Check your connection or try again later.</pre>`;
+            statusDiv.innerHTML = `<strong class="error-message-llm">The Old Pro is unreachable.</strong><pre class="error-message-llm">Error: Could not reach the "Ask a Pro" service. Check your connection or try again later.</pre>`;
             console.error('Ask a Pro fetch error:', error);
         }
     }
@@ -580,19 +592,33 @@ Type <code>level</code> in this chat to see the current level instructions.
 
     /**
      * Add an assistant message to the chat
+     * @param {string} message - The message content (can be HTML)
+     * @param {string} [senderName="Assistant"] - Optional sender name
      */
-    addAssistantMessage(message) {
+    addAssistantMessage(message, senderName = "Assistant") {
         const messageElement = document.createElement('div');
-        messageElement.className = 'assistant-message';
+        // Add a specific class if the sender is "The Old Pro" for potential distinct styling
+        if (senderName === "The Old Pro") {
+            messageElement.className = 'assistant-message old-pro-message';
+        } else {
+            messageElement.className = 'assistant-message';
+        }
 
-        // Format the message with proper line breaks
-        const formattedMessage = message
-            .replace(/\n\n/g, '</p><p>') // Double line breaks become new paragraphs
-            .replace(/\n/g, '<br>'); // Single line breaks become <br>
+        // If the message is already wrapped in <pre>, don't add <p> tags or process newlines further.
+        // Otherwise, format it for paragraphs and line breaks.
+        let messageContentHtml;
+        if (message.trim().startsWith('<pre>')) {
+            messageContentHtml = message;
+        } else {
+            const formattedText = message
+                .replace(/\n\n/g, '</p><p>') // Double line breaks become new paragraphs
+                .replace(/\n/g, '<br>');     // Single line breaks become <br>
+            messageContentHtml = `<p>${formattedText}</p>`;
+        }
 
         messageElement.innerHTML = `
-            <div class="assistant-label">Assistant:</div>
-            <div class="message-content"><p>${formattedMessage}</p></div>
+            <div class="assistant-label">${senderName}:</div>
+            <div class="message-content">${messageContentHtml}</div>
         `;
         this.chatMessages.appendChild(messageElement);
         this.scrollChatToBottom();

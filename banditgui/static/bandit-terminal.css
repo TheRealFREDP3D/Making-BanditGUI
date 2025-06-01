@@ -571,3 +571,77 @@ code, pre {
     font-style: italic;
     color: var(--warning);
 }
+
+/* Styling for "The Old Pro" messages in chat */
+.assistant-message.old-pro-message {
+    background-color: #283040; /* A slightly muted, wise dark blue/grey */
+    border-left: 4px solid var(--accent-tertiary); /* Using accent-tertiary for a wise but friendly feel */
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 0 8px 8px 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.assistant-message.old-pro-message .assistant-label {
+    color: var(--accent-tertiary); /* Matching the border */
+    font-weight: bold;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.assistant-message.old-pro-message .message-content pre {
+    background-color: rgba(0,0,0,0.1); /* Slightly darker pre background within the message */
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 4px;
+    font-family: "Georgia", "Times New Roman", serif; /* "Wise" font */
+    font-size: 1.05em; /* Slightly larger for readability */
+    line-height: 1.6;
+    color: var(--text-secondary);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-top: 5px; /* Space between label and pre */
+}
+
+/* Refined styles for status messages in #ask-a-pro-output */
+/* The #ask-a-pro-output container itself has background #2a2d3b */
+
+/* Common style for all status messages within #ask-a-pro-output strong tags */
+#ask-a-pro-output strong.loading-message,
+#ask-a-pro-output strong.success-message,
+#ask-a-pro-output strong.error-message-llm {
+    display: block; /* Make strong take full width for text-align */
+    padding: 10px; /* Uniform padding */
+    margin: 0; /* Reset margin from any generic strong or message class */
+    font-style: italic;
+    text-align: center; /* Center the status text */
+    border-radius: 4px; /* Match container's border-radius */
+}
+
+/* Specific colors for each status type */
+#ask-a-pro-output strong.loading-message {
+    color: var(--warning);
+    background-color: rgba(255, 159, 28, 0.1); /* Light background for warning */
+}
+
+#ask-a-pro-output strong.success-message {
+    color: var(--success);
+    background-color: rgba(56, 176, 0, 0.1); /* Light background for success */
+}
+
+#ask-a-pro-output strong.error-message-llm {
+    color: var(--error);
+    background-color: rgba(255, 92, 141, 0.1); /* Light background for error */
+}
+
+/* If there's a <pre> tag within an error message in #ask-a-pro-output */
+#ask-a-pro-output pre.error-message-llm {
+    margin-top: 8px;
+    padding: 8px;
+    background-color: rgba(255, 92, 141, 0.05); /* Even lighter or none */
+    color: var(--error); /* Ensure pre text also gets error color */
+    font-family: "Fira Code", "Cascadia Code", monospace; /* Keep pre mono for error details */
+    font-size: 0.9em;
+    border-radius: 4px;
+    border: 1px dashed var(--error);
+}
