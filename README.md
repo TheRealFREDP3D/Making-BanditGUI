@@ -80,6 +80,14 @@ The application includes a chat interface that:
 - Offers a user-friendly way to access information
 - Creates a more interactive learning experience
 
+### 6. "Ask a Pro" AI Assistant
+
+Get contextual help from "The Old Pro," an AI-powered assistant designed to guide you through the Bandit challenges.
+- **Smart Hints**: The assistant provides hints based on your current level and recent command history, offering more relevant guidance.
+- **Flexible LLM Integration**: Leverages various Large Language Models (LLMs) through services like OpenAI, Google Gemini, OpenRouter, and local Ollama instances, thanks to LiteLLM. This allows for a versatile and adaptable help experience.
+- **Persona-Driven Assistance**: "The Old Pro" persona offers encouragement and advice, making the learning process more engaging.
+- **Contextual Learning**: By understanding your progress, the AI can help you connect the dots and learn more effectively.
+
 ## Technical Implementation
 
 BanditGUI is built with modern web technologies:

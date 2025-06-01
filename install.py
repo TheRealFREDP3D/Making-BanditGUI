@@ -194,24 +194,61 @@ def install_nodejs_dependencies():
 def setup_environment_variables():
     """Set up environment variables."""
     print_header("Setting Up Environment Variables")
-    
-    # Check if .env file exists
-    if os.path.exists(".env"):
-        print_warning(".env file already exists, skipping creation")
+
+    default_env_vars = {
+        "SSH_HOST": "bandit.labs.overthewire.org",
+        "SSH_PORT": "2220",
+        "SSH_USERNAME": "bandit0",
+        "SSH_PASSWORD": "bandit0",
+        "DEBUG": "True",
+        "HOST": "127.0.0.1",
+        "PORT": "5000",
+        "LOG_LEVEL": "INFO",
+        "OPENAI_API_KEY": "YOUR_OPENAI_API_KEY_HERE",
+        "GEMINI_API_KEY": "YOUR_GEMINI_API_KEY_HERE",
+        "OPENROUTER_API_KEY": "YOUR_OPENROUTER_API_KEY_HERE",
+        "OLLAMA_BASE_URL": "http://localhost:11434",
+        "PREFERRED_LLM_PROVIDER": "gemini",
+        "PREFERRED_LLM_MODEL": "gemini-1.5-flash-latest"
+    }
+
+    env_file_path = Path(".env")
+    env_example_path = Path(".env.example")
+
+    if env_file_path.exists():
+        print_warning(f"'{env_file_path}' already exists. Skipping creation.")
         return True
+
+    if env_example_path.exists():
+        try:
+            content = env_example_path.read_text()
+            env_file_path.write_text(content)
+            print_success(f"Created '{env_file_path}' from '{env_example_path}'.")
+            # Ensure all default keys are present if .env.example is incomplete
+            # This part is a bit more complex as it requires parsing and merging
+            # For simplicity, we'll assume .env.example is usually complete or users will edit it.
+            # A more robust solution would parse .env.example and add missing keys from default_env_vars.
+        except IOError as e:
+            print_error(f"Error copying '{env_example_path}' to '{env_file_path}': {e}")
+            print_info("Creating .env with default values as a fallback.")
+            # Fallback to creating .env with defaults if copy fails
+            with open(env_file_path, "w") as f:
+                for key, value in default_env_vars.items():
+                    if key == "OLLAMA_BASE_URL": # Comment out by default
+                        f.write(f"# {key}=\"{value}\"\n")
+                    else:
+                        f.write(f"{key}=\"{value}\"\n")
+            print_success(f"Created '{env_file_path}' with default values.")
+    else:
+        print_info(f"'{env_example_path}' not found. Creating '{env_file_path}' with default values.")
+        with open(env_file_path, "w") as f:
+            for key, value in default_env_vars.items():
+                if key == "OLLAMA_BASE_URL": # Comment out by default
+                    f.write(f"# {key}=\"{value}\"\n")
+                else:
+                    f.write(f"{key}=\"{value}\"\n")
+        print_success(f"Created '{env_file_path}' with default values.")
     
-    # Create .env file with default values
-    with open(".env", "w") as f:
-        f.write("SSH_HOST=bandit.labs.overthewire.org\n")
-        f.write("SSH_PORT=2220\n")
-        f.write("SSH_USERNAME=bandit0\n")
-        f.write("SSH_PASSWORD=bandit0\n")
-        f.write("DEBUG=True\n")
-        f.write("HOST=127.0.0.1\n")
-        f.write("PORT=5000\n")
-        f.write("LOG_LEVEL=INFO\n")
-    
-    print_success("Created .env file with default values")
     return True
 
 def create_run_script():
