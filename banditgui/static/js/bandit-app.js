@@ -167,12 +167,16 @@ class BanditApp {
                     this.toggleChatBtn.textContent = 'Hide Chat';
                 }
 
-                // Resize terminal after transition
-                setTimeout(() => {
-                    if (this.fitAddon) { // Ensure fitAddon is initialized
-                        this.fitAddon.fit();
+                // Resize terminal after transition using transitionend event
+                const onTransitionEnd = (event) => {
+                    if (event.target === this.leftPanel) {
+                        if (this.fitAddon) { // Ensure fitAddon is initialized
+                            this.fitAddon.fit();
+                        }
+                        this.leftPanel.removeEventListener('transitionend', onTransitionEnd);
                     }
-                }, 350); // Slightly longer than CSS transition (0.3s)
+                };
+                this.leftPanel.addEventListener('transitionend', onTransitionEnd);
             });
         }
     }
