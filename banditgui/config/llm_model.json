@@ -1,0 +1,17 @@
+{
+  "openai": ["gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo"],
+  "gemini": ["gemini-1.5-pro", "gemini-1.5-flash"],
+  "openrouter": ["nous-hermes-2", "mistral-7b-instruct", "claude-3-opus"],
+  "anthropic": ["claude-3-opus", "claude-3-sonnet", "claude-3-haiku"],
+  "mistral": ["mistral-small", "mistral-medium", "mistral-large"],
+  "perplexity": ["pplx-7b-online", "pplx-70b-chat"],
+  "cohere": ["command-r-plus"],
+  "deepseek": ["deepseek-coder", "deepseek-llm"],
+  "groq": ["llama3-70b", "mixtral-8x7b"],
+  "ollama": [
+    "qwen2.5-1.5b",
+    "gemma3:1b",
+    "DeepSeek-R1-Distill-Llama-8B-Q4_K_M:latest",
+    "llama3.2:1b-instruct-q4_K_M"
+  ]
+}
