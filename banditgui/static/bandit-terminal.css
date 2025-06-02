@@ -286,7 +286,7 @@ body {
 #connect-button {
     padding: 10px 20px;
     background-color: var(--success);
-    color: #FFFFFF; /* Updated text color */
+    color: var(--text-primary); /* Updated to use semantic variable */
     border: none;
     border-radius: 6px; /* Updated border-radius */
     cursor: pointer;
