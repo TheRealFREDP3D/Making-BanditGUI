@@ -1,0 +1,4 @@
+pytest>=7.0.0
+pytest-mock>=3.0.0
+Flask>=2.0.0 # Already in requirements.txt, but good for test env
+litellm>=1.38.11 # Already in requirements.txt, but good for test env

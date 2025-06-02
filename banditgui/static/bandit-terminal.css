@@ -151,6 +151,33 @@ background-color: color-mix(in srgb, var(--accent-secondary) 10%, transparent);
     letter-spacing: 0.5px;
 }
 
+.mentor-message {
+    background-color: #e9ecef; /* Light gray background */
+    border-left: 4px solid #4CAF50; /* Green accent bar */
+    padding: 15px; /* Consistent padding */
+    margin-bottom: 20px; /* Consistent margin */
+    border-radius: 0 6px 6px 0; /* Consistent radius */
+    box-shadow: var(--shadow-sm);
+    color: #333; /* Darker text for better contrast on light background */
+}
+
+.mentor-message .mentor-label {
+    font-weight: bold;
+    color: #4CAF50; /* Green label text */
+    margin-bottom: 8px; /* Consistent margin */
+    letter-spacing: 0.5px; /* Consistent spacing */
+}
+
+.mentor-message .mentor-label .fas { /* Style for Font Awesome icon */
+    margin-right: 8px;
+}
+
+.mentor-message .message-content {
+    /* Add specific styles if needed, otherwise inherits from .mentor-message */
+    /* Ensuring text color is explicitly set for content if needed */
+    color: #333; 
+}
+
 #chat-input-container {
     display: flex;
     padding: 15px;
