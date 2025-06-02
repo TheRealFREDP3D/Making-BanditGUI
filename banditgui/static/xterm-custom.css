@@ -108,7 +108,7 @@
 
 .xterm-selection div {
     position: absolute;
-    background-color: rgba(74, 144, 226, 0.4); /* Updated background color */
+background-color: color-mix(in srgb, var(--accent-primary) 40%, transparent); /* Updated background color */
 }
 
 /* Ensure the terminal container fills the panel */
