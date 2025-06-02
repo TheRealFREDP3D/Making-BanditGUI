@@ -99,7 +99,7 @@ body {
 #chat-container {
     display: flex;
     flex-direction: column;
-    height: calc(100% - 60px); /* Adjusted to account for header height */
+    height: calc(100% - var(--header-height, 60px)); /* Adjusted to account for header height - consider using a defined CSS variable */
     justify-content: space-between; /* Distribute space between items */
 }
 
