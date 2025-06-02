@@ -490,7 +490,7 @@ code, pre {
 }
 
 .start-game-button:hover {
-    background-color: #D88A0B; /* Updated hover background-color */
+background-color: var(--warning-darker); /* Suggest defining --warning-darker: #D88A0B; in :root */
     transform: translateY(-2px);
     box-shadow: var(--shadow-md); /* Updated hover box-shadow */
 }
