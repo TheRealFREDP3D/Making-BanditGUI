@@ -539,8 +539,10 @@ Type <code>level</code> in this chat to see the current level instructions.
         // Using Font Awesome icon
         messageElement.innerHTML = `
             <div class="mentor-label"><i class="fas fa-user-graduate"></i> Mentor:</div>
-            <div class="message-content">${message}</div>
+            <div class="message-content"></div>
         `;
+        const messageContent = messageElement.querySelector('.message-content');
+        messageContent.textContent = message;
         this.chatMessages.appendChild(messageElement);
         this.scrollChatToBottom();
     }
