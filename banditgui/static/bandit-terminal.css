@@ -170,7 +170,7 @@ body {
     padding: 12px 15px;
     border: none;
     border-radius: 6px 0 0 6px; /* Updated border-radius */
-    background-color: #202020; /* Updated background-color */
+background-color: var(--primary-medium); /* Or a new variable e.g. --input-bg */
     color: var(--text-primary);
     outline: none;
     font-size: 14px;
