@@ -177,7 +177,7 @@ Goal: Help them understand their current situation. Provide some technical expla
 📍 Level Name: {level_name}
 🧩 Level Description: {level_description}
 📜 Command History:
-{command_history_str if command_history_str else "No commands executed yet."}
+{command_history_str or "No commands executed yet."}
 
 ---
 
