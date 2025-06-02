@@ -41,9 +41,6 @@
                 </div>
                 <div id="chat-input-container">
                     <div id="ask-a-pro-container" class="ask-a-pro-controls">
-                        <select id="llm-selection-dropdown" class="llm-dropdown">
-                            <!-- Options will be populated by JavaScript -->
-                        </select>
                         <button id="ask-a-pro-button" class="chat-button ask-a-pro-button">
                             <i class="fas fa-user-graduate"></i> Ask-a-Pro
                         </button>
@@ -57,9 +54,14 @@
             <div class="panel right">
                 <div class="terminal-header">
                     <h3>Bandit Terminal</h3>
-                    <div class="connection-status">
-                        <span id="status-indicator" class="disconnected"></span>
-                        <span id="status-text">Disconnected</span>
+                    <div class="header-right-controls">
+                        <select id="llm-selection-dropdown" class="llm-dropdown">
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                        <div class="connection-status">
+                            <span id="status-indicator" class="disconnected"></span>
+                            <span id="status-text">Disconnected</span>
+                        </div>
                     </div>
                 </div>
                 <div id="terminal-container"></div>

@@ -94,20 +94,24 @@ body {
     font-weight: 600;
     letter-spacing: 0.5px;
     box-shadow: var(--shadow-sm);
+    flex-shrink: 0; /* Added to prevent header from shrinking */
 }
 
 #chat-container {
     display: flex;
     flex-direction: column;
-    height: calc(100% - var(--header-height, 60px)); /* Adjusted to account for header height - consider using a defined CSS variable */
-    justify-content: space-between; /* Distribute space between items */
+    flex-grow: 1;
+    overflow: hidden; /* Hide overflow to prevent scrollbar on the container itself */
 }
 
 #chat-messages {
-    flex-grow: 1; /* Allow chat messages to grow and take available space */
-    overflow-y: auto;
+    flex-grow: 1;
+    overflow-y: auto; /* Enable vertical scrolling */
     padding: 20px;
     scroll-behavior: smooth;
+    min-height: 0; /* Allow it to shrink if needed, but grow to fill space */
+    /* Add a max-height to ensure it doesn't push the input off-screen */
+    max-height: calc(100vh - 120px); /* Adjust 120px based on header and input container height */
 }
 
 .system-message {
@@ -184,9 +188,12 @@ background-color: color-mix(in srgb, var(--accent-secondary) 10%, transparent);
     background-color: var(--primary-light);
     border-top: 1px solid var(--border-color);
     width: 100%;
-    z-index: 10;
+    z-index: 20;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-    flex-shrink: 0; /* Prevent shrinking */
+    flex-shrink: 0;
+    /* Removed margin-top: auto; and position: relative; as they might interfere with flex layout */
+    background-color: #333;
+    border-top: 2px solid #4A90E2;
 }
 
 #chat-input {
@@ -241,14 +248,49 @@ background-color: var(--primary-medium); /* Or a new variable e.g. --input-bg */
     background-color: var(--primary-light);
     border-bottom: 1px solid var(--border-color);
     box-shadow: var(--shadow-sm);
+    padding-right: 15px; /* Add padding to the right for spacing */
 }
 
-/* Quote Container CSS removed - only keeping terminal welcome quote */
+.header-right-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between dropdown and status */
+}
+
+.llm-dropdown {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--primary-medium);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    outline: none;
+    appearance: none; /* Remove default dropdown arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%23F5F5F5%22%3E%3Cpath%20d%3D%22M5.293%207.293a1%201%200%20011.414%200L10%2010.586l3.293-3.293a1%201%200%20111.414%201.414l-4%204a1%201%200%2001-1.414%200l-4-4a1%201%200%20010-1.414z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 12px;
+    transition: all 0.2s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.llm-dropdown:hover {
+    background-color: #242424;
+    border-color: var(--accent-primary);
+}
+
+.llm-dropdown:focus {
+    border-color: var(--accent-primary);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(74, 144, 226, 0.4);
+}
 
 .connection-status {
     display: flex;
     align-items: center;
-    padding-right: 15px;
 }
 
 #status-indicator {

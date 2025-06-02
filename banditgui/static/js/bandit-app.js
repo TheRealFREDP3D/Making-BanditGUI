@@ -195,9 +195,11 @@ class BanditApp {
         // Start game button
         const startGameButton = document.getElementById('start-game-button');
         if (startGameButton) {
-            startGameButton.addEventListener('click', () => {
-                this.startNewGame();
-            });
+startGameButton.addEventListener('click', () => {
+    this.startNewGame();
+    // Ensure the chat input is visible
+    this.chatInput.style.display = 'block';
+});
         }
 
         // Handle terminal resize to ensure proper fit
