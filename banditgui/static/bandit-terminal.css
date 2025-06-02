@@ -138,7 +138,7 @@ body {
 }
 
 .assistant-message {
-    background-color: rgba(80, 227, 194, 0.1);
+background-color: color-mix(in srgb, var(--accent-secondary) 10%, transparent);
     border-left: 4px solid var(--accent-secondary);
     padding: 15px;
     margin-bottom: 20px;
