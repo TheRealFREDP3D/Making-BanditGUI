@@ -40,11 +40,6 @@ def test_hello_world_sanity_check(client):
     # Let's test a known route like /server-status which is GET
     response = client.get('/server-status')
     assert response.status_code == 200 # Assuming server-status is always available and returns 200
-    # This test might fail if /server-status has side effects or dependencies not mocked here.
-    # It's primarily to check if client fixture works.
-    # For now, we'll just check status_code.
-    # A better sanity check would be a dedicated simple health check endpoint if one existed.
-    pass # Will add actual tests next.
 
 # --- Tests for /config/llm_model.json ---
 
