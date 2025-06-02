@@ -122,7 +122,7 @@ body {
 }
 
 .user-message {
-    background-color: rgba(74, 144, 226, 0.1);
+background-color: color-mix(in srgb, var(--accent-primary) 10%, transparent);
     border-radius: 6px;
     padding: 15px;
     margin-bottom: 20px;
