@@ -40,6 +40,14 @@
                     </div>
                 </div>
                 <div id="chat-input-container">
+                    <div id="ask-a-pro-container" style="display: flex; align-items: center; margin-bottom: 5px;">
+                        <select id="llm-selection-dropdown" style="flex-grow: 1; margin-right: 5px; padding: 8px; border-radius: 4px; border: 1px solid #ccc;">
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                        <button id="ask-a-pro-button" class="chat-button" style="padding: 8px 15px; border-radius: 4px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
+                            <i class="fas fa-user-graduate"></i> Ask-a-Pro
+                        </button>
+                    </div>
                     <input type="text" id="chat-input" placeholder="Chat with the assistant...">
                     <button id="chat-submit"><i class="fas fa-paper-plane"></i></button>
                 </div>

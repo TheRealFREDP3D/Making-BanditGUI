@@ -7,6 +7,7 @@ import os
 import sys
 
 from flask import Flask, jsonify, render_template, request, send_from_directory
+from litellm import completion # Added for Ask-a-Pro
 
 from banditgui.chat.chat_manager import ChatManager
 from banditgui.config.logging import get_logger, setup_logging
@@ -138,6 +139,131 @@ def serve_js(filename):
     """Serve JavaScript files."""
     logger.debug(f"Serving JS file: {filename}")
     return send_from_directory('static/js', filename)
+
+
+@app.route('/config/<path:filename>')
+def serve_config_json(filename):
+    logger.debug(f"Serving config JSON file: {filename}")
+    # Ensure the path is safe and only serves expected files
+    if filename == "llm_model.json":
+        # 'config' is relative to app.root_path, which is 'banditgui/'
+        return send_from_directory('config', filename, mimetype='application/json')
+    else:
+        return jsonify({"status": "error", "message": "File not found"}), 404
+
+
+@app.route('/ask-a-pro', methods=['POST'])
+def ask_a_pro():
+    data = request.json
+    selected_llm_value = data.get('llm') # e.g., "openai/gpt-4o"
+    level_name = data.get('level_name')
+    level_description = data.get('level_description')
+    command_history_list = data.get('command_history', [])
+
+    # Basic validation
+    if not all([selected_llm_value, level_name is not None, level_description]): # level_name can be 0
+        logger.warning("Ask-a-Pro request missing required data.")
+        return jsonify({'status': 'error', 'message': 'Missing required data for Ask-a-Pro.'}), 400
+
+    command_history_str = "\n".join([f"- {cmd}" for cmd in command_history_list])
+
+    prompt_template = f"""
+You are an expert mentor assisting a CTF or security challenge participant. The user is currently on a specific level, and has executed the following commands so far.
+
+Goal: Help them understand their current situation. Provide some technical explanation, suggest a direction or next step, and recommend a resource to learn more. Never reveal the full solution. Keep it constructive and educational.
+
+---
+
+📍 Level Name: {level_name}
+🧩 Level Description: {level_description}
+📜 Command History:
+{command_history_str if command_history_str else "No commands executed yet."}
+
+---
+
+🎓 Based on this, summarize what's going on, explain any key concepts, suggest something to try next, and link to a learning resource (like a man page, article, or tool documentation). The user should walk away more informed, but not with the answer directly.
+    """
+
+    logger.debug(f"Ask-a-Pro prompt constructed for LLM: {selected_llm_value}")
+    # logger.debug(f"Prompt content:\n{prompt_template}") # Uncomment for debugging prompt
+
+    try:
+        model_parts = selected_llm_value.split('/', 1)
+        provider = model_parts[0]
+        
+        # Default model_name_for_api to the full value, adjust as needed
+        model_name_for_api = selected_llm_value 
+
+        api_key = None
+        # API Key resolution based on provider
+        if provider == "openai":
+            api_key = os.getenv("OPENAI_API_KEY")
+            # model_name_for_api is already correct e.g. "openai/gpt-4o" or "gpt-4o" if litellm handles it
+        elif provider == "gemini":
+            model_name_for_api = selected_llm_value # e.g. "gemini/gemini-1.5-pro"
+            api_key = os.getenv("GEMINI_API_KEY")
+        elif provider == "anthropic":
+            api_key = os.getenv("ANTHROPIC_API_KEY")
+            # model_name_for_api for anthropic is often just the model name e.g. "claude-3-opus-20240229"
+            # but llm_model.json has "claude-3-opus", litellm might prepend "anthropic/" or handle it.
+            # For safety, pass the full selected_llm_value if it includes provider, else construct.
+        elif provider == "cohere":
+            api_key = os.getenv("COHERE_API_KEY")
+        elif provider == "mistral":
+            api_key = os.getenv("MISTRAL_API_KEY")
+            # model_name_for_api = f"mistral/{model_parts[1]}" if len(model_parts) > 1 else f"mistral/{provider}"
+        elif provider == "perplexity":
+            api_key = os.getenv("PERPLEXITY_API_KEY")
+        elif provider == "deepseek":
+            api_key = os.getenv("DEEPSEEK_API_KEY")
+        elif provider == "groq":
+            api_key = os.getenv("GROQ_API_KEY")
+        elif provider == "openrouter":
+            model_name_for_api = f"openrouter/{model_parts[1]}" if len(model_parts) > 1 else f"openrouter/{provider}"
+            api_key = os.getenv("OPENROUTER_API_KEY")
+        elif provider == "ollama":
+            model_name_for_api = f"ollama/{model_parts[1]}" if len(model_parts) > 1 else f"ollama/{provider}"
+            # OLLAMA_BASE_URL should be set in .env for LiteLLM to pick up.
+            # api_key is typically not needed for local Ollama.
+            pass
+
+        # Check for API key after specific provider logic
+        if not api_key and provider not in ["ollama"] and not os.getenv(f"{provider.upper()}_API_KEY"):
+             # Fallback for providers where API key might be named like PROVIDER_API_KEY but not explicitly handled above
+            api_key = os.getenv(f"{provider.upper()}_API_KEY")
+
+        if not api_key and provider not in ["ollama"]:
+            logger.error(f"API key for {provider} is not set. Looked for {provider.upper()}_API_KEY.")
+            return jsonify({'status': 'error', 'message': f'API key for {provider} not configured on server.'}), 500
+        
+        messages_for_llm = [{"role": "user", "content": prompt_template}]
+        
+        logger.info(f"Sending request to LiteLLM with model: {model_name_for_api} for provider {provider}")
+
+        response = completion(
+            model=model_name_for_api, #This should be like "gpt-3.5-turbo" or "ollama/llama2" or "gemini/gemini-pro"
+            messages=messages_for_llm,
+            api_key=api_key, # Pass None if not needed (e.g. Ollama)
+            # For some providers like Azure, custom_llm_provider might be needed.
+            # LiteLLM usually infers provider from model name string.
+        )
+        
+        advice = response.choices[0].message.content
+        logger.info(f"Received advice from LLM: {advice[:100]}...")
+        return jsonify({'status': 'success', 'advice': advice})
+
+    except NameError as e: # Specifically catch if 'completion' is not defined
+        if 'completion' in str(e):
+            logger.error("LiteLLM is likely not installed. Please add 'litellm' to requirements.txt and install it.")
+            return jsonify({'status': 'error', 'message': 'LLM integration library (LiteLLM) not available on server. Please install dependencies.'}), 500
+        else:
+            error_msg = f"Unexpected NameError: {str(e)}"
+            logger.error(error_msg)
+            return jsonify({'status': 'error', 'message': error_msg}), 500
+    except Exception as e:
+        error_msg = f"Error calling LLM: {str(e)}"
+        logger.error(error_msg, exc_info=True) # Log full traceback for other errors
+        return jsonify({'status': 'error', 'message': error_msg}), 500
 
 
 @app.route('/level-info', methods=['POST'])

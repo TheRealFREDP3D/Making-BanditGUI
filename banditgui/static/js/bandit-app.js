@@ -9,6 +9,7 @@ class BanditApp {
         // Initialize state
         this.isConnected = false;
         this.currentLevel = null;
+        this.currentLevelDescription = null; // Added for Ask-a-Pro
         this.serverStatus = 'unknown';
 
         // Initialize components
@@ -29,6 +30,43 @@ class BanditApp {
         this.chatInput = document.getElementById('chat-input');
         this.chatSubmit = document.getElementById('chat-submit');
         this.chatMessages = document.getElementById('chat-messages');
+        this.llmDropdown = document.getElementById('llm-selection-dropdown');
+        this.askAProButton = document.getElementById('ask-a-pro-button');
+
+        this.populateLlmDropdown();
+    }
+
+    /**
+     * Populate the LLM selection dropdown
+     */
+    async populateLlmDropdown() {
+        try {
+            const response = await fetch('/config/llm_model.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const llmModels = await response.json();
+
+            for (const provider in llmModels) {
+                if (llmModels.hasOwnProperty(provider)) {
+                    llmModels[provider].forEach(modelName => {
+                        const option = document.createElement('option');
+                        option.value = `${provider}/${modelName}`;
+                        // Capitalize first letter of provider for display
+                        const providerDisplay = provider.charAt(0).toUpperCase() + provider.slice(1);
+                        option.textContent = `${providerDisplay}: ${modelName}`;
+                        this.llmDropdown.appendChild(option);
+                    });
+                }
+            }
+        } catch (error) {
+            console.error('Error fetching or parsing LLM models:', error);
+            // Optionally, add a default/error option to the dropdown
+            const option = document.createElement('option');
+            option.value = "";
+            option.textContent = "Error loading models";
+            this.llmDropdown.appendChild(option);
+        }
     }
 
     /**
@@ -109,6 +147,50 @@ class BanditApp {
         this.chatSubmit.addEventListener('click', () => {
             this.handleChatSubmit();
         });
+
+        // Ask a Pro button event listener
+        if (this.askAProButton) {
+            this.askAProButton.addEventListener('click', async () => {
+                const selectedLlm = this.llmDropdown.value;
+                const levelName = this.currentLevel;
+                const levelDescription = this.currentLevelDescription;
+                const commandHistory = this.history;
+
+                if (levelName === null || !levelDescription) {
+                    this.addAssistantMessage("Please make sure you have started a level and its information is displayed before using Ask-a-Pro. Try using the 'level' or 'start' command in the chat.");
+                    return;
+                }
+                
+                this.addMentorMessage(`Thinking like a Pro with ${selectedLlm.split('/')[1]}...`);
+
+
+                try {
+                    const response = await fetch('/ask-a-pro', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            llm: selectedLlm,
+                            level_name: levelName,
+                            level_description: levelDescription,
+                            command_history: commandHistory,
+                        }),
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok && data.status === 'success') {
+                        this.addMentorMessage(data.advice);
+                    } else {
+                        this.addAssistantMessage(`Sorry, I couldn't get advice from the Pro. ${data.message || 'Unknown server error.'}`);
+                    }
+                } catch (error) {
+                    console.error('Error calling Ask-a-Pro:', error);
+                    this.addAssistantMessage(`Sorry, I couldn't get advice from the Pro. Error: ${error.message}`);
+                }
+            });
+        }
 
         // Start game button
         const startGameButton = document.getElementById('start-game-button');
@@ -277,6 +359,7 @@ Type <code>level</code> in this chat to see the current level instructions.
 
             if (data.status === 'success') {
                 const levelInfo = data.levelInfo;
+                this.currentLevelDescription = levelInfo.goal; // Store for Ask-a-Pro
 
                 // Format the commands with links if available
                 let commandsHtml = '';
@@ -441,6 +524,21 @@ Type <code>level</code> in this chat to see the current level instructions.
         messageElement.className = 'user-message';
         messageElement.innerHTML = `
             <div class="user-label">You:</div>
+            <div class="message-content">${message}</div>
+        `;
+        this.chatMessages.appendChild(messageElement);
+        this.scrollChatToBottom();
+    }
+
+    /**
+     * Add a mentor message to the chat
+     */
+    addMentorMessage(message) {
+        const messageElement = document.createElement('div');
+        messageElement.className = 'mentor-message';
+        // Using Font Awesome icon
+        messageElement.innerHTML = `
+            <div class="mentor-label"><i class="fas fa-user-graduate"></i> Mentor:</div>
             <div class="message-content">${message}</div>
         `;
         this.chatMessages.appendChild(messageElement);
