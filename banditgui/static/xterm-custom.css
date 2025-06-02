@@ -89,7 +89,7 @@ color: var(--text-primary); /* Or a specific variable like --text-on-accent-stro
 @keyframes xterm-cursor-blink {
     0% {
         background-color: var(--accent-primary); /* Updated background color */
-        color: #FFFFFF; /* Updated text color */
+color: var(--text-primary); /* Or a specific variable like --text-on-accent-strong if #FFFFFF is required */
     }
     50% {
         background-color: transparent;
