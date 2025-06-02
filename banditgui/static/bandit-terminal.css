@@ -434,7 +434,7 @@ code, pre {
 }
 
 .level-info pre {
-    background-color: rgba(26, 26, 46, 0.7);
+background-color: var(--pre-bg, rgba(26, 26, 46, 0.7)); /* Suggest defining --pre-bg in :root */
     padding: 15px;
     border-radius: 6px; /* Updated border-radius */
     overflow-x: auto;
