@@ -160,7 +160,8 @@ class BanditApp {
                     this.addAssistantMessage("Please make sure you have started a level and its information is displayed before using Ask-a-Pro. Try using the 'level' or 'start' command in the chat.");
                     return;
                 }
-                
+
+                this.addUserMessage(`Asking the Pro about Level ${levelName}: '${levelDescription}' (Command history: ${commandHistory.join(', ') || 'empty'})`);
                 this.addMentorMessage(`Thinking like a Pro with ${selectedLlm.split('/')[1]}...`);
 
 
