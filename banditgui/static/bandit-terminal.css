@@ -257,6 +257,33 @@ background-color: var(--primary-medium); /* Or a new variable e.g. --input-bg */
     gap: 15px; /* Space between dropdown and status */
 }
 
+#ask-a-pro-container {
+    /* No specific positioning needed here, as it's now part of a flex container */
+}
+
+.ask-a-pro-button {
+    padding: 8px 12px;
+    background-color: var(--accent-tertiary);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.ask-a-pro-button:hover {
+    background-color: color-mix(in srgb, var(--accent-tertiary) 80%, black);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.ask-a-pro-button:active {
+    transform: translateY(1px);
+    box-shadow: var(--shadow-sm);
+}
+
 .llm-dropdown {
     padding: 8px 12px;
     border: 1px solid var(--border-color);
