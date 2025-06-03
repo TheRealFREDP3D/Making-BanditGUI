@@ -544,7 +544,8 @@ Type <code>level</code> in this chat to see the current level instructions.
             <div class="message-content"></div>
         `;
         const messageContent = messageElement.querySelector('.message-content');
-        messageContent.textContent = message;
+        // Use marked.parse to render Markdown content
+        messageContent.innerHTML = marked.parse(message);
         this.chatMessages.appendChild(messageElement);
         this.scrollChatToBottom();
     }
