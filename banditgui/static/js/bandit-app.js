@@ -160,7 +160,11 @@ class BanditApp {
                     this.addAssistantMessage("Please make sure you have started a level and its information is displayed before using Ask-a-Pro. Try using the 'level' or 'start' command in the chat.");
                     return;
                 }
-                
+
+                const escapeHTML = (str) => str == null ? '' : String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+                const safeLevelDescription = escapeHTML(levelDescription);
+                const safeCommandHistoryString = commandHistory.length > 0 ? commandHistory.map(cmd => escapeHTML(cmd)).join(', ') : 'empty';
+                this.addUserMessage(`Asking the Pro about Level ${levelName}: '${safeLevelDescription}' (Command history: ${safeCommandHistoryString})`);
                 this.addMentorMessage(`Thinking like a Pro with ${selectedLlm.split('/')[1]}...`);
 
 
