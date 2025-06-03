@@ -161,7 +161,10 @@ class BanditApp {
                     return;
                 }
 
-                this.addUserMessage(`Asking the Pro about Level ${levelName}: '${levelDescription}' (Command history: ${commandHistory.join(', ') || 'empty'})`);
+                const escapeHTML = (str) => str == null ? '' : String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+                const safeLevelDescription = escapeHTML(levelDescription);
+                const safeCommandHistoryString = commandHistory.length > 0 ? commandHistory.map(cmd => escapeHTML(cmd)).join(', ') : 'empty';
+                this.addUserMessage(`Asking the Pro about Level ${levelName}: '${safeLevelDescription}' (Command history: ${safeCommandHistoryString})`);
                 this.addMentorMessage(`Thinking like a Pro with ${selectedLlm.split('/')[1]}...`);
 
 
