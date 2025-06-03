@@ -1,4 +1,4 @@
-# v0.3 -BanditGUI : Making Cybersecurity Learning Accessible
+# v0.3.1 - BanditGUI: Making Cybersecurity Learning Accessible
 
 ![Screenshot](docs/assets/v0.3.2-UI-Screenshot.png)
 
@@ -71,14 +71,14 @@ Users can access detailed information about each Bandit level:
 - Helpful reading materials and resources
 - A structured approach to progressing through the challenges
 
-### 5. Chat Interface
+### 5. LLM-Powered Chat Interface
 
-The application includes a chat interface that:
+The application includes an advanced chat interface powered by Large Language Models (LLMs), using `litellm` to support various API providers and LLM.
 
-- Provides helpful hints for each level
-- Responds to basic commands like 'help', 'info', and 'level'
-- Offers a user-friendly way to access information
-- Creates a more interactive learning experience
+- Provides intelligent, context-aware hints for each level
+- Responds to basic commands like 'help', 'info', and 'level' with enhanced understanding
+- Offers a user-friendly and interactive way to access information and guidance
+- Creates a more dynamic and engaging learning experience
 
 ## Technical Implementation
 
@@ -88,6 +88,7 @@ BanditGUI is built with modern web technologies:
 - **Frontend**: HTML, CSS, and JavaScript
 - **Terminal**: xterm.js with FitAddon and WebLinksAddon
 - **SSH**: Paramiko for secure SSH connections
+- **LLM Integration**: Google Gemini models for the chat interface
 - **Data**: JSON-based storage for level information
 
 The application follows good software engineering practices:
@@ -105,8 +106,7 @@ We have exciting plans for future versions of BanditGUI:
 1. **Password Management**: Adding secure password storage with encryption
 2. **Progress Tracking**: Implementing a system to track user progress through the challenges
 3. **Gamification**: Adding badges, streaks, and other gamification elements to increase engagement
-4. **Advanced Terminal Features**: Adding syntax highlighting, command suggestions, and improved output formatting
-5. **Accessibility Improvements**: Ensuring proper contrast ratios, keyboard navigation, and screen reader compatibility
+4. **Accessibility Improvements**: Ensuring proper contrast ratios, keyboard navigation, and screen reader compatibility
 
 ## Getting Started
 
@@ -208,6 +208,20 @@ The v0.3 release introduces automated installation scripts that make it easier t
 - Enhanced SSH connection handling with clear success messages
 - Improved transition between levels with automatic display of next level information
 - Made all help messages and instructions consistent throughout the application
+
+## How to Contribute
+
+We welcome contributions from the community! If you'd like to contribute to BanditGUI, please follow these steps:
+
+1.  **Fork the repository.**
+2.  **Create a new branch** for your feature or bug fix: `git checkout -b feature/your-feature-name` or `git checkout -b bugfix/your-bug-fix`.
+3.  **Make your changes** and ensure they adhere to our coding standards.
+4.  **Test your changes** thoroughly.
+5.  **Commit your changes** with a clear and concise commit message.
+6.  **Push your branch** to your forked repository.
+7.  **Open a Pull Request** to the `main` branch of the original repository, describing your changes in detail.
+
+We appreciate your help in making BanditGUI even better!
 
 ## Conclusion
 
