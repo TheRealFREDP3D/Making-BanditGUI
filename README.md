@@ -1,252 +1,76 @@
-# v0.4 - BanditGUI: Making Cybersecurity Learning Accessible
+# BanditGUI v0.5.0: Making Cybersecurity Learning Accessible
 
-![Screenshot](docs/assets/v0.3.2-UI-Screenshot.png)
+<!-- Optional: Add a key screenshot or badge here later if desired -->
+<!-- For now, I'll reuse one from the old README, but ideally, it should be updated if there's a v0.5 specific one -->
+![BanditGUI Screenshot](docs/assets/v0.3.2-UI-Screenshot.png)
 
-*A web-based interface for the popular OverTheWire Bandit wargame that brings terminal access, structured learning, and helpful hints to your browser.*
+BanditGUI is a web-based interface for the popular OverTheWire Bandit wargame. It aims to make learning cybersecurity fundamentals more approachable by providing a browser-based terminal, structured level information, and an AI-powered assistant.
 
-## The Challenge of Learning Cybersecurity
+## Why BanditGUI?
 
-Learning cybersecurity can be intimidating. Between complex terminology, command-line interfaces, and the need for specialized environments, many beginners find themselves overwhelmed before they even start. The OverTheWire Bandit wargame is an excellent resource for beginners, but it still requires SSH access and command-line knowledge that can create barriers to entry.
+The command-line nature of challenges like Bandit can be a hurdle for beginners. BanditGUI lowers this barrier by:
+*   Providing an integrated terminal in your browser.
+*   Offering easy access to level goals, commands, and learning resources.
+*   Assisting with hints and explanations through an AI chat interface.
 
-That's where BanditGUI comes in.
+## Core Features
 
-## What is BanditGUI?
+*   **Interactive Web Terminal:** A full-featured xterm.js terminal in your browser to connect to Bandit via SSH.
+*   **Real SSH Connections:** Practice with actual Linux commands in a realistic environment.
+*   **Level Guidance:** Access information, relevant commands, and reading materials for each Bandit level.
+*   **AI-Powered Chat Assistant:** Get intelligent hints and explanations from an LLM-powered chat (supports various models via LiteLLM).
+*   **Simplified Setup:** Easy installation using a Python script.
+*   **Modular Design:** Built with a maintainable Python Flask backend and JavaScript frontend.
 
-BanditGUI is an open-source web application that provides a user-friendly interface to the OverTheWire Bandit wargame. It combines a full-featured terminal emulator with a helpful chat assistant, allowing users to:
+## Tech Stack
 
-- Connect to the Bandit server directly from their browser
-- Execute commands in a real SSH terminal
-- Access level-specific information and hints
-- Track their progress through the challenges
-- Learn Linux commands and security concepts in a structured way
-
-With BanditGUI, we're removing the barriers to entry for cybersecurity education, making it accessible to anyone with a web browser.
-
-## Key Features in v0.4
-
-The v0.4 release of BanditGUI brings several significant improvements:
-
-### 1. Full-Featured Terminal Experience
-
-We've implemented xterm.js, a powerful terminal emulator for the web, providing:
-
-- A responsive and interactive terminal interface
-- Support for ANSI color codes for better visual feedback
-- Command history navigation with arrow keys
-- Automatic terminal resizing with the FitAddon
-- Clickable URLs in terminal output with the WebLinksAddon
-
-### 2. Real SSH Connections
-
-BanditGUI establishes actual SSH connections to the Bandit server, allowing users to:
-
-- Execute real Linux commands
-- Experience authentic terminal interactions
-- Learn in a realistic environment
-- Receive immediate feedback on their commands
-
-#### SSH Connection Flow
-
-![SSH Connection Flow](./docs/assets/v0.3-SSH-Flow.png)
-
-*The diagram shows how user commands flow through the application components to the SSH server and back.*
-
-The SSH implementation uses Paramiko to establish secure connections with password authentication. Commands entered in the terminal are sent to the SSH server via the SSHManager, with comprehensive error handling and logging throughout the process.
-
-### 3. Modular Architecture
-
-The application features a completely refactored codebase with:
-
-- Clear separation of concerns through dedicated manager classes
-- Improved code organization with descriptive file names
-- Well-documented code with comprehensive docstrings
-- A clean, maintainable structure for future development
-
-### 4. Level Information System
-
-Users can access detailed information about each Bandit level:
-
-- Level-specific goals and objectives
-- Suggested commands with links to documentation
-- Helpful reading materials and resources
-- A structured approach to progressing through the challenges
-
-### 5. LLM-Powered Chat Interface
-
-The application includes an advanced chat interface powered by Large Language Models (LLMs), using `litellm` to support various API providers and LLM.
-
-- Provides intelligent, context-aware hints for each level
-- Responds to basic commands like 'help', 'info', and 'level' with enhanced understanding
-- Offers a user-friendly and interactive way to access information and guidance
-- Creates a more dynamic and engaging learning experience
-
-## Technical Implementation
-
-BanditGUI is built with modern web technologies:
-
-- **Backend**: Python with Flask for the web server
-- **Frontend**: HTML, CSS, and JavaScript
-- **Terminal**: xterm.js with FitAddon and WebLinksAddon
-- **SSH**: Paramiko for secure SSH connections
-- **LLM Integration**: Google Gemini models for the chat interface
-- **Data**: JSON-based storage for level information
-
-The application follows good software engineering practices:
-
-- Modular design with clear separation of concerns
-- Comprehensive error handling
-- Detailed logging
-- Well-documented code
-- Clean, maintainable structure
-
-## Roadmap for Future Development
-
-We have exciting plans for future versions of BanditGUI:
-
-1. **Password Management**: Adding secure password storage with encryption
-2. **Progress Tracking**: Implementing a system to track user progress through the challenges
-3. **Gamification**: Adding badges, streaks, and other gamification elements to increase engagement
-4. **Accessibility Improvements**: Ensuring proper contrast ratios, keyboard navigation, and screen reader compatibility
+*   **Backend:** Python (Flask)
+*   **Frontend:** HTML, CSS, JavaScript (xterm.js)
+*   **SSH:** Paramiko
+*   **LLM Integration:** LiteLLM
 
 ## Getting Started
 
-Ready to try BanditGUI? Installation is now easier than ever with our automated installation scripts!
+### Installation
 
-### Automatic Installation
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/therealfredp3D/Making-BanditGUI.git
+    cd Making-BanditGUI
+    ```
+2.  **Run the installation script:**
+    This script will set up a virtual environment, install dependencies, and create run scripts.
+    ```bash
+    python install.py
+    # or python3 install.py on some systems
+    ```
+3.  **Follow on-screen instructions.** The script will guide you through any necessary checks.
 
-#### Windows
+### Running BanditGUI
 
-1. Double-click on `install.bat`
-2. Follow the on-screen instructions
-3. After installation, run `run.bat` to start the application
+*   **Windows:** Execute `run.bat` (Generated by `install.py`)
+*   **Linux/macOS:** Execute `./run.sh` (Generated by `install.py`)
 
-#### Linux/macOS
-
-1. Open a terminal in the project directory
-
-2. Make the installation script executable:
-
-   ```bash
-   chmod +x install.sh
-   ```
-
-3. Run the installation script:
-
-   ```bash
-   ./install.sh
-   ```
-
-4. After installation, run the application:
-
-   ```bash
-   ./run.sh
-   ```
-
-### Manual Installation
-
-If you prefer to install manually:
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/therealfredp3D/Making-BanditGUI.git
-   cd Making-BanditGUI
-   ```
-
-2. Create and activate a virtual environment:
-
-   ```bash
-   # Windows
-   python -m venv venv
-   venv\Scripts\activate
-
-   # Linux/macOS
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
-
-3. Install Python dependencies:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Install Node.js dependencies:
-
-   ```bash
-   npm install
-   ```
-
-5. Start the application:
-
-   ```bash
-   python -m banditgui.app
-   ```
-
-For more detailed installation instructions, see [INSTALL.md](INSTALL.md).
-
-## New in v0.4
-
-### Improved Installation Process
-
-The v0.4 release introduces automated installation scripts that make it easier than ever to get started with BanditGUI:
-
-- **Cross-platform support**: Installation scripts for both Windows and Unix-like systems
-- **Dependency management**: Automatic installation of all required dependencies
-- **Environment setup**: Creation of virtual environments and configuration files
-- **Clear instructions**: Step-by-step guidance throughout the installation process
-
-### UI Improvements
-
-- Updated color palette to be more modern and readable with better contrast
-- Added a 'Start a New Game!' button instead of automatically displaying level 0 information
-- Improved chat log management with automatic clearing before showing level information
-- Better initial display showing only Level Name/Goal/Commands/Reading Material
-- Made hints available only via the 'hint' command
-- Added margin to the terminal display to prevent text from being hidden
-- Implemented fixed 50/50 split between chat and terminal panels for better usability
-- Enhanced SSH connection handling with clear success messages
-- Improved transition between levels with automatic display of next level information
-- Made all help messages and instructions consistent throughout the application
+Once started, the application is typically available at `http://127.0.0.1:5000`.
 
 ## How to Contribute
 
-We welcome contributions from the community! If you'd like to contribute to BanditGUI, please follow these steps:
+We welcome contributions! Please follow these general steps:
+1.  Fork the repository.
+2.  Create a new branch for your feature or bug fix.
+3.  Make your changes.
+4.  Test your changes thoroughly.
+5.  Commit your changes with a clear message.
+6.  Open a Pull Request to the `main` branch.
 
-1.  **Fork the repository.**
-2.  **Create a new branch** for your feature or bug fix: `git checkout -b feature/your-feature-name` or `git checkout -b bugfix/your-bug-fix`.
-3.  **Make your changes** and ensure they adhere to our coding standards.
-4.  **Test your changes** thoroughly.
-5.  **Commit your changes** with a clear and concise commit message.
-6.  **Push your branch** to your forked repository.
-7.  **Open a Pull Request** to the `main` branch of the original repository, describing your changes in detail.
+## Roadmap Highlights
 
-We appreciate your help in making BanditGUI even better!
+We are continuously working to improve BanditGUI. Some of our future goals include:
+*   Secure password management.
+*   User progress tracking.
+*   Gamification elements.
+*   Enhanced accessibility features.
 
-## Conclusion
+## License
 
-BanditGUI v0.4 represents a significant step forward in making cybersecurity education more accessible. By combining a powerful terminal emulator with helpful guidance, a structured learning approach, an improved installation process, and now a more modern and user-friendly interface, we're removing barriers to entry and creating a more engaging learning experience.
-
-The updated color palette, improved navigation, enhanced feedback, and consistent user experience make BanditGUI more intuitive and enjoyable to use. The smoother transitions between levels and clearer instructions help users focus on learning rather than figuring out how to use the application.
-
-Whether you're a complete beginner looking to learn Linux commands, a student studying cybersecurity, or an educator teaching security concepts, BanditGUI provides a valuable tool for your journey.
-
-Try BanditGUI today and start your cybersecurity learning adventure!
-
----
-
-BanditGUI is an open-source project dedicated to me, learning some new things. It's just a personal pet project made by a novice hobyist developer. Don't be to hard judging the thing.I am having fun learning as I work on it.
-
-If you have any questions or feedback, please don't hesitate to reach out.
-
----
-
-> Frederick Pellerin
->
-><fredp3d@proton.me>
->[GitHub](https://github.com/therealfredp3D)
->[X](https://x.com/therealfredp3D)
-
----
-
-![v0.3-Sourcetrail Diagram](docs/assets/v0.3-Sourcetrail.png)
+This project is licensed under the MIT License.
