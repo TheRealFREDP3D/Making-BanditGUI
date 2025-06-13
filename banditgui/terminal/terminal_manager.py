@@ -8,6 +8,7 @@ from typing import List
 
 from banditgui.config.logging import get_logger
 from banditgui.config.settings import config
+from banditgui.utils import get_available_levels, get_general_info, get_level_info
 
 logger = get_logger('terminal.terminal_manager')
 
@@ -34,11 +35,9 @@ class TerminalManager:
             'help': self.help_command,
             'info': self.info_command,
             'clear': self.clear_command,
-            'ssh': self.ssh_command,
             'echo': self.echo_command,
             'level': self.level_command,
-            'general': self.general_command,
-            'connect': self.connect_command
+            'general': self.general_command
         }
 
         # Load level information
@@ -50,7 +49,6 @@ class TerminalManager:
         """Load level information."""
         try:
             # Import here to avoid circular imports
-            from banditgui.utils import get_available_levels
             self.available_levels = get_available_levels()
             logger.info(f"Loaded {len(self.available_levels)} available levels")
         except Exception as e:
@@ -168,44 +166,6 @@ OverTheWire Bandit Server Information:
         logger.debug("Executing clear command")
         return "<clear>"
 
-    def ssh_command(self, args: List[str]) -> str:
-        """
-        Handle SSH command.
-
-        Args:
-            args: Command arguments
-
-        Returns:
-            str: SSH command output or help information
-        """
-        logger.debug(f"Executing ssh command with args: {args}")
-        if not args:
-            return """
-Usage: ssh [username@]hostname [-p port]
-
-Examples:
-  ssh bandit0@bandit.labs.overthewire.org -p 2220    - Connect to Bandit level 0
-  ssh bandit1@bandit.labs.overthewire.org -p 2220    - Connect to Bandit level 1
-"""
-        else:
-            # Always forward SSH commands to the server
-            logger.debug("Forwarding ssh command to SSH server")
-
-            # If not connected, try to connect first
-            if not self.ssh_connected and self.ssh_manager:
-                logger.info("Auto-connecting to SSH server before executing SSH command")
-                connect_result = self.ssh_manager.connect()
-                if connect_result is True:
-                    self.ssh_connected = True
-                    self.current_level = 0
-                    logger.info("Successfully auto-connected to SSH server")
-                else:
-                    logger.error(f"Failed to auto-connect to SSH server: {connect_result}")
-                    return f"Failed to connect to SSH server: {connect_result}"
-
-            # Execute the SSH command
-            return self.ssh_manager.execute_command("ssh " + " ".join(args))
-
     def echo_command(self, args: List[str]) -> str:
         """
         Echo the provided text.
@@ -244,7 +204,6 @@ Example: level 0"""
                 return f"Level {level_num} not found. Available levels: {', '.join(map(str, self.available_levels))}"
 
             # Import here to avoid circular imports
-            from banditgui.utils import get_level_info
             level_data = get_level_info(level_num)
             if not level_data:
                 logger.error(f"Could not load information for level {level_num}")
@@ -287,7 +246,6 @@ Example: level 0"""
         logger.debug("Executing general command")
         try:
             # Import here to avoid circular imports
-            from banditgui.utils import get_general_info
             general_data = get_general_info()
             if not general_data:
                 logger.error("Could not load general information")
@@ -302,33 +260,3 @@ Example: level 0"""
         except Exception as e:
             logger.error(f"Error loading general information: {e}")
             return f"Error loading general information: {str(e)}"
-
-    def connect_command(self, args: List[str]) -> str:
-        """
-        Connect to the SSH server.
-
-        Args:
-            args: Command arguments
-
-        Returns:
-            str: Connection result
-        """
-        logger.debug("Executing connect command")
-        try:
-            if not self.ssh_manager:
-                logger.error("SSH manager not initialized")
-                return "Error: SSH manager not initialized"
-
-            result = self.ssh_manager.connect()
-            if result is True:
-                logger.info("Successfully connected to SSH server")
-                self.ssh_connected = True
-                # Set initial level to 0
-                self.current_level = 0
-                return "Successfully connected to SSH server."
-            else:
-                logger.error(f"Failed to connect to SSH server: {result}")
-                return f"Failed to connect to SSH server: {result}"
-        except Exception as e:
-            logger.error(f"Error connecting to SSH server: {e}")
-            return f"Error connecting to SSH server: {str(e)}"
