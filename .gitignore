@@ -184,3 +184,5 @@ node_modules
 /tmp
 appmap.yml
 TODO.md
+/.snapshots
+/browser-tools-mcp-server

@@ -1,4 +1,4 @@
-# v0.3.1 - BanditGUI: Making Cybersecurity Learning Accessible
+# v0.4 - BanditGUI: Making Cybersecurity Learning Accessible
 
 ![Screenshot](docs/assets/v0.3.2-UI-Screenshot.png)
 
@@ -22,9 +22,9 @@ BanditGUI is an open-source web application that provides a user-friendly interf
 
 With BanditGUI, we're removing the barriers to entry for cybersecurity education, making it accessible to anyone with a web browser.
 
-## Key Features in v0.3
+## Key Features in v0.4
 
-The v0.3 release of BanditGUI brings several significant improvements:
+The v0.4 release of BanditGUI brings several significant improvements:
 
 ### 1. Full-Featured Terminal Experience
 
@@ -185,11 +185,11 @@ If you prefer to install manually:
 
 For more detailed installation instructions, see [INSTALL.md](INSTALL.md).
 
-## New in v0.3
+## New in v0.4
 
 ### Improved Installation Process
 
-The v0.3 release introduces automated installation scripts that make it easier than ever to get started with BanditGUI:
+The v0.4 release introduces automated installation scripts that make it easier than ever to get started with BanditGUI:
 
 - **Cross-platform support**: Installation scripts for both Windows and Unix-like systems
 - **Dependency management**: Automatic installation of all required dependencies
@@ -225,7 +225,7 @@ We appreciate your help in making BanditGUI even better!
 
 ## Conclusion
 
-BanditGUI v0.3 represents a significant step forward in making cybersecurity education more accessible. By combining a powerful terminal emulator with helpful guidance, a structured learning approach, an improved installation process, and now a more modern and user-friendly interface, we're removing barriers to entry and creating a more engaging learning experience.
+BanditGUI v0.4 represents a significant step forward in making cybersecurity education more accessible. By combining a powerful terminal emulator with helpful guidance, a structured learning approach, an improved installation process, and now a more modern and user-friendly interface, we're removing barriers to entry and creating a more engaging learning experience.
 
 The updated color palette, improved navigation, enhanced feedback, and consistent user experience make BanditGUI more intuitive and enjoyable to use. The smoother transitions between levels and clearer instructions help users focus on learning rather than figuring out how to use the application.
 
