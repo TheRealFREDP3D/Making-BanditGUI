@@ -1,8 +1,6 @@
-# BanditGUI v0.5.0: Making Cybersecurity Learning Accessible
+# v0.4 - BanditGUI: Making Cybersecurity Learning Accessible
 
-<!-- Optional: Add a key screenshot or badge here later if desired -->
-<!-- For now, I'll reuse one from the old README, but ideally, it should be updated if there's a v0.5 specific one -->
-![BanditGUI Screenshot](docs\assets\v0.4-Main-screen.jpg)
+![Screenshot](docs/assets/v0.4-Main-screen.jpg)
 
 BanditGUI is a web-based interface for the popular OverTheWire Bandit wargame. It aims to make learning cybersecurity fundamentals more approachable by providing a browser-based terminal, structured level information, and an AI-powered assistant.
 
@@ -85,11 +83,18 @@ We welcome contributions! Please follow these general steps:
 
 We are continuously working to improve BanditGUI. Some of our future goals include:
 
-* Secure password management.
-* User progress tracking.
-* Gamification elements.
-* Enhanced accessibility features.
+1. **Password Management**: Adding secure password storage with encryption
+2. **Progress Tracking**: Implementing a system to track user progress through the challenges
+3. **Gamification**: Adding badges, streaks, and other gamification elements to increase engagement
 
 ## License
 
 This project is licensed under the MIT License.
+
+### 5. LLM-Powered Chat Interface
+
+The application includes an advanced chat interface powered by Large Language Models (LLMs). It leverages `litellm` to support various API providers and LLM, making it easy to switch between different models.
+
+For more detailed installation instructions, see [installation guide](docs/notion/notion_installation_guide.md).
+
+## New in v0.4
