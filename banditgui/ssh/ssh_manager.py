@@ -121,10 +121,6 @@ class SSHManager:
             # Close the socket
             s.close()
 
-            # Add a small delay to simulate verification process
-            import time
-            time.sleep(0.5)
-
             # Check if the connection was successful
             if result == 0:
                 logger.info(f"Server {config.ssh_host}:{config.ssh_port} is online")

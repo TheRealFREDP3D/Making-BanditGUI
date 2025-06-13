@@ -138,16 +138,14 @@ def get_terminal_welcome_quotes(count: int = 1) -> List[str]:
     Returns:
         List[str]: List of formatted quote strings
     """
-    quotes = []
-    used_indices = set()
+    if not quote_manager.quotes:
+        return []
 
-    for _ in range(min(count, len(quote_manager.quotes))):
-        # Make sure we don't repeat quotes
-        while True:
-            idx = random.randint(0, len(quote_manager.quotes) - 1)
-            if idx not in used_indices:
-                used_indices.add(idx)
-                quotes.append(quote_manager.get_formatted_quote(quote_manager.quotes[idx]))
-                break
+    # Ensure we don't request more quotes than available
+    num_to_sample = min(count, len(quote_manager.quotes))
 
-    return quotes
+    # Select quotes randomly without replacement
+    sampled_quotes = random.sample(quote_manager.quotes, num_to_sample)
+
+    # Format the selected quotes
+    return [quote_manager.get_formatted_quote(q) for q in sampled_quotes]

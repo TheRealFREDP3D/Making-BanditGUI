@@ -131,7 +131,6 @@ class ChatManager:
         
         hint = hints.get(level, "No hint available for this level.")
         logger.info(f"Provided hint for level {level}")
-        logger.info(f"Provided hint for level {level}")
         return hint
 
     def _get_timestamp(self) -> str:

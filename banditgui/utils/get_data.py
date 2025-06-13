@@ -25,7 +25,7 @@ from bs4 import BeautifulSoup
 # Constants
 BASE_URL = "https://overthewire.org/wargames/bandit/"
 LEVELS_RANGE = range(0, 35)  # bandit0 to bandit34
-OUTPUT_DIR = Path(__file__).parent.parent / "levels_data"
+OUTPUT_DIR = Path(__file__).parent.parent / "data"
 GENERAL_OUTPUT_FILE = OUTPUT_DIR / "general_info.json"
 LEVELS_OUTPUT_FILE = OUTPUT_DIR / "levels_info.json"
 ALL_DATA_FILE = OUTPUT_DIR / "all_data.json"
